@@ -10,6 +10,11 @@
 
 @implementation LoginView
 
+
+@synthesize loginButton;
+
+
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -18,6 +23,12 @@
     }
     return self;
 }
+
+-(IBAction)loginButtonPressed:(id)sender{
+    
+}
+
+
 
 /*
 // Only override drawRect: if you perform custom drawing.
