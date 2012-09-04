@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A83965D15F68447004E3429 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A83965C15F68447004E3429 /* LoginView.m */; };
 		BFF8CF9915F6767800F1D2EA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFF8CF9815F6767800F1D2EA /* UIKit.framework */; };
 		BFF8CF9B15F6767800F1D2EA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFF8CF9A15F6767800F1D2EA /* Foundation.framework */; };
 		BFF8CF9D15F6767800F1D2EA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFF8CF9C15F6767800F1D2EA /* CoreGraphics.framework */; };
@@ -18,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A83965B15F68447004E3429 /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
+		0A83965C15F68447004E3429 /* LoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginView.m; sourceTree = "<group>"; };
 		BFF8CF9415F6767800F1D2EA /* EconApps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EconApps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFF8CF9815F6767800F1D2EA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BFF8CF9A15F6767800F1D2EA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -86,6 +89,8 @@
 				BFF8CFAA15F6767800F1D2EA /* MainStoryboard.storyboard */,
 				BFF8CFAD15F6767800F1D2EA /* LoginViewController.h */,
 				BFF8CFAE15F6767800F1D2EA /* LoginViewController.m */,
+				0A83965B15F68447004E3429 /* LoginView.h */,
+				0A83965C15F68447004E3429 /* LoginView.m */,
 				BFF8CF9F15F6767800F1D2EA /* Supporting Files */,
 			);
 			path = EconApps;
@@ -168,6 +173,7 @@
 				BFF8CFA515F6767800F1D2EA /* main.m in Sources */,
 				BFF8CFA915F6767800F1D2EA /* AppDelegate.m in Sources */,
 				BFF8CFAF15F6767800F1D2EA /* LoginViewController.m in Sources */,
+				0A83965D15F68447004E3429 /* LoginView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
