@@ -7,20 +7,28 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Connection.h"
 
 @interface LoginView : UIView {
 
-UIButton *loginButton;
+    UIButton *loginButton;
+    UITextField *usernameField;
+    UITextField *passwordField;
+    
+    NSString *username;
+    NSString *password;
 
 }
 
 
-
-
-
 @property (nonatomic) IBOutlet UIButton *loginButton;
+@property (nonatomic) IBOutlet UITextField *usernameField;
+@property (nonatomic) IBOutlet UITextField *passwordField;
+
 
 
 -(IBAction)loginButtonPressed:(id)sender;
+-(void)validateLogin:(NSData*)data;
+
 
 @end

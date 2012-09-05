@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0A83965D15F68447004E3429 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A83965C15F68447004E3429 /* LoginView.m */; };
+		BFF4854415F804B3003DB6C3 /* Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF8CFB915F67A3B00F1D2EA /* Connection.m */; };
 		BFF8CF9915F6767800F1D2EA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFF8CF9815F6767800F1D2EA /* UIKit.framework */; };
 		BFF8CF9B15F6767800F1D2EA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFF8CF9A15F6767800F1D2EA /* Foundation.framework */; };
 		BFF8CF9D15F6767800F1D2EA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFF8CF9C15F6767800F1D2EA /* CoreGraphics.framework */; };
@@ -170,6 +171,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFF4854415F804B3003DB6C3 /* Connection.m in Sources */,
 				BFF8CFA515F6767800F1D2EA /* main.m in Sources */,
 				BFF8CFA915F6767800F1D2EA /* AppDelegate.m in Sources */,
 				BFF8CFAF15F6767800F1D2EA /* LoginViewController.m in Sources */,
@@ -257,6 +259,7 @@
 				GCC_PREFIX_HEADER = "EconApps/EconApps-Prefix.pch";
 				INFOPLIST_FILE = "EconApps/EconApps-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "armv6 armv7";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -268,6 +271,7 @@
 				GCC_PREFIX_HEADER = "EconApps/EconApps-Prefix.pch";
 				INFOPLIST_FILE = "EconApps/EconApps-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "armv6 armv7";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

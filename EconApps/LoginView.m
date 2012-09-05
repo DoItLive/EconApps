@@ -11,8 +11,7 @@
 @implementation LoginView
 
 
-@synthesize loginButton;
-
+@synthesize loginButton, usernameField, passwordField;
 
 
 - (id)initWithFrame:(CGRect)frame
@@ -22,6 +21,25 @@
         // Initialization code
     }
     return self;
+}
+
+-(IBAction)loginButtonPressed:(id)sender{
+    
+    username = [usernameField text];
+    password = [passwordField text];
+    
+    NSString *postString = [[NSString alloc] initWithFormat:@"username=%@&password=%@",username,password];
+    [[Connection alloc] initWithSelector:@selector(validateLogin:)
+                                toTarget:self
+                                 withURL:@"URL"
+                              withString:postString];
+    
+    
+}
+
+-(void)validateLogin:(NSData *)data{
+    
+    
 }
 
 @end

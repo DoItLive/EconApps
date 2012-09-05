@@ -16,9 +16,7 @@
     
     
     NSMutableData *receivedData;
-    
     SEL function;
-    
     id target;
     
 }
