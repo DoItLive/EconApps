@@ -66,6 +66,20 @@
                 </viewController>
             </objects>
         </scene>
+        <!--Public Goods View Controller-->
+        <scene sceneID="ant-Z2-hQV">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qHD-2z-fhx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="qMT-cu-wgs" customClass="PublicGoodsViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Umh-Wc-Pgw" customClass="PublicGoodsView">
+                        <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1049" y="-181"/>
+        </scene>
     </scenes>
     <classes>
         <class className="LoginView" superclassName="UIView">
