@@ -10,7 +10,6 @@
 
 @interface LoginViewController ()
 
-
 @end
 
 @implementation LoginViewController
@@ -29,7 +28,7 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return UIInterfaceOrientationPortrait;
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 @end
