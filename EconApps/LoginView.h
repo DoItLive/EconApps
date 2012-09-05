@@ -8,6 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LoginView : UIView
+@interface LoginView : UIView {
+
+UIButton *loginButton;
+
+}
+
+
+
+
+
+@property (nonatomic) IBOutlet UIButton *loginButton;
+
+
+-(IBAction)loginButtonPressed:(id)sender;
 
 @end

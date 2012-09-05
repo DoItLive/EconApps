@@ -10,6 +10,11 @@
 
 @implementation LoginView
 
+
+@synthesize loginButton;
+
+
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
