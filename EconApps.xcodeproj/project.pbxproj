@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		0A83965D15F68447004E3429 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A83965C15F68447004E3429 /* LoginView.m */; };
 		BFF4854415F804B3003DB6C3 /* Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF8CFB915F67A3B00F1D2EA /* Connection.m */; };
+		BFF4855115F80897003DB6C3 /* WaitingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF4855015F80897003DB6C3 /* WaitingView.m */; };
+		BFF4855415F808B1003DB6C3 /* WaitingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF4855315F808B1003DB6C3 /* WaitingViewController.m */; };
+		BFF4855B15F80FD2003DB6C3 /* TileScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF4855A15F80FD1003DB6C3 /* TileScroller.m */; };
 		BFF8CF9915F6767800F1D2EA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFF8CF9815F6767800F1D2EA /* UIKit.framework */; };
 		BFF8CF9B15F6767800F1D2EA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFF8CF9A15F6767800F1D2EA /* Foundation.framework */; };
 		BFF8CF9D15F6767800F1D2EA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFF8CF9C15F6767800F1D2EA /* CoreGraphics.framework */; };
@@ -24,6 +27,11 @@
 /* Begin PBXFileReference section */
 		0A83965B15F68447004E3429 /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
 		0A83965C15F68447004E3429 /* LoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginView.m; sourceTree = "<group>"; };
+		BFF4854F15F80897003DB6C3 /* WaitingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitingView.h; sourceTree = "<group>"; };
+		BFF4855015F80897003DB6C3 /* WaitingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaitingView.m; sourceTree = "<group>"; };
+		BFF4855215F808B1003DB6C3 /* WaitingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitingViewController.h; sourceTree = "<group>"; };
+		BFF4855315F808B1003DB6C3 /* WaitingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaitingViewController.m; sourceTree = "<group>"; };
+		BFF4855A15F80FD1003DB6C3 /* TileScroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TileScroller.m; path = EconApps/TileScroller.m; sourceTree = "<group>"; };
 		BFF8CF9415F6767800F1D2EA /* EconApps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EconApps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFF8CF9815F6767800F1D2EA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BFF8CF9A15F6767800F1D2EA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -59,9 +67,59 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BFF4854915F8066F003DB6C3 /* PublicGoodsView */ = {
+			isa = PBXGroup;
+			children = (
+				E9B5CCE415F7FC8C00E71B8F /* PublicGoodsViewController.h */,
+				E9B5CCE515F7FC8C00E71B8F /* PublicGoodsViewController.m */,
+				E9B5CCE815F7FE2000E71B8F /* PublicGoodsView.h */,
+				E9B5CCE915F7FE2000E71B8F /* PublicGoodsView.m */,
+			);
+			name = PublicGoodsView;
+			sourceTree = "<group>";
+		};
+		BFF4854B15F80681003DB6C3 /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+				BFF8CFAD15F6767800F1D2EA /* LoginViewController.h */,
+				BFF8CFAE15F6767800F1D2EA /* LoginViewController.m */,
+				0A83965B15F68447004E3429 /* LoginView.h */,
+				0A83965C15F68447004E3429 /* LoginView.m */,
+			);
+			name = LoginView;
+			sourceTree = "<group>";
+		};
+		BFF4854D15F80701003DB6C3 /* Public Goods */ = {
+			isa = PBXGroup;
+			children = (
+				BFF4854E15F80714003DB6C3 /* Views */,
+			);
+			name = "Public Goods";
+			sourceTree = "<group>";
+		};
+		BFF4854E15F80714003DB6C3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BFF4854915F8066F003DB6C3 /* PublicGoodsView */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		BFF4855515F808B6003DB6C3 /* WaitingView */ = {
+			isa = PBXGroup;
+			children = (
+				BFF4854F15F80897003DB6C3 /* WaitingView.h */,
+				BFF4855015F80897003DB6C3 /* WaitingView.m */,
+				BFF4855215F808B1003DB6C3 /* WaitingViewController.h */,
+				BFF4855315F808B1003DB6C3 /* WaitingViewController.m */,
+			);
+			name = WaitingView;
+			sourceTree = "<group>";
+		};
 		BFF8CF8915F6767700F1D2EA = {
 			isa = PBXGroup;
 			children = (
+				BFF4855A15F80FD1003DB6C3 /* TileScroller.m */,
 				BFF8CF9E15F6767800F1D2EA /* EconApps */,
 				BFF8CF9715F6767800F1D2EA /* Frameworks */,
 				BFF8CF9515F6767800F1D2EA /* Products */,
@@ -94,14 +152,9 @@
 				BFF8CFA715F6767800F1D2EA /* AppDelegate.h */,
 				BFF8CFA815F6767800F1D2EA /* AppDelegate.m */,
 				BFF8CFAA15F6767800F1D2EA /* MainStoryboard.storyboard */,
-				E9B5CCE415F7FC8C00E71B8F /* PublicGoodsViewController.h */,
-				E9B5CCE515F7FC8C00E71B8F /* PublicGoodsViewController.m */,
-				E9B5CCE815F7FE2000E71B8F /* PublicGoodsView.h */,
-				E9B5CCE915F7FE2000E71B8F /* PublicGoodsView.m */,
-				BFF8CFAD15F6767800F1D2EA /* LoginViewController.h */,
-				BFF8CFAE15F6767800F1D2EA /* LoginViewController.m */,
-				0A83965B15F68447004E3429 /* LoginView.h */,
-				0A83965C15F68447004E3429 /* LoginView.m */,
+				BFF4855515F808B6003DB6C3 /* WaitingView */,
+				BFF4854B15F80681003DB6C3 /* LoginView */,
+				BFF4854D15F80701003DB6C3 /* Public Goods */,
 				BFF8CF9F15F6767800F1D2EA /* Supporting Files */,
 			);
 			path = EconApps;
@@ -188,6 +241,9 @@
 				0A83965D15F68447004E3429 /* LoginView.m in Sources */,
 				E9B5CCE615F7FC8C00E71B8F /* PublicGoodsViewController.m in Sources */,
 				E9B5CCEA15F7FE2000E71B8F /* PublicGoodsView.m in Sources */,
+				BFF4855115F80897003DB6C3 /* WaitingView.m in Sources */,
+				BFF4855415F808B1003DB6C3 /* WaitingViewController.m in Sources */,
+				BFF4855B15F80FD2003DB6C3 /* TileScroller.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
