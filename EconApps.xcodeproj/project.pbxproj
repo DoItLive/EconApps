@@ -12,6 +12,7 @@
 		BFF4855115F80897003DB6C3 /* WaitingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF4855015F80897003DB6C3 /* WaitingView.m */; };
 		BFF4855415F808B1003DB6C3 /* WaitingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF4855315F808B1003DB6C3 /* WaitingViewController.m */; };
 		BFF4855B15F80FD2003DB6C3 /* TileScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF4855A15F80FD1003DB6C3 /* TileScroller.m */; };
+		BFF6587B15F9160B001C840A /* GridView.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF6587A15F9160B001C840A /* GridView.m */; };
 		BFF8CF9915F6767800F1D2EA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFF8CF9815F6767800F1D2EA /* UIKit.framework */; };
 		BFF8CF9B15F6767800F1D2EA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFF8CF9A15F6767800F1D2EA /* Foundation.framework */; };
 		BFF8CF9D15F6767800F1D2EA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFF8CF9C15F6767800F1D2EA /* CoreGraphics.framework */; };
@@ -32,6 +33,8 @@
 		BFF4855215F808B1003DB6C3 /* WaitingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitingViewController.h; sourceTree = "<group>"; };
 		BFF4855315F808B1003DB6C3 /* WaitingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaitingViewController.m; sourceTree = "<group>"; };
 		BFF4855A15F80FD1003DB6C3 /* TileScroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TileScroller.m; path = EconApps/TileScroller.m; sourceTree = "<group>"; };
+		BFF6587915F9160B001C840A /* GridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridView.h; sourceTree = "<group>"; };
+		BFF6587A15F9160B001C840A /* GridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridView.m; sourceTree = "<group>"; };
 		BFF8CF9415F6767800F1D2EA /* EconApps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EconApps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFF8CF9815F6767800F1D2EA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BFF8CF9A15F6767800F1D2EA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -156,6 +159,8 @@
 				BFF4854B15F80681003DB6C3 /* LoginView */,
 				BFF4854D15F80701003DB6C3 /* Public Goods */,
 				BFF8CF9F15F6767800F1D2EA /* Supporting Files */,
+				BFF6587915F9160B001C840A /* GridView.h */,
+				BFF6587A15F9160B001C840A /* GridView.m */,
 			);
 			path = EconApps;
 			sourceTree = "<group>";
@@ -244,6 +249,7 @@
 				BFF4855115F80897003DB6C3 /* WaitingView.m in Sources */,
 				BFF4855415F808B1003DB6C3 /* WaitingViewController.m in Sources */,
 				BFF4855B15F80FD2003DB6C3 /* TileScroller.m in Sources */,
+				BFF6587B15F9160B001C840A /* GridView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

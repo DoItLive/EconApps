@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GridView.h"
 
-@interface PublicGoodsView : UIView
+@interface PublicGoodsView : UIView{
+    
+    GridView *gridView;
+    
+}
 
 @end

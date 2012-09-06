@@ -28,12 +28,12 @@
     username = [usernameField text];
     password = [passwordField text];
     
-    NSString *postString = [[NSString alloc] initWithFormat:@"username=%@&password=%@",username,password];
-    [[Connection alloc] initWithSelector:@selector(validateLogin:)
-                                toTarget:self
-                                 withURL:@"URL"
-                              withString:postString];
-    
+    //NSString *postString = [[NSString alloc] initWithFormat:@"username=%@&password=%@",username,password];
+    //[[Connection alloc] initWithSelector:@selector(validateLogin:)
+    //                            toTarget:self
+    //                             withURL:@"URL"
+    //                          withString:postString];
+        
     
 }
 

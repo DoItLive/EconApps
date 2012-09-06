@@ -14,18 +14,17 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
+        NSMutableArray *array1 = [[NSMutableArray alloc] initWithObjects:0,1,2,3,4, nil];
+        NSMutableArray *array2 = [[NSMutableArray alloc] initWithObjects:0,5,2,3,4, nil];
+        NSMutableArray *array3 = [[NSMutableArray alloc] initWithObjects:0,6,2,3,4, nil];
+        NSMutableArray *array4 = [[NSMutableArray alloc] initWithObjects:0,7,2,3,4, nil];
+        NSMutableArray *data = [[NSMutableArray alloc] initWithObjects:array1,array2,array3,array4, nil];
+
+        gridView = [[GridView alloc] initWithFrame:CGRectMake(0, 0, 400, 200) andData:data];
+        [self addSubview:gridView];
+
     }
     return self;
 }
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 @end
