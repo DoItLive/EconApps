@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GridViewController.h"
 
 @interface GridView : UIView{
     
@@ -14,8 +15,11 @@
     
     NSMutableArray *tableViews;
     
+    GridViewController *controller;
+    
 }
 
 - (id)initWithFrame:(CGRect)frame andData:(NSMutableArray*)data;
+
 
 @end
