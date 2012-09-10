@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#include "Defs.h"
 
 @interface LoginViewController : UIViewController
+
+-(void)switchToWaitingView;
 
 @end

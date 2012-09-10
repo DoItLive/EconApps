@@ -11,8 +11,8 @@
 		BFF4854415F804B3003DB6C3 /* Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF8CFB915F67A3B00F1D2EA /* Connection.m */; };
 		BFF4855115F80897003DB6C3 /* WaitingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF4855015F80897003DB6C3 /* WaitingView.m */; };
 		BFF4855415F808B1003DB6C3 /* WaitingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF4855315F808B1003DB6C3 /* WaitingViewController.m */; };
-		BFF4855B15F80FD2003DB6C3 /* TileScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF4855A15F80FD1003DB6C3 /* TileScroller.m */; };
 		BFF6587B15F9160B001C840A /* GridView.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF6587A15F9160B001C840A /* GridView.m */; };
+		BFF6587F15F92543001C840A /* GridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF6587E15F92543001C840A /* GridViewController.m */; };
 		BFF8CF9915F6767800F1D2EA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFF8CF9815F6767800F1D2EA /* UIKit.framework */; };
 		BFF8CF9B15F6767800F1D2EA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFF8CF9A15F6767800F1D2EA /* Foundation.framework */; };
 		BFF8CF9D15F6767800F1D2EA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFF8CF9C15F6767800F1D2EA /* CoreGraphics.framework */; };
@@ -32,9 +32,10 @@
 		BFF4855015F80897003DB6C3 /* WaitingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaitingView.m; sourceTree = "<group>"; };
 		BFF4855215F808B1003DB6C3 /* WaitingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitingViewController.h; sourceTree = "<group>"; };
 		BFF4855315F808B1003DB6C3 /* WaitingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaitingViewController.m; sourceTree = "<group>"; };
-		BFF4855A15F80FD1003DB6C3 /* TileScroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TileScroller.m; path = EconApps/TileScroller.m; sourceTree = "<group>"; };
 		BFF6587915F9160B001C840A /* GridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridView.h; sourceTree = "<group>"; };
 		BFF6587A15F9160B001C840A /* GridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridView.m; sourceTree = "<group>"; };
+		BFF6587D15F92543001C840A /* GridViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridViewController.h; sourceTree = "<group>"; };
+		BFF6587E15F92543001C840A /* GridViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridViewController.m; sourceTree = "<group>"; };
 		BFF8CF9415F6767800F1D2EA /* EconApps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EconApps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFF8CF9815F6767800F1D2EA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BFF8CF9A15F6767800F1D2EA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -50,6 +51,7 @@
 		BFF8CFAE15F6767800F1D2EA /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		BFF8CFB815F67A3B00F1D2EA /* Connection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Connection.h; sourceTree = "<group>"; };
 		BFF8CFB915F67A3B00F1D2EA /* Connection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Connection.m; sourceTree = "<group>"; };
+		E941DFDC15FA8EF200DE9C75 /* Defs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Defs.h; sourceTree = "<group>"; };
 		E9B5CCE415F7FC8C00E71B8F /* PublicGoodsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublicGoodsViewController.h; sourceTree = "<group>"; };
 		E9B5CCE515F7FC8C00E71B8F /* PublicGoodsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublicGoodsViewController.m; sourceTree = "<group>"; };
 		E9B5CCE815F7FE2000E71B8F /* PublicGoodsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublicGoodsView.h; sourceTree = "<group>"; };
@@ -122,7 +124,6 @@
 		BFF8CF8915F6767700F1D2EA = {
 			isa = PBXGroup;
 			children = (
-				BFF4855A15F80FD1003DB6C3 /* TileScroller.m */,
 				BFF8CF9E15F6767800F1D2EA /* EconApps */,
 				BFF8CF9715F6767800F1D2EA /* Frameworks */,
 				BFF8CF9515F6767800F1D2EA /* Products */,
@@ -150,6 +151,7 @@
 		BFF8CF9E15F6767800F1D2EA /* EconApps */ = {
 			isa = PBXGroup;
 			children = (
+				E941DFDC15FA8EF200DE9C75 /* Defs.h */,
 				BFF8CFB815F67A3B00F1D2EA /* Connection.h */,
 				BFF8CFB915F67A3B00F1D2EA /* Connection.m */,
 				BFF8CFA715F6767800F1D2EA /* AppDelegate.h */,
@@ -161,6 +163,8 @@
 				BFF8CF9F15F6767800F1D2EA /* Supporting Files */,
 				BFF6587915F9160B001C840A /* GridView.h */,
 				BFF6587A15F9160B001C840A /* GridView.m */,
+				BFF6587D15F92543001C840A /* GridViewController.h */,
+				BFF6587E15F92543001C840A /* GridViewController.m */,
 			);
 			path = EconApps;
 			sourceTree = "<group>";
@@ -248,8 +252,8 @@
 				E9B5CCEA15F7FE2000E71B8F /* PublicGoodsView.m in Sources */,
 				BFF4855115F80897003DB6C3 /* WaitingView.m in Sources */,
 				BFF4855415F808B1003DB6C3 /* WaitingViewController.m in Sources */,
-				BFF4855B15F80FD2003DB6C3 /* TileScroller.m in Sources */,
 				BFF6587B15F9160B001C840A /* GridView.m in Sources */,
+				BFF6587F15F92543001C840A /* GridViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
