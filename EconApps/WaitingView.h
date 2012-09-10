@@ -19,8 +19,9 @@
 @property (nonatomic) IBOutlet UILabel *usernameLabel;
 @property (nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
--(void) initPolling;
+-(void)initPolling;
 -(void)poll:(NSTimer*)timer;
 -(void)dataReceived:(NSData*)data;
+
 
 @end
