@@ -20,4 +20,6 @@ typedef enum  MODULES {
 
 #define kSERVER_URL @"http://linus.highpoint.edu/~tlangford/econApps/test.php"
 
+#define kPOLLING_INTERVAL 3 //Every x seconds
+
 #endif

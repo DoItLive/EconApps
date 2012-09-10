@@ -7,6 +7,7 @@
 //
 
 #import "WaitingView.h"
+#import "Defs.h"
 
 @implementation WaitingView
 
@@ -23,8 +24,9 @@
 
 -(void) initPolling{
     
-    [NSTimer timerWithTimeInterval:3 target:self selector:@selector(poll:) userInfo:nil repeats:NO];
-    
+    [NSTimer timerWithTimeInterval:kPOLLING_INTERVAL target:self selector:@selector(poll:) userInfo:nil repeats:NO];
+    activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    [activityIndicator startAnimating];
 }
 
 -(void)poll:(NSTimer*)timer{
