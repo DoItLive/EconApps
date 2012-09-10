@@ -26,6 +26,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+	// Do any additional setup after loading the view.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(switchToPublicGoodsView) name:@"switchToPublicGoodsView" object:nil];
     [(WaitingView*)self.view initPolling];
 
 }
@@ -33,12 +35,17 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+-(void)switchToPublicGoodsView
+{
+    [self performSegueWithIdentifier:@"waitingViewToPublicGoodsView" sender:self];
 }
 
 @end

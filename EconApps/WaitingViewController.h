@@ -11,4 +11,6 @@
 
 @interface WaitingViewController : UIViewController
 
+-(void)switchToPublicGoodsView;
+
 @end
