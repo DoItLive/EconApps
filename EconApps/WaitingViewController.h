@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WaitingView.h"
 
 @interface WaitingViewController : UIViewController
+
+-(void)switchToPublicGoodsView;
 
 @end

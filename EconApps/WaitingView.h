@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Connection.h"
 
 @interface WaitingView : UIView{
     
@@ -18,5 +19,8 @@
 @property (nonatomic) IBOutlet UILabel *usernameLabel;
 @property (nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
+-(void) initPolling;
+-(void)poll:(NSTimer*)timer;
+-(void)dataReceived:(NSData*)data;
 
 @end
