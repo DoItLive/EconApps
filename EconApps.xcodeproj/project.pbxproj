@@ -259,7 +259,7 @@
 				BFF4855115F80897003DB6C3 /* WaitingView.m in Sources */,
 				BFF4855415F808B1003DB6C3 /* WaitingViewController.m in Sources */,
 				BFF6587B15F9160B001C840A /* GridView.m in Sources */,
-				0A7696B015FA9E5600991041 /* TokenObject.m in Sources */,
+				BFF6587F15F92543001C840A /* GridViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

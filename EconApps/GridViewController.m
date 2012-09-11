@@ -79,6 +79,15 @@
 
 #pragma mark - Table view delegate
 
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    [super scrollViewDidScroll:scrollView];
+}
+
+
+
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Navigation logic may go here. Create and push another view controller.
@@ -89,6 +98,7 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
 }
+
 
 
 @end
