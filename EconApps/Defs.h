@@ -26,4 +26,6 @@ typedef enum LOGIN_VIEW_CODES {
 
 #define kSERVER_URL @"http://linus.highpoint.edu/~tlangford/econApps/test.php"
 
+#define kPOLLING_INTERVAL 3
+
 #endif
