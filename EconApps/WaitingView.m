@@ -16,9 +16,30 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
+
     }
     return self;
+}
+
+-(void) initPolling{
+    
+    [NSTimer timerWithTimeInterval:3 target:self selector:@selector(poll:) userInfo:nil repeats:NO];
+    
+}
+
+-(void)poll:(NSTimer*)timer{
+    
+    [[Connection alloc] initWithSelector:@selector(dataReceived:)
+                                toTarget:self
+                                 withURL:@"URL"
+                              withString:@"HEYGIRL"];
+    
+}
+
+-(void)dataReceived:(NSData*)data{
+    
+    
+    
 }
 
 

@@ -64,9 +64,6 @@
                             <outlet property="usernameField" destination="gps-E1-RS9" id="De9-9i-izN"/>
                         </connections>
                     </view>
-                    <connections>
-                        <segue destination="m4s-w0-6fG" kind="modal" identifier="loginToWaitingView" modalTransitionStyle="flipHorizontal" id="cFp-Jk-tvV"/>
-                    </connections>
                 </viewController>
             </objects>
         </scene>
