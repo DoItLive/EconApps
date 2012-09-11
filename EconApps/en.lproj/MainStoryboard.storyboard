@@ -83,10 +83,9 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" style="gray" id="916-36-V4b">
-                                <rect key="frame" x="374" y="552" width="20" height="20"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" style="gray" id="Stx-YM-A14">
+                                <rect key="frame" x="374" y="553" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="1"/>
                             </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Qa0-Vf-L99">
                                 <rect key="frame" x="322" y="377" width="127" height="88"/>
@@ -106,7 +105,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <connections>
-                            <outlet property="activityIndicator" destination="916-36-V4b" id="Hcp-OL-7P6"/>
+                            <outlet property="activityIndicator" destination="Stx-YM-A14" id="dGW-if-YXi"/>
                             <outlet property="usernameLabel" destination="P1u-G6-WKh" id="lH4-SC-yVC"/>
                         </connections>
                     </view>

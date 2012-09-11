@@ -63,6 +63,18 @@
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login Error" message:alertMessage delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil, nil];
         [alert show];
     }
+    
+    NSError *error;
+    NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    
+    NSInteger code = [[jsonData objectForKey:@"code"] integerValue];
+    
+    if (code == kVALID_LOGIN) {
+        
+    } else if (code == KINVALID_USERNAME || code == KINVALID_PASSWORD) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login Error" message:[[jsonData objectForKey:@"err_msg"] string] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil, nil];
+        [alert show];
+    }
 }
 
 @end

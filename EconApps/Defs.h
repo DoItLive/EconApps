@@ -14,6 +14,12 @@ typedef enum  MODULES {
     kPIT_MARKET_MODULE = 1,
 } MODULES;
 
+typedef enum LOGIN_VIEW_CODES {
+    kVALID_LOGIN = 0,
+    KINVALID_USERNAME = 1,
+    KINVALID_PASSWORD = 2,
+} LOGIN_VIEW_CODES;
+
 #define kDATABASE_NAME @"econapps_db"
 #define kDATABASE_USER @"econuser"
 #define kDATABASE_PASS @"Q!W@E#R$T%"
