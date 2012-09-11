@@ -7,6 +7,7 @@
 //
 
 #import "WaitingView.h"
+#import "Defs.h"
 
 @implementation WaitingView
 
@@ -23,8 +24,11 @@
 
 -(void) initPolling{
     
-    [NSTimer timerWithTimeInterval:3 target:self selector:@selector(poll:) userInfo:nil repeats:NO];
+    [self poll:nil];
     
+#warning activityIndicator is not working
+    activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [activityIndicator startAnimating];
 }
 
 -(void)poll:(NSTimer*)timer{
@@ -38,8 +42,16 @@
 
 -(void)dataReceived:(NSData*)data{
     
+    //0 means to keep polling
+    //1 means that the round has started
     
+    NSInteger roundStarted;
     
+    if (roundStarted){
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"switchToPublicGoodsView" object:nil];
+    }else{
+        [NSTimer timerWithTimeInterval:kPOLLING_INTERVAL target:self selector:@selector(poll:) userInfo:nil repeats:NO];
+    }
 }
 
 
