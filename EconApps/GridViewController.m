@@ -55,9 +55,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning This is 0 and stuff don't work
-    NSLog(@"%d",[numCols intValue]);
-    return [numCols intValue];
+#warning This is 7 and stuff works better!!
+    return [self.numRows intValue];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -71,7 +70,7 @@
     NSInteger curTable = (int)tableView.frame.origin.x/100;
     NSInteger row = [indexPath row];
     NSLog(@"Table %d - Cell %d",curTable,row);
-    int num = [[(NSMutableArray*)[data objectAtIndex:curTable] objectAtIndex:row] intValue];
+    int num = [[(NSMutableArray*)[self.data objectAtIndex:curTable] objectAtIndex:row] intValue];
     NSString* text = [[NSString alloc] initWithFormat:@"%d",num];
     [[cell textLabel] setText:text];
     return cell;
@@ -79,11 +78,6 @@
 
 #pragma mark - Table view delegate
 
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    [super scrollViewDidScroll:scrollView];
-}
 
 
 
