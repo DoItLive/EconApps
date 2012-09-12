@@ -54,6 +54,11 @@
         [NSTimer timerWithTimeInterval:3 target:self selector:@selector(poll:) userInfo:nil repeats:NO];
     }
     
+    if (roundStarted){
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"switchToPublicGoodsView" object:nil];
+    }else{
+        [NSTimer timerWithTimeInterval:kPOLLING_INTERVAL target:self selector:@selector(poll:) userInfo:nil repeats:NO];
+    }
 }
 
 
