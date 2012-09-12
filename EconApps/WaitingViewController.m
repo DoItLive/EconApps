@@ -28,8 +28,10 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(switchToPublicGoodsView) name:@"switchToPublicGoodsView" object:nil];
-    [(WaitingView*)self.view initPolling];
+}
 
+- (void)viewDidAppear:(BOOL)animated {
+    [(WaitingView*)self.view initPolling];
 }
 
 - (void)viewDidUnload

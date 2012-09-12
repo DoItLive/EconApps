@@ -28,10 +28,10 @@
     username = [usernameField text];
     password = [passwordField text];
     
-    NSString *postString = [[NSString alloc] initWithFormat:@"username=%@&password=%@",username,password];
+    NSString *postString = [[NSString alloc] initWithFormat:@"username=%@&passwd=%@",username,password];
     [[Connection alloc] initWithSelector:@selector(validateLogin:)
                                 toTarget:self
-                                 withURL:kSERVER_URL
+                                 withURL:kLOGIN_VIEW_URL
                               withString:postString];
 }
 
@@ -64,7 +64,7 @@
         [alert show];
     }
     
-    NSError *error;
+   /* NSError *error;
     NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
     
     NSInteger code = [[jsonData objectForKey:@"code"] integerValue];
@@ -74,7 +74,7 @@
     } else if (code == KINVALID_USERNAME || code == KINVALID_PASSWORD) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login Error" message:[[jsonData objectForKey:@"err_msg"] string] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil, nil];
         [alert show];
-    }
+    }*/
 }
 
 @end

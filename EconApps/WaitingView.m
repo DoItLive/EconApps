@@ -35,7 +35,7 @@
     
     [[Connection alloc] initWithSelector:@selector(dataReceived:)
                                 toTarget:self
-                                 withURL:@"URL"
+                                 withURL:kWAITING_VIEW_URL
                               withString:@"HEYGIRL"];
     
 }
@@ -50,13 +50,12 @@
     //0 means to keep polling
     //1 means that the round has started
     
-    if (roundStarted){
+    if (roundStarted == 1){
         [[NSNotificationCenter defaultCenter] postNotificationName:@"switchToPublicGoodsView" object:nil];
     }else{
         [NSTimer timerWithTimeInterval:kPOLLING_INTERVAL target:self selector:@selector(poll:) userInfo:nil repeats:NO];
     }
     
 }
-
 
 @end

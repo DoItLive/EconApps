@@ -24,7 +24,10 @@ typedef enum LOGIN_VIEW_CODES {
 #define kDATABASE_USER @"econuser"
 #define kDATABASE_PASS @"Q!W@E#R$T%"
 
-#define kSERVER_URL @"http://linus.highpoint.edu/~tlangford/econApps/test.php"
+#define kSERVER_URL @"http://linus.highpoint.edu/~tlangford/econApps/"
+
+#define kLOGIN_VIEW_URL kSERVER_URL@"test.php"
+#define kWAITING_VIEW_URL kSERVER_URL@"waiting_test.php"
 
 #define kPOLLING_INTERVAL 3 //Every x seconds
 
