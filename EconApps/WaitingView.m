@@ -24,8 +24,10 @@
 
 -(void) initPolling{
     
-    [NSTimer timerWithTimeInterval:kPOLLING_INTERVAL target:self selector:@selector(poll:) userInfo:nil repeats:NO];
-    activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    [self poll:nil];
+    
+#warning activityIndicator is not working
+    activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     [activityIndicator startAnimating];
 }
 
@@ -51,14 +53,9 @@
     if (roundStarted){
         [[NSNotificationCenter defaultCenter] postNotificationName:@"switchToPublicGoodsView" object:nil];
     }else{
-        [NSTimer timerWithTimeInterval:3 target:self selector:@selector(poll:) userInfo:nil repeats:NO];
-    }
-    
-    if (roundStarted){
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"switchToPublicGoodsView" object:nil];
-    }else{
         [NSTimer timerWithTimeInterval:kPOLLING_INTERVAL target:self selector:@selector(poll:) userInfo:nil repeats:NO];
     }
+    
 }
 
 
