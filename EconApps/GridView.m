@@ -33,6 +33,8 @@
         
         int cellHeight = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"].frame.size.height;
         scrollView.contentSize = CGSizeMake(1, [controller.numRows intValue]*cellHeight);
+        
+        
         tableViews = [[NSMutableArray alloc] initWithCapacity:[controller.numCols intValue]];
         
         /*Loop through each table and initialize properties
@@ -41,10 +43,11 @@
          */
         for (int i=0;i<[controller.numCols intValue];i++){
             NSLog(@"making column %d",i);
-            UITableView *t = [[UITableView alloc] initWithFrame:CGRectMake(i*100, 0, 100, scrollView.contentSize.height)];
+            UITableView *t = [[UITableView alloc] initWithFrame:CGRectMake(i*101, 0, 100, scrollView.contentSize.height)];
             [t setDelegate:controller];
             [t setDataSource:controller];
             t.showsVerticalScrollIndicator = NO;
+            t.backgroundColor = [UIColor purpleColor];
             [tableViews addObject:t];
             [scrollView addSubview:t];
         }
