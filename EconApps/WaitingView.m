@@ -35,28 +35,30 @@
     
     [[Connection alloc] initWithSelector:@selector(dataReceived:)
                                 toTarget:self
-                                 withURL:@"URL"
-                              withString:@"HEYGIRL"];
-    
+                                 withURL:kWAITING_VIEW_URL
+                              withString:@""];
 }
 
 -(void)dataReceived:(NSData*)data{
     
-    NSString *responseString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    NSArray *chunks = [[NSArray alloc] initWithArray:[responseString componentsSeparatedByString: @","]];
+    NSError *error;
+    NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
     
-    NSInteger roundStarted = [[chunks objectAtIndex:0] integerValue];
+    NSInteger code = [[jsonData objectForKey:@"code"] integerValue];
     
-    //0 means to keep polling
-    //1 means that the round has started
-    
-    if (roundStarted){
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"switchToPublicGoodsView" object:nil];
-    }else{
-        [NSTimer timerWithTimeInterval:kPOLLING_INTERVAL target:self selector:@selector(poll:) userInfo:nil repeats:NO];
+    switch (code) {
+        case kPUBLIC_GOODS_MODULE:
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"switchToPublicGoodsView" object:nil];
+            break;
+        case kPIT_MARKET_MODULE:
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"switchToPitMarket" object:nil];
+            break;
+        default:
+            NSLog(@"called");
+            [NSTimer timerWithTimeInterval:kPOLLING_INTERVAL target:self selector:@selector(poll:) userInfo:nil repeats:NO];
+            break;
     }
     
 }
-
 
 @end

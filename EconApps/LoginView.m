@@ -28,10 +28,15 @@
     username = [usernameField text];
     password = [passwordField text];
     
-    NSString *postString = [[NSString alloc] initWithFormat:@"username=%@&password=%@",username,password];
+    if ([username length] == 0 || [password length] == 0) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login Error" message:@"A username and password must be entered." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil, nil];
+        [alert show];
+    }
+    
+    NSString *postString = [[NSString alloc] initWithFormat:@"username=%@&passwd=%@",username,password];
     [[Connection alloc] initWithSelector:@selector(validateLogin:)
                                 toTarget:self
-                                 withURL:kSERVER_URL
+                                 withURL:kLOGIN_VIEW_URL
                               withString:postString];
 }
 
@@ -43,36 +48,15 @@
      Invalid Login: 0,[1,0] where [1,0] is 0 is for invalid username and 1 is for invalid password
     */
     
-    NSString *responseString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    NSArray *chunks = [[NSArray alloc] initWithArray:[responseString componentsSeparatedByString: @","]];
-    
-    NSInteger valid = [[chunks objectAtIndex:0] integerValue]; //Whether valid login or not
-
-    //If valid login then switch to waiting view, else give an alert telling whether invalid username or password
-    if (valid) {
-        //Switch to waiting view
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"switchToWaitingView" object:nil];
-        
-    } else {
-        NSString *alertMessage;
-        if ([[chunks objectAtIndex:1] integerValue] == 0) {
-            alertMessage = [[NSString alloc] initWithFormat:@"Not a valid username"];
-        } else {
-            alertMessage = [[NSString alloc] initWithFormat:@"Not a valid password"];
-        }
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login Error" message:alertMessage delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil, nil];
-        [alert show];
-    }
-    
     NSError *error;
     NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
     
     NSInteger code = [[jsonData objectForKey:@"code"] integerValue];
     
     if (code == kVALID_LOGIN) {
-        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"switchToWaitingView" object:nil];
     } else if (code == KINVALID_USERNAME || code == KINVALID_PASSWORD) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login Error" message:[[jsonData objectForKey:@"err_msg"] string] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil, nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login Error" message:[jsonData objectForKey:@"err_msg"] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil, nil];
         [alert show];
     }
 }
