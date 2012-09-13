@@ -9,7 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "WaitingView.h"
 
-@interface WaitingViewController : UIViewController
+@interface WaitingViewController : UIViewController {
+    
+    NSString *usernameLabelText;
+
+}
+
+@property (nonatomic) NSString *usernameLabelText;
 
 -(void)switchToPublicGoodsView;
 

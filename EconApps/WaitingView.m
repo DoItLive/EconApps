@@ -22,13 +22,14 @@
     return self;
 }
 
--(void) initPolling{
-    
-    [self poll:nil];
+-(void) initView:(NSString *)nameLabelText{
+    [usernameLabel setText:nameLabelText];
     
 #warning activityIndicator is not working
     activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     [activityIndicator startAnimating];
+    
+    [self poll:nil];
 }
 
 -(void)poll:(NSTimer*)timer{
@@ -51,11 +52,10 @@
             [[NSNotificationCenter defaultCenter] postNotificationName:@"switchToPublicGoodsView" object:nil];
             break;
         case kPIT_MARKET_MODULE:
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"switchToPitMarket" object:nil];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"switchToPitMarketView" object:nil];
             break;
         default:
-            NSLog(@"called");
-            [NSTimer timerWithTimeInterval:kPOLLING_INTERVAL target:self selector:@selector(poll:) userInfo:nil repeats:NO];
+            [NSTimer scheduledTimerWithTimeInterval:kPOLLING_INTERVAL target:self selector:@selector(poll:) userInfo:nil repeats:NO];
             break;
     }
     

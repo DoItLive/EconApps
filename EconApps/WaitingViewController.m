@@ -7,12 +7,15 @@
 //
 
 #import "WaitingViewController.h"
+#import "PublicGoodsViewController.h"
 
 @interface WaitingViewController ()
 
 @end
 
 @implementation WaitingViewController
+
+@synthesize usernameLabelText;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,8 +33,10 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(switchToPublicGoodsView) name:@"switchToPublicGoodsView" object:nil];
 }
 
+//Calling initPolling in viewDidAppear instead of viewDidLoad because otherwise it will try to move on to the next segue before the current
+//segue is done.  Also pass in the label for the waiting view.
 - (void)viewDidAppear:(BOOL)animated {
-    [(WaitingView*)self.view initPolling];
+    [(WaitingView*)self.view initView:usernameLabelText];
 }
 
 - (void)viewDidUnload
@@ -48,6 +53,13 @@
 -(void)switchToPublicGoodsView
 {
     [self performSegueWithIdentifier:@"waitingViewToPublicGoodsView" sender:self];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"waitingViewToPublicGoodsView"]) {
+        PublicGoodsViewController *publicGoods = [segue destinationViewController];
+        publicGoods.nameLabelText = usernameLabelText;
+    }
 }
 
 @end
