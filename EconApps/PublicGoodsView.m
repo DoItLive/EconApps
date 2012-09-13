@@ -25,7 +25,7 @@
         NSNumber* six = [[NSNumber alloc] initWithInt:6];
         NSNumber* seven = [[NSNumber alloc] initWithInt:7];
 
-        NSMutableArray *array1 = [[NSMutableArray alloc] initWithObjects:one,two,three,four,five,six,seven, nil];
+        NSMutableArray *array1 = [[NSMutableArray alloc] initWithObjects:seven,two,three,four,five,six,seven, nil];
         NSMutableArray *array2 = [[NSMutableArray alloc] initWithObjects:two,two,three,four,five,six,seven, nil];
         NSMutableArray *array3 = [[NSMutableArray alloc] initWithObjects:three,two,three,four,five,six,seven, nil];
         NSMutableArray *array4 = [[NSMutableArray alloc] initWithObjects:four,two,three,four,five,six,seven, nil];
@@ -39,8 +39,8 @@
         NSMutableArray *array12 = [[NSMutableArray alloc] initWithObjects:five,three,three,four,five,six,seven, nil];
         NSMutableArray *data = [[NSMutableArray alloc] initWithObjects:array1,array2,array3,array4,array5,array6,array7,array8,array9,array10,array11,array12, nil];
 
-        gridView = [[GridView alloc] initWithFrame:CGRectMake(10, 10, self.frame.size.height-20, 200) andData:data];
-        [self addSubview:gridView];
+        dataView = [[DataView alloc] initWithFrame:CGRectMake(10, 10, self.frame.size.height-20, 200) andData:data];
+        [self addSubview:dataView];
 
     }
     return self;

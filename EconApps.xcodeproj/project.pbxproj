@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A7696B015FA9E5600991041 /* TokenObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7696AF15FA9E5600991041 /* TokenObject.m */; };
 		0A83965D15F68447004E3429 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A83965C15F68447004E3429 /* LoginView.m */; };
+		BF22C74816012745001A0803 /* DataView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF22C74716012745001A0803 /* DataView.m */; };
 		BFF4854415F804B3003DB6C3 /* Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF8CFB915F67A3B00F1D2EA /* Connection.m */; };
 		BFF4855115F80897003DB6C3 /* WaitingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF4855015F80897003DB6C3 /* WaitingView.m */; };
 		BFF4855415F808B1003DB6C3 /* WaitingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF4855315F808B1003DB6C3 /* WaitingViewController.m */; };
@@ -31,6 +31,8 @@
 		0A7696AF15FA9E5600991041 /* TokenObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TokenObject.m; path = EconApps/TokenObject.m; sourceTree = "<group>"; };
 		0A83965B15F68447004E3429 /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
 		0A83965C15F68447004E3429 /* LoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginView.m; sourceTree = "<group>"; };
+		BF22C74616012745001A0803 /* DataView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataView.h; sourceTree = "<group>"; };
+		BF22C74716012745001A0803 /* DataView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataView.m; sourceTree = "<group>"; };
 		BFF4854F15F80897003DB6C3 /* WaitingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitingView.h; sourceTree = "<group>"; };
 		BFF4855015F80897003DB6C3 /* WaitingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaitingView.m; sourceTree = "<group>"; };
 		BFF4855215F808B1003DB6C3 /* WaitingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitingViewController.h; sourceTree = "<group>"; };
@@ -75,6 +77,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BF22C744160126B7001A0803 /* GridView */ = {
+			isa = PBXGroup;
+			children = (
+				BFF6587915F9160B001C840A /* GridView.h */,
+				BFF6587A15F9160B001C840A /* GridView.m */,
+				BFF6587D15F92543001C840A /* GridViewController.h */,
+				BFF6587E15F92543001C840A /* GridViewController.m */,
+			);
+			name = GridView;
+			sourceTree = "<group>";
+		};
+		BF22C74916012765001A0803 /* DataView */ = {
+			isa = PBXGroup;
+			children = (
+				BF22C744160126B7001A0803 /* GridView */,
+				BF22C74616012745001A0803 /* DataView.h */,
+				BF22C74716012745001A0803 /* DataView.m */,
+			);
+			name = DataView;
+			sourceTree = "<group>";
+		};
 		BFF4854915F8066F003DB6C3 /* PublicGoodsView */ = {
 			isa = PBXGroup;
 			children = (
@@ -129,7 +152,6 @@
 			children = (
 				0A7696AE15FA9E5600991041 /* TokenObject.h */,
 				0A7696AF15FA9E5600991041 /* TokenObject.m */,
-				BFF4855A15F80FD1003DB6C3 /* TileScroller.m */,
 				BFF8CF9E15F6767800F1D2EA /* EconApps */,
 				BFF8CF9715F6767800F1D2EA /* Frameworks */,
 				BFF8CF9515F6767800F1D2EA /* Products */,
@@ -167,10 +189,7 @@
 				BFF4854B15F80681003DB6C3 /* LoginView */,
 				BFF4854D15F80701003DB6C3 /* Public Goods */,
 				BFF8CF9F15F6767800F1D2EA /* Supporting Files */,
-				BFF6587915F9160B001C840A /* GridView.h */,
-				BFF6587A15F9160B001C840A /* GridView.m */,
-				BFF6587D15F92543001C840A /* GridViewController.h */,
-				BFF6587E15F92543001C840A /* GridViewController.m */,
+				BF22C74916012765001A0803 /* DataView */,
 			);
 			path = EconApps;
 			sourceTree = "<group>";
@@ -260,6 +279,7 @@
 				BFF4855415F808B1003DB6C3 /* WaitingViewController.m in Sources */,
 				BFF6587B15F9160B001C840A /* GridView.m in Sources */,
 				BFF6587F15F92543001C840A /* GridViewController.m in Sources */,
+				BF22C74816012745001A0803 /* DataView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

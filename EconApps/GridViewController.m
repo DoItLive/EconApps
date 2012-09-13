@@ -67,7 +67,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     
     //Get the current table by grabbing its topleft corner and dividing by its size
-    NSInteger curTable = (int)tableView.frame.origin.x/100;
+    NSInteger curTable = (int)tableView.frame.origin.x/([self.cellWidth intValue]+1);
     NSInteger row = [indexPath row];
     NSLog(@"Table %d - Cell %d",curTable,row);
     int num = [[(NSMutableArray*)[self.data objectAtIndex:curTable] objectAtIndex:row] intValue];

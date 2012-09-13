@@ -10,6 +10,8 @@
 
 @implementation GridView
 
+@synthesize scrollView, controller, tableViews;
+
 - (id)initWithFrame:(CGRect)frame andData:(NSMutableArray*)data
 {
     self = [super initWithFrame:frame];
@@ -30,6 +32,7 @@
         NSLog(@"number of columns %d", [controller.numCols intValue]);
         controller.numRows = [[NSNumber alloc] initWithInt:[[data objectAtIndex:0] count]];
         NSLog(@"Initializing grid of size %d*%d",[controller.numRows intValue], [controller.numCols intValue]);
+        [controller setCellWidth:[[NSNumber alloc] initWithInt:frame.size.width/[controller.numCols intValue]]];
         
         int cellHeight = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"].frame.size.height;
         scrollView.contentSize = CGSizeMake(1, [controller.numRows intValue]*cellHeight);
@@ -41,7 +44,7 @@
          */
         for (int i=0;i<[controller.numCols intValue];i++){
             NSLog(@"making column %d",i);
-            UITableView *t = [[UITableView alloc] initWithFrame:CGRectMake(i*100, 0, 100, scrollView.contentSize.height)];
+            UITableView *t = [[UITableView alloc] initWithFrame:CGRectMake(i*([controller.cellWidth intValue]+1), 0, [controller.cellWidth intValue], scrollView.contentSize.height)];
             [t setDelegate:controller];
             [t setDataSource:controller];
             t.showsVerticalScrollIndicator = NO;
