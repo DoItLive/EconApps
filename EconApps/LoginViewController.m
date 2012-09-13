@@ -20,7 +20,7 @@
 	// Do any additional setup after loading the view, typically from a nib.
     
     //Add to notification center that way LoginView can call the function switchToWaitingView
-    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(switchToWaitingView) name:@"switchToWaitingView" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(switchToWaitingView) name:@"switchToWaitingView" object:nil];
 }
 
 - (void)viewDidUnload
@@ -39,7 +39,7 @@
 
 -(void)switchToWaitingView
 {
-    [self performSegueWithIdentifier:@"loginToWaitingView" sender:self];
+    [self performSegueWithIdentifier:@"loginViewToWaitingView" sender:self];
 }
 
 @end
