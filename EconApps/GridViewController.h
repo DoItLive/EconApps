@@ -12,7 +12,6 @@
     
     NSMutableArray *data;
     NSNumber *numRows,*numCols;
-    NSNumber *cellWidth;
     
 }
 
