@@ -13,13 +13,12 @@
     
     UILabel *usernameLabel;
     UIActivityIndicatorView *activityIndicator;
-    
 }
 
 @property (nonatomic) IBOutlet UILabel *usernameLabel;
 @property (nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
--(void)initPolling;
+-(void)initView:(NSString*)nameLabelText;
 -(void)poll:(NSTimer*)timer;
 -(void)dataReceived:(NSData*)data;
 

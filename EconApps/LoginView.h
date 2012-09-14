@@ -18,9 +18,12 @@
     
     NSString *username;
     NSString *password;
-
+    NSString *firstName;
+    NSString *lastName;
 }
 
+@property (nonatomic) NSString *firstName;
+@property (nonatomic) NSString *lastName;
 
 @property (nonatomic) IBOutlet UIButton *loginButton;
 @property (nonatomic) IBOutlet UITextField *usernameField;

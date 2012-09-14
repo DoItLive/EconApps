@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PublicGoodsViewController : UIViewController
+@interface PublicGoodsViewController : UIViewController {
+    NSString *nameLabelText;
+}
+
+@property (nonatomic) NSString *nameLabelText;
 
 @end

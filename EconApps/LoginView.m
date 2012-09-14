@@ -11,7 +11,7 @@
 
 @implementation LoginView
 
-@synthesize loginButton, usernameField, passwordField;
+@synthesize loginButton, usernameField, passwordField, firstName, lastName;
 
 
 - (id)initWithFrame:(CGRect)frame
@@ -54,6 +54,8 @@
     NSInteger code = [[jsonData objectForKey:@"code"] integerValue];
     
     if (code == kVALID_LOGIN) {
+        firstName = [NSString stringWithString:[jsonData objectForKey:@"first"]];
+        lastName = [NSString stringWithString:[jsonData objectForKey:@"last"]];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"switchToWaitingView" object:nil];
     } else if (code == KINVALID_USERNAME || code == KINVALID_PASSWORD) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login Error" message:[jsonData objectForKey:@"err_msg"] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil, nil];
