@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "DataView.h"
+#import "TokenStackView.h"
 
 @interface PublicGoodsView : UIView{
     

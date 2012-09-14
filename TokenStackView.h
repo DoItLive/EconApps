@@ -16,7 +16,9 @@
 }
 
 
--(id) initWithSize:(NSInteger)numTokens;
+-(id)initWithSize:(NSInteger)numTokens andFrame:(CGRect)frame;
 -(void) addToken;
+-(TokenView*) removeToken;
+-(void)swipe:(UIGestureRecognizer*)gr;
 
 @end

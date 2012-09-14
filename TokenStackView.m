@@ -10,13 +10,17 @@
 
 @implementation TokenStackView
 
--(id) initWithSize:(NSInteger)numTokens{
+-(id) initWithSize:(NSInteger)numTokens andFrame:(CGRect)frame{
     
-    self = [super init];
+    self = [super initWithFrame:frame];
     size = 0;
-    for (int i=0;i<size;i++) {
+    NSLog(@"HERE");
+    for (int i=0;i<numTokens;i++) {
         [self addToken];
     }
+    
+    UIPanGestureRecognizer* gr = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(swipe:)];
+    [self addGestureRecognizer:gr];
     
     return self;
 }
@@ -24,29 +28,33 @@
 -(void) addToken{
     
     TokenView* t = [[TokenView alloc] init];
-    [t setFrame:CGRectMake(0, self.frame.size.height - t.frame.size.height - size*2, t.frame.size.width, t.frame.size.height)];
+    [t setFrame:CGRectMake(0, self.frame.size.height - t.image.size.height - size*2, t.image.size.width, t.image.size.height)];
     [self addSubview:t];
     size++;
     
 }
 
--(void) removeToken{
+-(TokenView *) removeToken{
     
     if(size > 0){
-        [[self.subviews lastObject] removeFromSuperview];
+        TokenView* t = [self.subviews lastObject];
+        [t removeFromSuperview];
+        [self.superview addSubview:t];
         size--;
+        return t;
     }
-    
+    return nil;
 }
 
--(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+-(void)swipe:(UIGestureRecognizer*)gr{
     
-    switch ([touches count]) {
+    [self setCenter: [gr locationInView:[self superview]]];
+    switch(gr.numberOfTouches){
         case 1:
-            [self removeToken];
+            //move one bro out
             break;
         case 2:
-            [self becomeFirstResponder];
+            //move the stack out
             break;
         default:
             break;
@@ -54,10 +62,6 @@
     
 }
 
--(void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
-    
-    //[self addToken];
-    
-}
+
 
 @end

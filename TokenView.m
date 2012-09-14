@@ -19,4 +19,18 @@
     
 }
 
+-(void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
+    
+    UITouch* touch = [touches anyObject];
+    self.center = [touch locationInView:[self superview]];
+    
+}
+
+-(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    
+    NSLog(@"Token touched");
+    
+}
+
+
 @end
