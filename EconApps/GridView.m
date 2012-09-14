@@ -47,7 +47,8 @@
             [t setDelegate:controller];
             [t setDataSource:controller];
             t.showsVerticalScrollIndicator = NO;
-            t.backgroundColor = [UIColor purpleColor];
+            t.backgroundColor = [UIColor clearColor];
+            t.separatorColor = [UIColor purpleColor];
             [tableViews addObject:t];
             [scrollView addSubview:t];
         }

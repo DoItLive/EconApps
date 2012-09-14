@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GridView.h"
+#import "DataViewController.h"
 
 @interface PublicGoodsView : UIView{
     
-    GridView *gridView;
+    DataViewController *theGrid;
     
 }
+
+@property (nonatomic) DataViewController *theGrid;
 
 @end

@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A7696B015FA9E5600991041 /* TokenObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A7696AF15FA9E5600991041 /* TokenObject.m */; };
 		0A83965D15F68447004E3429 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A83965C15F68447004E3429 /* LoginView.m */; };
+		0AB143151602BAEB0009F61B /* DataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB143141602BAEB0009F61B /* DataViewController.m */; };
 		BFF4854415F804B3003DB6C3 /* Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF8CFB915F67A3B00F1D2EA /* Connection.m */; };
 		BFF4855115F80897003DB6C3 /* WaitingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF4855015F80897003DB6C3 /* WaitingView.m */; };
 		BFF4855415F808B1003DB6C3 /* WaitingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF4855315F808B1003DB6C3 /* WaitingViewController.m */; };
@@ -31,6 +31,8 @@
 		0A7696AF15FA9E5600991041 /* TokenObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TokenObject.m; path = EconApps/TokenObject.m; sourceTree = "<group>"; };
 		0A83965B15F68447004E3429 /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
 		0A83965C15F68447004E3429 /* LoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginView.m; sourceTree = "<group>"; };
+		0AB143131602BAEB0009F61B /* DataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataViewController.h; path = EconApps/DataViewController.h; sourceTree = "<group>"; };
+		0AB143141602BAEB0009F61B /* DataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataViewController.m; path = EconApps/DataViewController.m; sourceTree = "<group>"; };
 		BFF4854F15F80897003DB6C3 /* WaitingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitingView.h; sourceTree = "<group>"; };
 		BFF4855015F80897003DB6C3 /* WaitingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaitingView.m; sourceTree = "<group>"; };
 		BFF4855215F808B1003DB6C3 /* WaitingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitingViewController.h; sourceTree = "<group>"; };
@@ -127,9 +129,10 @@
 		BFF8CF8915F6767700F1D2EA = {
 			isa = PBXGroup;
 			children = (
+				0AB143131602BAEB0009F61B /* DataViewController.h */,
+				0AB143141602BAEB0009F61B /* DataViewController.m */,
 				0A7696AE15FA9E5600991041 /* TokenObject.h */,
 				0A7696AF15FA9E5600991041 /* TokenObject.m */,
-				BFF4855A15F80FD1003DB6C3 /* TileScroller.m */,
 				BFF8CF9E15F6767800F1D2EA /* EconApps */,
 				BFF8CF9715F6767800F1D2EA /* Frameworks */,
 				BFF8CF9515F6767800F1D2EA /* Products */,
@@ -260,6 +263,7 @@
 				BFF4855415F808B1003DB6C3 /* WaitingViewController.m in Sources */,
 				BFF6587B15F9160B001C840A /* GridView.m in Sources */,
 				BFF6587F15F92543001C840A /* GridViewController.m in Sources */,
+				0AB143151602BAEB0009F61B /* DataViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

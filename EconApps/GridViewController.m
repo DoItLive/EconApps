@@ -7,6 +7,7 @@
 //
 
 #import "GridViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface GridViewController ()
 
@@ -73,6 +74,7 @@
     int num = [[(NSMutableArray*)[self.data objectAtIndex:curTable] objectAtIndex:row] intValue];
     NSString* text = [[NSString alloc] initWithFormat:@"%d",num];
     [[cell textLabel] setText:text];
+    cell.textLabel.textAlignment = 1;
     
     
     
@@ -81,7 +83,7 @@
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    cell.backgroundView.frame = CGRectOffset(cell.frame, 10, 10);
+    
     if(!([indexPath row] % 2)){
         cell.backgroundColor = [UIColor colorWithRed:.93 green:.82 blue:.93 alpha:1];
     } else {
