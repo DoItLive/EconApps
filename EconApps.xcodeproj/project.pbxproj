@@ -77,6 +77,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BF22C744160126B7001A0803 /* GridView */ = {
+			isa = PBXGroup;
+			children = (
+				BFF6587915F9160B001C840A /* GridView.h */,
+				BFF6587A15F9160B001C840A /* GridView.m */,
+				BFF6587D15F92543001C840A /* GridViewController.h */,
+				BFF6587E15F92543001C840A /* GridViewController.m */,
+			);
+			name = GridView;
+			sourceTree = "<group>";
+		};
+		BF22C74916012765001A0803 /* DataView */ = {
+			isa = PBXGroup;
+			children = (
+				BF22C744160126B7001A0803 /* GridView */,
+				BF22C74616012745001A0803 /* DataView.h */,
+				BF22C74716012745001A0803 /* DataView.m */,
+			);
+			name = DataView;
+			sourceTree = "<group>";
+		};
 		BFF4854915F8066F003DB6C3 /* PublicGoodsView */ = {
 			isa = PBXGroup;
 			children = (
@@ -170,10 +191,7 @@
 				BFF4854B15F80681003DB6C3 /* LoginView */,
 				BFF4854D15F80701003DB6C3 /* Public Goods */,
 				BFF8CF9F15F6767800F1D2EA /* Supporting Files */,
-				BFF6587915F9160B001C840A /* GridView.h */,
-				BFF6587A15F9160B001C840A /* GridView.m */,
-				BFF6587D15F92543001C840A /* GridViewController.h */,
-				BFF6587E15F92543001C840A /* GridViewController.m */,
+				BF22C74916012765001A0803 /* DataView */,
 			);
 			path = EconApps;
 			sourceTree = "<group>";

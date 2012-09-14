@@ -10,6 +10,8 @@
 
 @implementation GridView
 
+@synthesize scrollView, controller, tableViews;
+
 - (id)initWithFrame:(CGRect)frame andData:(NSMutableArray*)data
 {
     self = [super initWithFrame:frame];
@@ -30,6 +32,7 @@
         NSLog(@"number of columns %d", [controller.numCols intValue]);
         controller.numRows = [[NSNumber alloc] initWithInt:[[data objectAtIndex:0] count]];
         NSLog(@"Initializing grid of size %d*%d",[controller.numRows intValue], [controller.numCols intValue]);
+        [controller setCellWidth:[[NSNumber alloc] initWithInt:frame.size.width/[controller.numCols intValue]]];
         
         int cellHeight = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"].frame.size.height;
         scrollView.contentSize = CGSizeMake(1, [controller.numRows intValue]*cellHeight);
