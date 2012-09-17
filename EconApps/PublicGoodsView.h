@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DataView.h"
+#import "DataViewController.h"
 #import "TokenStackView.h"
-
 @interface PublicGoodsView : UIView{
     
     DataViewController *theGrid;
