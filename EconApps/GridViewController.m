@@ -7,6 +7,7 @@
 //
 
 #import "GridViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface GridViewController ()
 
@@ -67,12 +68,26 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     
     //Get the current table by grabbing its topleft corner and dividing by its size
-    NSInteger curTable = (int)tableView.frame.origin.x/([self.cellWidth intValue]+1);
+    NSInteger curTable = (int)tableView.frame.origin.x/101;
     NSInteger row = [indexPath row];
     int num = [[(NSMutableArray*)[self.data objectAtIndex:curTable] objectAtIndex:row] intValue];
     NSString* text = [[NSString alloc] initWithFormat:@"%d",num];
     [[cell textLabel] setText:text];
+    cell.textLabel.textAlignment = 1;
+    
+    
+    
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    if(!([indexPath row] % 2)){
+        cell.backgroundColor = [UIColor colorWithRed:.93 green:.82 blue:.93 alpha:1];
+    } else {
+        cell.backgroundColor = [UIColor whiteColor];
+    }
 }
 
 #pragma mark - Table view delegate

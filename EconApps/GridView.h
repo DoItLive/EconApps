@@ -19,11 +19,6 @@
     
 }
 
-@property(nonatomic)UIScrollView* scrollView;
-@property(nonatomic)NSMutableArray* tableViews;
-@property(nonatomic,strong)GridViewController* controller;
-
-
 - (id)initWithFrame:(CGRect)frame andData:(NSMutableArray*)data;
 
 

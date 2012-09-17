@@ -12,8 +12,10 @@
 
 @interface PublicGoodsView : UIView{
     
-    DataView *dataView;
+    DataViewController *theGrid;
     
 }
+
+@property (nonatomic) DataViewController *theGrid;
 
 @end

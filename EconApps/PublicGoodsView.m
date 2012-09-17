@@ -10,6 +10,8 @@
 
 @implementation PublicGoodsView
 
+@synthesize theGrid;
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
