@@ -27,7 +27,6 @@
                                 </state>
                                 <connections>
                                     <action selector="loginButtonPressed:" destination="5" eventType="touchUpInside" id="2bQ-Ok-43g"/>
-                                    <segue destination="m4s-w0-6fG" kind="modal" id="6iR-r6-faU"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="gps-E1-RS9">
@@ -64,6 +63,9 @@
                             <outlet property="usernameField" destination="gps-E1-RS9" id="De9-9i-izN"/>
                         </connections>
                     </view>
+                    <connections>
+                        <segue destination="m4s-w0-6fG" kind="modal" identifier="loginViewToWaitingView" id="zDG-P7-Gpl"/>
+                    </connections>
                 </viewController>
             </objects>
         </scene>
