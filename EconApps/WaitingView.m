@@ -25,7 +25,6 @@
 -(void) initView:(NSString *)nameLabelText{
     [usernameLabel setText:nameLabelText];
     
-#warning activityIndicator is not working
     [activityIndicator startAnimating];
     
     [self poll:nil];
