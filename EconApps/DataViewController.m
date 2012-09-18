@@ -19,26 +19,30 @@
 - (id)initWithFrame:(CGRect)frame andData:(NSMutableArray*)dataInput
 {
     if (self) {
-        // Custom initialization
+        //Build overall view with frame
         self.view = [[UIView alloc] initWithFrame:frame];
         
+        //Set up the data source and #rows and columns
         [self setData:dataInput];
-        
         [self setNumCols: [[NSNumber alloc] initWithInt:[self.data count]]];
         [self setNumRows: [[NSNumber alloc] initWithInt:[[self.data objectAtIndex:0] count]]];
         
+        //Set the height of cells (default is 44)
         [self setCellHeight: [[NSNumber alloc] initWithInt:44]];
+        
+        //Calculate cell width based on number of columns +1 for the row headers
         [self setCellWidth: [[NSNumber alloc] initWithInt:frame.size.width/([self.numCols intValue] + 1) - 1]];
         
+        //Build the scrollview for the tableviews filling up the frame minus one cell height for the column headers
         self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0 + [cellHeight intValue], frame.size.width, frame.size.height - [cellHeight intValue])];
         self.scrollView.showsHorizontalScrollIndicator = FALSE;
         self.scrollView.bounces = FALSE;
         [self.view addSubview:self.scrollView];
         
-        
-        
+        //Content size big enough so that tables won't scroll
         self.scrollView.contentSize = CGSizeMake(frame.size.width,[self.numRows intValue]*[self.cellHeight intValue]);
         
+        //Holds all the data 
         self.columns = [[NSMutableArray alloc] initWithCapacity:[self.numCols intValue]];
         
         for (int i=0;i<[self.numCols intValue] + 1;i++){
@@ -49,8 +53,12 @@
             t.backgroundColor = [UIColor clearColor];
             t.separatorColor = [UIColor purpleColor];
             t.rowHeight = [cellHeight intValue];
+            t.allowsSelection = FALSE;
             
-            [self.columns addObject:t];
+            if (i%[self.numCols intValue]) {
+               [self.columns addObject:t];
+            }
+            
             [self.scrollView addSubview:t];
         }
         
@@ -63,9 +71,24 @@
             t.separatorColor = [UIColor purpleColor];
             t.rowHeight = [cellHeight intValue];
             t.bounces = FALSE;
+            t.allowsSelection = FALSE;
             
             [self.columns addObject:t];
             [self.view addSubview:t];
+        }
+        
+        for (int i = 0; i < [self.columns count]; i += [self.numCols intValue]) {
+            UITableView *t;
+            t = [self.columns objectAtIndex:i];
+            if (!(i%3)) {
+                for (int j = 0; j < [self.numRows intValue]; i++) {
+                    [t cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]].highlighted = TRUE;
+                }
+            } else {
+                for (int j = 0; j < [self.numRows intValue]; i++) {
+                    [t cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]].highlighted = FALSE;
+                }
+            }
         }
         
         
