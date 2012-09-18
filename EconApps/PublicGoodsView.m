@@ -43,7 +43,7 @@
         
         TokenStackView* stackView = [[TokenStackView alloc] initWithSize:10 andFrame:CGRectMake(0, 0, 100, 100)];
         [self addSubview:stackView];
-        self.theGrid = [[DataViewController alloc] initWithFrame:CGRectMake(10, 10, self.frame.size.height-20, 200) andData:data];
+        self.theGrid = [[DataViewController alloc] initWithFrame:CGRectMake(10, 200, self.frame.size.height-20, 200) andData:data];
         [self addSubview:theGrid.view];
 
     }
