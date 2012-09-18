@@ -24,20 +24,20 @@
         
         [self setData:dataInput];
         
-        [self setNumCols: [[NSNumber alloc] initWithInt:[data count]]];
-        [self setNumRows: [[NSNumber alloc] initWithInt:[[data objectAtIndex:0] count]]];
+        [self setNumCols: [[NSNumber alloc] initWithInt:[self.data count]]];
+        [self setNumRows: [[NSNumber alloc] initWithInt:[[self.data objectAtIndex:0] count]]];
         
         [self setCellHeight: [[NSNumber alloc] initWithInt:44]];
         [self setCellWidth: [[NSNumber alloc] initWithInt:frame.size.width/([self.numCols intValue] + 1) - 1]];
         
-        self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(frame.origin.x, frame.origin.y + [cellHeight intValue], frame.size.width, frame.size.height - [cellHeight intValue])];
+        self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0 + [cellHeight intValue], frame.size.width, frame.size.height - [cellHeight intValue])];
         self.scrollView.showsHorizontalScrollIndicator = FALSE;
         self.scrollView.bounces = FALSE;
         [self.view addSubview:self.scrollView];
         
         
         
-        self.scrollView.contentSize = CGSizeMake(1, [self.numRows intValue]*[cellHeight intValue]);
+        self.scrollView.contentSize = CGSizeMake(frame.size.width,[self.numRows intValue]*[self.cellHeight intValue]);
         
         self.columns = [[NSMutableArray alloc] initWithCapacity:[self.numCols intValue]];
         
@@ -62,6 +62,7 @@
             t.backgroundColor = [UIColor clearColor];
             t.separatorColor = [UIColor purpleColor];
             t.rowHeight = [cellHeight intValue];
+            t.bounces = FALSE;
             
             [self.columns addObject:t];
             [self.view addSubview:t];
