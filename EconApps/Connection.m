@@ -10,7 +10,7 @@
 
 @implementation Connection
 
-- (id) initWithSelector:(SEL)f toTarget:(id)t withURL:(NSString*)urlString withString:(NSString*)postString{
+- (id) initWithFinishSelector:(SEL)f withFailSeclector:(SEL)fs toTarget:(id)t withURL:(NSString *)urlString withString:(NSString *)postString {
     
     NSLog(@"Connection attempt to %@", urlString);
     NSLog(@"Connection with postString %@", postString);
@@ -23,6 +23,7 @@
     
     if(self = [super initWithRequest:request delegate:self]){
         function = f;
+        failFunction = fs;
         target = t;
         receivedData = [[NSMutableData alloc] initWithLength:0];
         
@@ -51,7 +52,14 @@
 
 - (void) connection:(NSURLConnection *)connection didFailWithError:(NSError *)error{
     
-    NSLog(@"Connection failed with error %@ %@",[error localizedDescription], [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
+    NSLog(@"Connection failed with error: %@ %@",[error localizedDescription], [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
+    
+    if ([target respondsToSelector:failFunction]) {
+        NSLog(@"Calling [%@ %@]",NSStringFromClass([target class]),NSStringFromSelector(failFunction));
+        [target performSelector:failFunction];
+    } else {
+        NSLog(@"Error --- Target %@ does not respond to selector %@",NSStringFromClass([target class]),NSStringFromSelector(failFunction));
+    }
 }
 
 - (void) connectionDidFinishLoading:(NSURLConnection *)connection{

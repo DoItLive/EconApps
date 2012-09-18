@@ -34,10 +34,12 @@
     }
     
     NSString *postString = [[NSString alloc] initWithFormat:@"username=%@&passwd=%@",username,password];
-    [[Connection alloc] initWithSelector:@selector(validateLogin:)
-                                toTarget:self
-                                 withURL:kLOGIN_VIEW_URL
-                              withString:postString];
+
+    [[Connection alloc] initWithFinishSelector:@selector(validateLogin:)
+                             withFailSeclector:@selector(connectionFailed)
+                                      toTarget:self
+                                       withURL:kLOGIN_VIEW_URL
+                                    withString:postString];
 }
 
 -(void)validateLogin:(NSData *)data{
@@ -61,6 +63,11 @@
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login Error" message:[jsonData objectForKey:@"err_msg"] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil, nil];
         [alert show];
     }
+}
+
+-(void)connectionFailed {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Could not connect to the server" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil, nil];
+    [alert show];
 }
 
 @end

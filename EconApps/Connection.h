@@ -17,11 +17,12 @@
     
     NSMutableData *receivedData;
     SEL function;
+    SEL failFunction;
     id target;
     
 }
 
-- (id) initWithSelector:(SEL)f toTarget:(id)t withURL:(NSString*)urlString withString:(NSString*)postString;
+- (id) initWithFinishSelector:(SEL)f withFailSeclector:(SEL)fs toTarget:(id)t withURL:(NSString*)urlString withString:(NSString*)postString;
 
 @end
 

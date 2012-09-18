@@ -27,7 +27,6 @@
                                 </state>
                                 <connections>
                                     <action selector="loginButtonPressed:" destination="5" eventType="touchUpInside" id="2bQ-Ok-43g"/>
-                                    <segue destination="qMT-cu-wgs" kind="modal" id="T51-x4-r5T"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="gps-E1-RS9">
@@ -86,9 +85,10 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" style="gray" id="Stx-YM-A14">
-                                <rect key="frame" x="374" y="553" width="20" height="20"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" style="whiteLarge" id="Stx-YM-A14">
+                                <rect key="frame" x="366" y="544" width="37" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" red="0.74117648599999997" green="0.0" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -119,42 +119,9 @@
             <point key="canvasLocation" x="1805" y="-238"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="LoginView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginView.h"/>
-            <relationships>
-                <relationship kind="action" name="loginButtonPressed:"/>
-                <relationship kind="outlet" name="loginButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="usernameField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="LoginViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
-        </class>
-        <class className="PublicGoodsView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PublicGoodsView.h"/>
-        </class>
-        <class className="PublicGoodsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PublicGoodsViewController.h"/>
-        </class>
-        <class className="WaitingView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/WaitingView.h"/>
-            <relationships>
-                <relationship kind="outlet" name="activityIndicator" candidateClass="UIActivityIndicatorView"/>
-                <relationship kind="outlet" name="usernameLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="WaitingViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/WaitingViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="T51-x4-r5T"/>
-    </inferredMetricsTieBreakers>
 </document>
