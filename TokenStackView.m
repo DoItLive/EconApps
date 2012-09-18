@@ -16,7 +16,7 @@
     size = 0;
     NSLog(@"HERE");
     for (int i=0;i<numTokens;i++) {
-        [self addTokenfromPoint:CGPointMake(1, 1)];
+        [self addTokenfromPoint:CGPointMake(0, -100)];
     }
     
     [self setBackgroundColor:[UIColor redColor]];
@@ -72,11 +72,12 @@
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
     
     switch (action) {
-        case 1:
+        case 1:{
+            CGPoint point = CGPointMake([(UITouch*)[touches anyObject] locationInView:self.superview].x-self.frame.origin.x, [(UITouch*)[touches anyObject] locationInView:self.superview].y-self.frame.origin.y);
             [self removeToken];
-            [self addTokenfromPoint:[(UITouch*)[touches anyObject] locationInView:self.superview]];
+            [self addTokenfromPoint:point];
             break;
-        default:
+        }default:
             break;
     }
     
@@ -85,10 +86,11 @@
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
     
     switch(action){
-        case 1:
-            [[[self subviews] lastObject] setCenter:[(UITouch*)[touches anyObject] locationInView:self.superview]];
+        case 1:{
+            CGPoint point = CGPointMake([(UITouch*)[touches anyObject] locationInView:self.superview].x-self.frame.origin.x, [(UITouch*)[touches anyObject] locationInView:self.superview].y-self.frame.origin.y);
+            [[[self subviews] lastObject] setCenter:point];
             break;
-        case 2:
+        }case 2:
             [self setCenter:[(UITouch*)[touches anyObject] locationInView:self.superview]];
             break;
         default:
