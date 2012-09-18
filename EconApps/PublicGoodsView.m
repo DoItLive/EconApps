@@ -41,9 +41,9 @@
         NSMutableArray *array12 = [[NSMutableArray alloc] initWithObjects:five,three,three,four,five,six,seven, nil];
         NSMutableArray *data = [[NSMutableArray alloc] initWithObjects:array1,array2,array3,array4,array5,array6,array7,array8,array9,array10,array11,array12, nil];
         
-        TokenStackView* stackView = [[TokenStackView alloc] initWithSize:10 andFrame:CGRectMake(0, 0, 100, 100)];
+        TokenStackView* stackView = [[TokenStackView alloc] initWithSize:10 andFrame:CGRectMake(20, 20, 100, 100)];
         [self addSubview:stackView];
-        self.theGrid = [[DataViewController alloc] initWithFrame:CGRectMake(10, 10, self.frame.size.height-20, 200) andData:data];
+        self.theGrid = [[DataViewController alloc] initWithFrame:CGRectMake(10, 200, self.frame.size.height-20, 200) andData:data];
         [self addSubview:theGrid.view];
 
     }

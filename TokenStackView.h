@@ -12,13 +12,13 @@
 @interface TokenStackView : UIView{
     
     NSInteger size;
+    NSInteger action;
     
 }
 
 
 -(id)initWithSize:(NSInteger)numTokens andFrame:(CGRect)frame;
--(void) addToken;
+-(void) addTokenfromPoint:(CGPoint)point;
 -(TokenView*) removeToken;
--(void)swipe:(UIGestureRecognizer*)gr;
 
 @end

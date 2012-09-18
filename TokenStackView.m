@@ -16,21 +16,27 @@
     size = 0;
     NSLog(@"HERE");
     for (int i=0;i<numTokens;i++) {
-        [self addToken];
+        [self addTokenfromPoint:CGPointMake(1, 1)];
     }
     
-    UIPanGestureRecognizer* gr = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(swipe:)];
-    [self addGestureRecognizer:gr];
+    [self setBackgroundColor:[UIColor redColor]];
     
     return self;
 }
 
--(void) addToken{
+-(void) addTokenfromPoint:(CGPoint)point{
     
     TokenView* t = [[TokenView alloc] init];
-    [t setFrame:CGRectMake(0, self.frame.size.height - t.image.size.height - size*2, t.image.size.width, t.image.size.height)];
+    [t setFrame:CGRectMake(point.x-t.frame.size.width/2, point.y-t.frame.size.height/2, t.frame.size.width, t.frame.size.height)];
     [self addSubview:t];
     size++;
+    
+    [UIView beginAnimations: @"moveToken" context: nil];
+    [UIView setAnimationDelegate: self];
+    [UIView setAnimationDuration: 0.3];
+    [UIView setAnimationCurve: UIViewAnimationCurveEaseInOut];
+    t.frame =  CGRectMake(self.frame.size.width/2-t.image.size.width/2, self.frame.size.height - t.image.size.height - size*2,t.frame.size.width,t.frame.size.height);
+    [UIView commitAnimations];
     
 }
 
@@ -39,26 +45,56 @@
     if(size > 0){
         TokenView* t = [self.subviews lastObject];
         [t removeFromSuperview];
-        [self.superview addSubview:t];
+        //[self.superview addSubview:t];
         size--;
         return t;
     }
     return nil;
 }
 
--(void)swipe:(UIGestureRecognizer*)gr{
-    
-    [self setCenter: [gr locationInView:[self superview]]];
-    switch(gr.numberOfTouches){
-        case 1:
-            //move one bro out
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    switch ([[event allTouches] count]) {
+        case 1:{
+            action = 1;
+            NSLog(@"One finger");
             break;
-        case 2:
-            //move the stack out
+        }
+        case 2:{
+            NSLog(@"Two fingers");
+            action = 2;
+        }
+        default:
+            break;
+    }
+    
+}
+
+-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
+    
+    switch (action) {
+        case 1:
+            [self removeToken];
+            [self addTokenfromPoint:[(UITouch*)[touches anyObject] locationInView:self.superview]];
             break;
         default:
             break;
     }
+    
+}
+
+-(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
+    
+    switch(action){
+        case 1:
+            [[[self subviews] lastObject] setCenter:[(UITouch*)[touches anyObject] locationInView:self.superview]];
+            break;
+        case 2:
+            [self setCenter:[(UITouch*)[touches anyObject] locationInView:self.superview]];
+            break;
+        default:
+            break;
+    }
+
     
 }
 

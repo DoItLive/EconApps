@@ -10,4 +10,6 @@
 
 @interface TokenView : UIImageView
 
+-(void)swipe:(UIGestureRecognizer*)gr;
+
 @end
