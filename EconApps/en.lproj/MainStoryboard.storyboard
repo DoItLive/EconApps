@@ -27,7 +27,6 @@
                                 </state>
                                 <connections>
                                     <action selector="loginButtonPressed:" destination="5" eventType="touchUpInside" id="2bQ-Ok-43g"/>
-                                    <segue destination="qMT-cu-wgs" kind="modal" id="uNz-oB-W23"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="gps-E1-RS9">
@@ -154,7 +153,4 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="uNz-oB-W23"/>
-    </inferredMetricsTieBreakers>
 </document>
