@@ -15,27 +15,26 @@
     NSLog(@"Connection attempt to %@", urlString);
     NSLog(@"Connection with postString %@", postString);
     NSURL *url = [NSURL URLWithString:urlString];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10.0];
+    request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10.0];
     if(postString){
         [request setHTTPMethod:@"POST"];
         [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
     }
     
-    if(self = [super initWithRequest:request delegate:self]){
+    if(self = [super initWithRequest:request delegate:self startImmediately:NO]){
         function = f;
         failFunction = fs;
         target = t;
         receivedData = [[NSMutableData alloc] initWithLength:0];
-        
     }
     else{
-        
         NSLog(@"Connection to server failed at url %@",urlString);
-        
     }
-    
     return self;
-    
+}
+
+-(void) connect {
+    [self start];
 }
 
 - (void) connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
@@ -56,7 +55,10 @@
     
     if ([target respondsToSelector:failFunction]) {
         NSLog(@"Calling [%@ %@]",NSStringFromClass([target class]),NSStringFromSelector(failFunction));
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
         [target performSelector:failFunction];
+#pragma clang diagnostic pop
     } else {
         NSLog(@"Error --- Target %@ does not respond to selector %@",NSStringFromClass([target class]),NSStringFromSelector(failFunction));
     }
@@ -70,9 +72,10 @@
         if([target respondsToSelector:function]){
             
             NSLog(@"Calling [%@ %@]",NSStringFromClass([target class]),NSStringFromSelector(function));
-            
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"            
             [target performSelector:function withObject:receivedData];
-            
+#pragma clang diagnostic pop            
         }else{
             NSLog(@"Error --- Target %@ does not respond to selector %@",NSStringFromClass([target class]),NSStringFromSelector(function));
         }

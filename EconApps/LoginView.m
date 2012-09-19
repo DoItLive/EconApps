@@ -35,19 +35,21 @@
     
     NSString *postString = [[NSString alloc] initWithFormat:@"username=%@&passwd=%@",username,password];
 
-    [[Connection alloc] initWithFinishSelector:@selector(validateLogin:)
+    Connection *conn = [[Connection alloc] initWithFinishSelector:@selector(validateLogin:)
                              withFailSeclector:@selector(connectionFailed)
                                       toTarget:self
                                        withURL:kLOGIN_VIEW_URL
                                     withString:postString];
+    [conn connect];
 }
 
 -(void)validateLogin:(NSData *)data{
     
-    /* Data should be returned from the server in this form:
-     1 or 0, followed by parameters specific to the login state, where 1 means a valid login and 0 means an invalid login
-     Valid Login: 1,firstName,lastName
-     Invalid Login: 0,[1,0] where [1,0] is 0 is for invalid username and 1 is for invalid password
+    /* Data should be returned from the server in a JSON string:
+     code: [0..2]
+     first: "first name"
+     last: "last name"
+     err_msg: "error message"
     */
     
     NSError *error;

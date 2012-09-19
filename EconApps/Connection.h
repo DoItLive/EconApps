@@ -14,7 +14,7 @@
 
 @interface Connection : NSURLConnection{
     
-    
+    NSMutableURLRequest *request;
     NSMutableData *receivedData;
     SEL function;
     SEL failFunction;
@@ -23,6 +23,7 @@
 }
 
 - (id) initWithFinishSelector:(SEL)f withFailSeclector:(SEL)fs toTarget:(id)t withURL:(NSString*)urlString withString:(NSString*)postString;
+-(void) connect;
 
 @end
 

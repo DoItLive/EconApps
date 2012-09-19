@@ -32,11 +32,12 @@
 
 -(void)poll:(NSTimer*)timer{
     
-    [[Connection alloc] initWithFinishSelector:@selector(dataReceived:)
+    Connection *conn = [[Connection alloc] initWithFinishSelector:@selector(dataReceived:)
                              withFailSeclector:@selector(connectionFailed)
                                       toTarget:self
                                        withURL:kWAITING_VIEW_URL
                                     withString:@""];
+    [conn connect];
 }
 
 -(void)dataReceived:(NSData*)data{
