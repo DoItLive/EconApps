@@ -47,7 +47,7 @@
         TokenStackView* stackView = [[TokenStackView alloc] initWithSize:10 andFrame:CGRectMake(60, 30, 300, 150)];
         [self addSubview:stackView];
 
-        TokenStackView* stackView2 = [[TokenStackView alloc] initWithSize:0 andFrame:CGRectMake(600, 30, 300, 150)];
+        TokenStackView* stackView2 = [[TokenStackView alloc] initWithSize:0 andFrame:CGRectMake(667, 30, 300, 150)];
         [self addSubview:stackView2];
 
     }

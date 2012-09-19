@@ -11,9 +11,9 @@
 
 @interface TokenStackView : UIView{
     
-    NSInteger size;
-    NSInteger action;
-    UIView* holderView;
+    NSInteger size;         //Number of tokens in stack
+    NSInteger action;       //Number of fingers originally touched, i.e. if user is holding stack or single token
+    UIView* holderView;     //Holds the token stack
     
 }
 

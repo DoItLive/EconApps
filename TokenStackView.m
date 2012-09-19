@@ -22,7 +22,7 @@
         [self addTokenfromPoint:CGPointMake(0, -100)];
     }
     
-    [self setBackgroundColor:[UIColor colorWithWhite:1 alpha:0.4]];
+    [self setBackgroundColor:[[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"PG_TokenStack_BG.png"]]];
     action = 0;
     
     return self;
@@ -42,7 +42,6 @@
     [UIView setAnimationCurve: UIViewAnimationCurveEaseInOut];
     t.frame =  CGRectMake(self.frame.size.width/2-t.image.size.width/2, self.frame.size.height - t.image.size.height - size*2,t.frame.size.width,t.frame.size.height);
     [UIView commitAnimations];
-    //NSLog(@"%d tokens in stack",size);
     
 }
 
@@ -61,29 +60,31 @@
     return nil;
 }
 
+//Set action to the number of fingers
+//Bring view to the front
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     [self.superview bringSubviewToFront:self];
     if(size==0){
         action = 0;
-        return;
-    }
-    switch ([[event allTouches] count]) {
-        case 1:{
-            action = 1;
-            break;
+    }else{
+        for(UIView* view in [self.superview subviews]){
+            if([view isKindOfClass:[TokenStackView class]])
+                [view setUserInteractionEnabled:NO];
         }
-        case 2:{
-            action = 2;
-        }
-        default:
-            break;
+        action = [[event allTouches] count];
     }
-    
 }
 
+//Iterate through superview's subviews to find where the token(s) were released
+//Thus if 2 tokenstackviews are able to 'trade' then they must have the same superview
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
+    for(UIView* view in [self.superview subviews]){
+        if([view isKindOfClass:[TokenStackView class]])
+            [view setUserInteractionEnabled:YES];
+    }
     switch (action) {
         case 1:{
+            action=0;
             CGPoint point = CGPointMake([(UITouch*)[touches anyObject] locationInView:self.superview].x, [(UITouch*)[touches anyObject] locationInView:self.superview].y);
             [self removeToken];
             for(UIView* view in [self.superview subviews]){
@@ -95,6 +96,7 @@
             [self addTokenfromPoint:point];
             break;
         }case 2:{
+            action=0;
             CGPoint startPoint = CGPointMake(self.holderView.center.x+self.frame.origin.x, self.holderView.center.y+self.frame.origin.y);
             int numTokens = size;
             self.holderView.frame = CGRectMake(0, 0,self.holderView.frame.size.width,self.holderView.frame.size.height);
