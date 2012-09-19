@@ -33,7 +33,7 @@
 -(void)poll:(NSTimer*)timer{
     
     Connection *conn = [[Connection alloc] initWithFinishSelector:@selector(dataReceived:)
-                             withFailSeclector:@selector(connectionFailed)
+                             withFailSelector:@selector(connectionFailed)
                                       toTarget:self
                                        withURL:kWAITING_VIEW_URL
                                     withString:@""];

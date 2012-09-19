@@ -36,7 +36,7 @@
     NSString *postString = [[NSString alloc] initWithFormat:@"username=%@&passwd=%@",username,password];
 
     Connection *conn = [[Connection alloc] initWithFinishSelector:@selector(validateLogin:)
-                             withFailSeclector:@selector(connectionFailed)
+                             withFailSelector:@selector(connectionFailed)
                                       toTarget:self
                                        withURL:kLOGIN_VIEW_URL
                                     withString:postString];

@@ -22,7 +22,7 @@
     
 }
 
-- (id) initWithFinishSelector:(SEL)f withFailSeclector:(SEL)fs toTarget:(id)t withURL:(NSString*)urlString withString:(NSString*)postString;
+- (id) initWithFinishSelector:(SEL)f withFailSelector:(SEL)fs toTarget:(id)t withURL:(NSString*)urlString withString:(NSString*)postString;
 -(void) connect;
 
 @end
