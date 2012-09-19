@@ -10,42 +10,51 @@
 
 @implementation TokenStackView
 
+@synthesize holderView;
+
 -(id) initWithSize:(NSInteger)numTokens andFrame:(CGRect)frame{
     
     self = [super initWithFrame:frame];
+    self.holderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
+    [self addSubview:holderView];
     size = 0;
-    NSLog(@"HERE");
     for (int i=0;i<numTokens;i++) {
         [self addTokenfromPoint:CGPointMake(0, -100)];
     }
     
-    [self setBackgroundColor:[UIColor redColor]];
+    [self setBackgroundColor:[UIColor colorWithWhite:1 alpha:0.4]];
+    action = 0;
     
     return self;
 }
 
--(void) addTokenfromPoint:(CGPoint)point{
+//point must be relative to screen
+-(void) addTokenfromPoint:(CGPoint)point withSpeed:(CGFloat)speed{
     
     TokenView* t = [[TokenView alloc] init];
-    [t setFrame:CGRectMake(point.x-t.frame.size.width/2, point.y-t.frame.size.height/2, t.frame.size.width, t.frame.size.height)];
-    [self addSubview:t];
+    [t setFrame:CGRectMake(point.x-t.frame.size.width/2-self.frame.origin.x, point.y-t.frame.size.height/2-self.frame.origin.y, t.frame.size.width, t.frame.size.height)];
+    [self.holderView addSubview:t];
     size++;
     
     [UIView beginAnimations: @"moveToken" context: nil];
     [UIView setAnimationDelegate: self];
-    [UIView setAnimationDuration: 0.3];
+    [UIView setAnimationDuration: speed];
     [UIView setAnimationCurve: UIViewAnimationCurveEaseInOut];
     t.frame =  CGRectMake(self.frame.size.width/2-t.image.size.width/2, self.frame.size.height - t.image.size.height - size*2,t.frame.size.width,t.frame.size.height);
     [UIView commitAnimations];
+    //NSLog(@"%d tokens in stack",size);
     
+}
+
+-(void)addTokenfromPoint:(CGPoint)point{
+    [self addTokenfromPoint:point withSpeed:0.2];
 }
 
 -(TokenView *) removeToken{
     
     if(size > 0){
-        TokenView* t = [self.subviews lastObject];
+        TokenView* t = [self.holderView.subviews lastObject];
         [t removeFromSuperview];
-        //[self.superview addSubview:t];
         size--;
         return t;
     }
@@ -53,14 +62,17 @@
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    [self.superview bringSubviewToFront:self];
+    if(size==0){
+        action = 0;
+        return;
+    }
     switch ([[event allTouches] count]) {
         case 1:{
             action = 1;
-            NSLog(@"One finger");
             break;
         }
         case 2:{
-            NSLog(@"Two fingers");
             action = 2;
         }
         default:
@@ -70,14 +82,36 @@
 }
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
-    
     switch (action) {
         case 1:{
-            CGPoint point = CGPointMake([(UITouch*)[touches anyObject] locationInView:self.superview].x-self.frame.origin.x, [(UITouch*)[touches anyObject] locationInView:self.superview].y-self.frame.origin.y);
+            CGPoint point = CGPointMake([(UITouch*)[touches anyObject] locationInView:self.superview].x, [(UITouch*)[touches anyObject] locationInView:self.superview].y);
             [self removeToken];
+            for(UIView* view in [self.superview subviews]){
+                if([view isKindOfClass:[TokenStackView class]] && CGRectContainsPoint(view.frame, point) && view!=self){
+                    [(TokenStackView*)view addTokenfromPoint:point];
+                    return;
+                }
+            }
             [self addTokenfromPoint:point];
             break;
-        }default:
+        }case 2:{
+            CGPoint startPoint = CGPointMake(self.holderView.center.x+self.frame.origin.x, self.holderView.center.y+self.frame.origin.y);
+            int numTokens = size;
+            self.holderView.frame = CGRectMake(0, 0,self.holderView.frame.size.width,self.holderView.frame.size.height);
+            for(TokenView* t in [self.holderView subviews])
+                [self removeToken];
+            for(UIView* view in [self.superview subviews]){
+                if([view isKindOfClass:[TokenStackView class]] && CGRectContainsPoint(view.frame, startPoint) && view!=self){
+                    for(int i=0;i<numTokens;i++){
+                        [(TokenStackView*)view addTokenfromPoint:startPoint withSpeed:(i+1)/25.0];
+                    }
+                    return;
+                }
+            }
+            for(int i=0;i<numTokens;i++)
+                [self addTokenfromPoint:startPoint withSpeed:(i+1)/15.0];
+        }
+        default:
             break;
     }
     
@@ -87,11 +121,11 @@
     
     switch(action){
         case 1:{
-            CGPoint point = CGPointMake([(UITouch*)[touches anyObject] locationInView:self.superview].x-self.frame.origin.x, [(UITouch*)[touches anyObject] locationInView:self.superview].y-self.frame.origin.y);
-            [[[self subviews] lastObject] setCenter:point];
+            CGPoint point = CGPointMake([(UITouch*)[touches anyObject] locationInView:self].x, [(UITouch*)[touches anyObject] locationInView:self].y);
+            [[[self.holderView subviews] lastObject] setCenter:point];
             break;
         }case 2:
-            [self setCenter:[(UITouch*)[touches anyObject] locationInView:self.superview]];
+            [self.holderView setCenter:[(UITouch*)[touches anyObject] locationInView:self]];
             break;
         default:
             break;

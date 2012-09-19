@@ -13,12 +13,15 @@
     
     NSInteger size;
     NSInteger action;
+    UIView* holderView;
     
 }
 
+@property(nonatomic)UIView* holderView;
 
 -(id)initWithSize:(NSInteger)numTokens andFrame:(CGRect)frame;
 -(void) addTokenfromPoint:(CGPoint)point;
+-(void) addTokenfromPoint:(CGPoint)point withSpeed:(CGFloat)speed;
 -(TokenView*) removeToken;
 
 @end
