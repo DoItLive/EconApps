@@ -16,7 +16,7 @@
 }
 
 @property (nonatomic) IBOutlet UILabel *usernameLabel;
-@property (nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (nonatomic, strong) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 -(void)initView:(NSString*)nameLabelText;
 -(void)poll:(NSTimer*)timer;
