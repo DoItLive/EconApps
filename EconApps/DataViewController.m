@@ -14,7 +14,7 @@
 
 @implementation DataViewController
 
-@synthesize view, scrollView, columns, data, numCols, numRows, cellWidth, cellHeight;
+@synthesize view, scrollView, cells, tables, data, numCols, numRows, cellWidth, cellHeight;
 
 - (id)initWithFrame:(CGRect)frame andData:(NSMutableArray*)dataInput
 {
@@ -42,25 +42,9 @@
         //Content size big enough so that tables won't scroll
         self.scrollView.contentSize = CGSizeMake(frame.size.width,[self.numRows intValue]*[self.cellHeight intValue]);
         
-        //Holds all the data 
-        self.columns = [[NSMutableArray alloc] initWithCapacity:[self.numCols intValue]];
-        
-        for (int i=0;i<[self.numCols intValue] + 1;i++){
-            UITableView *t = [[UITableView alloc] initWithFrame:CGRectMake(i*([cellWidth intValue] + 1), 0, [cellWidth intValue], self.scrollView.contentSize.height)];
-            [t setDelegate:self];
-            [t setDataSource:self];
-            t.showsVerticalScrollIndicator = NO;
-            t.backgroundColor = [UIColor clearColor];
-            t.separatorColor = [UIColor purpleColor];
-            t.rowHeight = [cellHeight intValue];
-            t.allowsSelection = FALSE;
-            
-            if (i%[self.numCols intValue]) {
-               [self.columns addObject:t];
-            }
-            
-            [self.scrollView addSubview:t];
-        }
+        //Holds all the data
+        self.tables = [[NSMutableArray alloc] initWithCapacity:2*([self.numCols intValue] + 1)];
+        self.cells = [[NSMutableArray alloc] initWithCapacity:([self.numCols intValue] + 1)*([self.numRows intValue] + 1)];
         
         for (int i=0;i<[self.numCols intValue];i++){
             UITableView *t = [[UITableView alloc] initWithFrame:CGRectMake((i + 1)*([cellWidth intValue] + 1), 0, [self.cellWidth intValue], [self.cellHeight intValue])];
@@ -71,25 +55,28 @@
             t.separatorColor = [UIColor purpleColor];
             t.rowHeight = [cellHeight intValue];
             t.bounces = FALSE;
-            t.allowsSelection = FALSE;
-            
-            [self.columns addObject:t];
+            [self.tables addObject:t];
             [self.view addSubview:t];
         }
         
-        for (int i = 0; i < [self.columns count]; i += [self.numCols intValue]) {
-            UITableView *t;
-            t = [self.columns objectAtIndex:i];
-            if (!(i%3)) {
-                for (int j = 0; j < [self.numRows intValue]; i++) {
-                    [t cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]].highlighted = TRUE;
-                }
-            } else {
-                for (int j = 0; j < [self.numRows intValue]; i++) {
-                    [t cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]].highlighted = FALSE;
-                }
-            }
+        for (int i=0;i<[self.numCols intValue] + 1;i++){
+            UITableView *t = [[UITableView alloc] initWithFrame:CGRectMake(i*([cellWidth intValue] + 1), 0, [cellWidth intValue], self.scrollView.contentSize.height)];
+            [t setDelegate:self];
+            [t setDataSource:self];
+            t.showsVerticalScrollIndicator = NO;
+            t.backgroundColor = [UIColor clearColor];
+            t.separatorColor = [UIColor purpleColor];
+            t.rowHeight = [cellHeight intValue];
+            [self.tables addObject:t];
+            [self.scrollView addSubview:t];
         }
+        
+       
+        
+
+        
+        
+        
         
         
         
@@ -148,12 +135,13 @@
     
     //Get the current table by grabbing its topleft corner and dividing by its size
     NSInteger curTable = (int)tableView.frame.origin.x/[cellWidth intValue];
+    NSInteger row = [indexPath row];
+    
     NSString* text;
     
     if(tableView.superview == self.view){
         text = [[NSString alloc] initWithFormat:@"%d",curTable - 1];
     } else {
-        NSInteger row = [indexPath row];
         if(curTable == 0){
             text = [[NSString alloc] initWithFormat:@"%d",row];
         } else{
@@ -164,14 +152,17 @@
         
     [[cell textLabel] setText:text];
     cell.textLabel.textAlignment = 1;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    [self.cells addObject:cell];
     
     return cell;
 }
-
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    if(!([indexPath row] % 2)){
+    if (tableView.superview == self.view || !((int)tableView.frame.origin.x/[cellWidth intValue])) {
+        cell.backgroundColor = [UIColor purpleColor];
+    } else if (!([indexPath row] % 2)){
         cell.backgroundColor = [UIColor colorWithRed:.93 green:.82 blue:.93 alpha:1];
     } else {
         cell.backgroundColor = [UIColor whiteColor];
@@ -184,13 +175,16 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    NSInteger curTable = (int)tableView.frame.origin.x/[cellWidth intValue];
+    UITableViewCell *tmp;
+    for (int i = 0; i < [self.cells count]; i++) {
+        tmp = [self.cells objectAtIndex:i];
+        [self tableView:(UITableView*)tmp.superview willDisplayCell:tmp forRowAtIndexPath:[(UITableView*)tmp.superview indexPathForCell:tmp]];
+    }
+    
+    for (int i = 0; i < [self.numRows intValue]; i++) {
+        ((UITableViewCell*)[self.cells objectAtIndex:([self.numRows intValue])*([self.numCols intValue] - curTable + 1) + i + 5]).backgroundColor = [UIColor purpleColor];
+    }
 }
 
 @end

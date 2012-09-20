@@ -13,7 +13,8 @@
     UIView *view;
     UIScrollView *scrollView;
     
-    NSMutableArray *columns;
+    NSMutableArray *cells;
+    NSMutableArray *tables;
     
     NSMutableArray *data;
     NSNumber *numCols, *numRows, *cellWidth, *cellHeight;
@@ -21,7 +22,8 @@
 
 @property (nonatomic) UIView *view;
 @property (nonatomic) UIScrollView *scrollView;
-@property (nonatomic) NSMutableArray *columns;
+@property (nonatomic) NSMutableArray *cells;
+@property (nonatomic) NSMutableArray *tables;
 @property (nonatomic) NSMutableArray *data;
 @property (nonatomic) NSNumber *numCols;
 @property (nonatomic) NSNumber *numRows;
