@@ -26,6 +26,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="loginButtonPressed:" destination="5" eventType="touchUpInside" id="2bQ-Ok-43g"/>
                                     <action selector="loginButtonPressed:" destination="5" eventType="touchUpInside" id="lYw-FD-ubY"/>
                                     <segue destination="qMT-cu-wgs" kind="modal" id="T51-x4-r5T"/>
                                 </connections>
