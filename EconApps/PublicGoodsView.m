@@ -10,7 +10,7 @@
 
 @implementation PublicGoodsView
 
-@synthesize theGrid;
+@synthesize theGrid, localStackView, sendStackView;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -44,14 +44,36 @@
         self.theGrid = [[DataViewController alloc] initWithFrame:CGRectMake(10, 200, self.frame.size.height-20, 200) andData:data];
         [self addSubview:theGrid.view];
         
-        TokenStackView* stackView = [[TokenStackView alloc] initWithSize:10 andFrame:CGRectMake(60, 30, 300, 150)];
-        [self addSubview:stackView];
+        localStackView = [[TokenStackView alloc] initWithSize:10 andFrame:CGRectMake(60, 30, 300, 150)];
+        [self addSubview:localStackView];
 
-        TokenStackView* stackView2 = [[TokenStackView alloc] initWithSize:0 andFrame:CGRectMake(667, 30, 300, 150)];
-        [self addSubview:stackView2];
-
+        //TokenStackView* stackView2 = [[TokenStackView alloc] initWithSize:0 andFrame:CGRectMake(667, 30, 300, 150)];
+        sendStackView = [[TokenStackView alloc] initWithSize:0 andFrame:CGRectMake(567, 30, 300, 150)];
+        [self addSubview:sendStackView];
+        
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        [button setTitle:@"Send" forState:UIControlStateNormal];
+        //[button addTarget:self
+        //           action:@selector(aMethod:)
+        // forControlEvents:UIControlEventTouchUpInside];
+        button.frame = CGRectMake(900, 30, 100, 40);
+        [self addSubview:button];
     }
     return self;
+}
+
+-(IBAction)sendTokens:(id)sender{
+
+    int numTokenstoSend = self.sendStackView.size;
+    NSString* postString = [[NSString alloc] initWithFormat:@"tokens=%d",numTokenstoSend];
+    Connection *conn = [[Connection alloc] initWithFinishSelector:@selector(validateLogin:)
+                                                 withFailSelector:@selector(validateLogin:)
+                                                         toTarget:self
+                                                          withURL:kLOGIN_VIEW_URL
+                                                       withString:postString];
+    [conn connect];
+
+    
 }
 
 @end

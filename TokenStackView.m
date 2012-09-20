@@ -10,7 +10,7 @@
 
 @implementation TokenStackView
 
-@synthesize holderView;
+@synthesize holderView, size;
 
 -(id) initWithSize:(NSInteger)numTokens andFrame:(CGRect)frame{
     

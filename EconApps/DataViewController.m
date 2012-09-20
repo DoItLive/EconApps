@@ -161,7 +161,7 @@
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (tableView.superview == self.view || !((int)tableView.frame.origin.x/[cellWidth intValue])) {
-        cell.backgroundColor = [UIColor purpleColor];
+        cell.backgroundColor = [UIColor blueColor];
     } else if (!([indexPath row] % 2)){
         cell.backgroundColor = [UIColor colorWithRed:.93 green:.82 blue:.93 alpha:1];
     } else {

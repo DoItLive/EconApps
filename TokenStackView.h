@@ -18,6 +18,7 @@
 }
 
 @property(nonatomic)UIView* holderView;
+@property(nonatomic) NSInteger size;
 
 -(id)initWithSize:(NSInteger)numTokens andFrame:(CGRect)frame;
 -(void) addTokenfromPoint:(CGPoint)point;
