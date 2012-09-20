@@ -25,8 +25,6 @@
 -(void) initView:(NSString *)nameLabelText{
     [usernameLabel setText:nameLabelText];
     
-#warning activityIndicator is not working
-    activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     [activityIndicator startAnimating];
     
     [self poll:nil];
@@ -34,10 +32,12 @@
 
 -(void)poll:(NSTimer*)timer{
     
-    [[Connection alloc] initWithSelector:@selector(dataReceived:)
-                                toTarget:self
-                                 withURL:kWAITING_VIEW_URL
-                              withString:@""];
+    Connection *conn = [[Connection alloc] initWithFinishSelector:@selector(dataReceived:)
+                             withFailSelector:@selector(connectionFailed)
+                                      toTarget:self
+                                       withURL:kWAITING_VIEW_URL
+                                    withString:@""];
+    [conn connect];
 }
 
 -(void)dataReceived:(NSData*)data{
@@ -59,6 +59,10 @@
             break;
     }
     
+}
+
+-(void)connectionFailed {
+    [NSTimer scheduledTimerWithTimeInterval:kPOLLING_INTERVAL target:self selector:@selector(poll:) userInfo:nil repeats:NO];
 }
 
 @end

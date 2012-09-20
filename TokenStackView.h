@@ -11,14 +11,17 @@
 
 @interface TokenStackView : UIView{
     
-    NSInteger size;
-    NSInteger action;
+    NSInteger size;         //Number of tokens in stack
+    NSInteger action;       //Number of fingers originally touched, i.e. if user is holding stack or single token
+    UIView* holderView;     //Holds the token stack
     
 }
 
+@property(nonatomic)UIView* holderView;
 
 -(id)initWithSize:(NSInteger)numTokens andFrame:(CGRect)frame;
 -(void) addTokenfromPoint:(CGPoint)point;
+-(void) addTokenfromPoint:(CGPoint)point withSpeed:(CGFloat)speed;
 -(TokenView*) removeToken;
 
 @end
