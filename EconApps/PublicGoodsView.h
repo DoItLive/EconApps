@@ -9,12 +9,19 @@
 #import <UIKit/UIKit.h>
 #import "DataViewController.h"
 #import "TokenStackView.h"
+#import "Defs.h"
+#import "Connection.h"
+
 @interface PublicGoodsView : UIView{
     
     DataViewController *theGrid;
+    TokenStackView* localStackView;
+    TokenStackView* sendStackView;
     
 }
 
 @property (nonatomic) DataViewController *theGrid;
+@property (nonatomic) TokenStackView *localStackView;
+@property (nonatomic) TokenStackView *sendStackView;
 
 @end

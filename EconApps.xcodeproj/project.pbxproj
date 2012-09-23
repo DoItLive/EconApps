@@ -10,6 +10,7 @@
 		0A83965D15F68447004E3429 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A83965C15F68447004E3429 /* LoginView.m */; };
 		0AB143151602BAEB0009F61B /* DataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB143141602BAEB0009F61B /* DataViewController.m */; };
 		BF5EA9E0160A720800197E97 /* PG_TokenStack_BG.png in Resources */ = {isa = PBXBuildFile; fileRef = BF5EA9DF160A720800197E97 /* PG_TokenStack_BG.png */; };
+		BF6D9D19160B99E80007EFCA /* loginScreen_BG.png in Resources */ = {isa = PBXBuildFile; fileRef = BF6D9D18160B99E80007EFCA /* loginScreen_BG.png */; };
 		BF9A2DCB160255B000542E60 /* token-1.png in Resources */ = {isa = PBXBuildFile; fileRef = BF9A2DCA160255B000542E60 /* token-1.png */; };
 		BF9A2DD21602563400542E60 /* TokenView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF9A2DD11602563400542E60 /* TokenView.m */; };
 		BF9A2DD61602583B00542E60 /* TokenStackView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF9A2DD51602583B00542E60 /* TokenStackView.m */; };
@@ -35,6 +36,7 @@
 		0AB143131602BAEB0009F61B /* DataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataViewController.h; path = EconApps/DataViewController.h; sourceTree = "<group>"; };
 		0AB143141602BAEB0009F61B /* DataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataViewController.m; path = EconApps/DataViewController.m; sourceTree = "<group>"; };
 		BF5EA9DF160A720800197E97 /* PG_TokenStack_BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PG_TokenStack_BG.png; sourceTree = "<group>"; };
+		BF6D9D18160B99E80007EFCA /* loginScreen_BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginScreen_BG.png; sourceTree = "<group>"; };
 		BF9A2DCA160255B000542E60 /* token-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "token-1.png"; sourceTree = "<group>"; };
 		BF9A2DD01602563400542E60 /* TokenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenView.h; sourceTree = "<group>"; };
 		BF9A2DD11602563400542E60 /* TokenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenView.m; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 		BFF4854B15F80681003DB6C3 /* LoginView */ = {
 			isa = PBXGroup;
 			children = (
+				BF6D9D18160B99E80007EFCA /* loginScreen_BG.png */,
 				BFF8CFAD15F6767800F1D2EA /* LoginViewController.h */,
 				BFF8CFAE15F6767800F1D2EA /* LoginViewController.m */,
 				0A83965B15F68447004E3429 /* LoginView.h */,
@@ -268,6 +271,7 @@
 				BF9A2DCB160255B000542E60 /* token-1.png in Resources */,
 				E9752B681608EA7A006CE608 /* Cookie-Monster-icon.png in Resources */,
 				BF5EA9E0160A720800197E97 /* PG_TokenStack_BG.png in Resources */,
+				BF6D9D19160B99E80007EFCA /* loginScreen_BG.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

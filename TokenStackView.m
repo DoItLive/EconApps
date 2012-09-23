@@ -10,7 +10,7 @@
 
 @implementation TokenStackView
 
-@synthesize holderView;
+@synthesize holderView, size;
 
 -(id) initWithSize:(NSInteger)numTokens andFrame:(CGRect)frame{
     
@@ -19,7 +19,7 @@
     [self addSubview:holderView];
     size = 0;
     for (int i=0;i<numTokens;i++) {
-        [self addTokenfromPoint:CGPointMake(0, -100)];
+        [self addTokenfromPoint:holderView.center withSpeed:0];
     }
     
     [self setBackgroundColor:[[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"PG_TokenStack_BG.png"]]];
