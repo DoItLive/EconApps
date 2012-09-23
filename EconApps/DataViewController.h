@@ -33,4 +33,6 @@
 
 - (id)initWithFrame:(CGRect)frame andData:(NSMutableArray*)data;
 
+- (void)setUpHierarchy;
+
 @end

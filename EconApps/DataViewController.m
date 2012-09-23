@@ -73,13 +73,6 @@
         
        
         
-
-        
-        
-        
-        
-        
-        
     }
     return self;
 }
@@ -156,16 +149,29 @@
     
     [self.cells addObject:cell];
     
+    if ([self.cells count] >= ([self.numCols intValue] + 1)*([self.numRows intValue] + 1) - 1) {
+        [self setUpHierarchy];
+    }
+    
     return cell;
 }
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (tableView.superview == self.view || !((int)tableView.frame.origin.x/[cellWidth intValue])) {
-        cell.backgroundColor = [UIColor purpleColor];
+        cell.backgroundColor = [UIColor colorWithRed:.27 green:.51 blue:.71 alpha:1]; //steel blue
     } else if (!([indexPath row] % 2)){
-        cell.backgroundColor = [UIColor colorWithRed:.93 green:.82 blue:.93 alpha:1];
+        //if (!((int)tableView.frame.origin.x/[cellWidth intValue])) {
+            cell.backgroundColor = [UIColor whiteColor];
+        //} else {
+        //    cell.backgroundColor = [UIColor colorWithRed:1 green:.88 blue:1 alpha:1]; //light thistle
+        //}  [UIColor colorWithRed:.27 green:.51 blue:.71 alpha:1]; //steel blue
+        
     } else {
-        cell.backgroundColor = [UIColor whiteColor];
+        //if (!((int)tableView.frame.origin.x/[cellWidth intValue])) {
+        //    cell.backgroundColor = [UIColor colorWithRed:.69 green:.77 blue:.87 alpha:1]; //light steel blue
+        //} else {
+            cell.backgroundColor = [UIColor colorWithRed:.93 green:.82 blue:.93 alpha:1]; //light thistle
+        //}
     }
 }
 
@@ -173,17 +179,44 @@
 
 #pragma mark - Table view delegate
 
+- (void)setUpHierarchy
+{
+    NSMutableArray *tmp = [[NSMutableArray alloc] initWithCapacity:[self.cells count]];
+    [tmp addObjectsFromArray:self.cells];
+    [self.cells insertObject:[tmp objectAtIndex:0] atIndex:0];
+    for (int i = 0; i < [tmp count]; i++) {
+        UITableViewCell *cell = [tmp objectAtIndex:i];
+        UITableView *table = (UITableView*)cell.superview;
+        NSInteger colNum = (int)table.frame.origin.x/[cellWidth intValue];
+        NSInteger rowNum = [[table indexPathForCell:cell] row];
+        NSInteger indexNum;
+        if (table.superview == self.view) {
+            indexNum = colNum;
+        } else {
+            indexNum = (rowNum + 1)*([self.numCols intValue] + 1) + colNum;
+        }
+        
+        [self.cells replaceObjectAtIndex:indexNum withObject:cell];
+        
+        
+        
+    }
+    
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSInteger curTable = (int)tableView.frame.origin.x/[cellWidth intValue];
-    UITableViewCell *tmp;
-    for (int i = 0; i < [self.cells count]; i++) {
-        tmp = [self.cells objectAtIndex:i];
-        [self tableView:(UITableView*)tmp.superview willDisplayCell:tmp forRowAtIndexPath:[(UITableView*)tmp.superview indexPathForCell:tmp]];
-    }
-    
-    for (int i = 0; i < [self.numRows intValue]; i++) {
-        ((UITableViewCell*)[self.cells objectAtIndex:([self.numRows intValue])*([self.numCols intValue] - curTable + 1) + i + 5]).backgroundColor = [UIColor purpleColor];
+    if(curTable){
+        UITableViewCell *tmp;
+        for (int i = 0; i < [self.cells count]; i++) {
+            tmp = [self.cells objectAtIndex:i];
+            [self tableView:(UITableView*)tmp.superview willDisplayCell:tmp forRowAtIndexPath:[(UITableView*)tmp.superview indexPathForCell:tmp]];
+        }
+        NSLog(@"curTable = %d", curTable);
+        for (int i = 0; i < [self.numRows intValue] + 1; i++) {
+            ((UITableViewCell*)[self.cells objectAtIndex:(curTable + ([self.numCols intValue] + 1)*i)]).backgroundColor = [UIColor colorWithRed:1 green:.96 blue:.56 alpha:1]; //light khaki
+        }
     }
 }
 

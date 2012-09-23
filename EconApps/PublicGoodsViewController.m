@@ -7,6 +7,7 @@
 //
 
 #import "PublicGoodsViewController.h"
+#import "PublicGoodsView.h"
 
 @interface PublicGoodsViewController ()
 
