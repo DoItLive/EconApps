@@ -154,6 +154,7 @@
     
     if ([self.cells count] >= ([self.numCols intValue] + 1)*([self.numRows intValue] + 1) - 1) {
         [self setUpHierarchy];
+        [self updateSelectedRow:1];
     }
     
     return cell;
@@ -211,7 +212,7 @@
 {
     UITableViewCell *tmp;
     for (int i = 0; i < [self.numCols intValue] + 1; i++) {
-        if(i != [colHigh intValue]){
+        if(i != [colHigh intValue] || ![colHigh intValue]){
             tmp = [self.cells objectAtIndex:([rowHigh intValue]*([self.numCols intValue] + 1) + i)];
             [self tableView:(UITableView*)tmp.superview willDisplayCell:tmp forRowAtIndexPath:[(UITableView*)tmp.superview indexPathForCell:tmp]];
         }

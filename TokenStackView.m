@@ -36,7 +36,7 @@
     [self.holderView addSubview:t];
     size++;
     if (self.grid) {
-        [self.grid updateSelectedRow:size];
+        [self.grid updateSelectedRow:size + 1];
     }
     
     [UIView beginAnimations: @"moveToken" context: nil];
@@ -59,7 +59,7 @@
         [t removeFromSuperview];
         size--;
         if (self.grid) {
-            [self.grid updateSelectedRow:size];
+            [self.grid updateSelectedRow:size + 1];
         }
         return t;
     }
