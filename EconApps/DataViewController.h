@@ -17,7 +17,7 @@
     NSMutableArray *tables;
     
     NSMutableArray *data;
-    NSNumber *numCols, *numRows, *cellWidth, *cellHeight;
+    NSNumber *numCols, *numRows, *cellWidth, *cellHeight, *colHigh, *rowHigh;
 }
 
 @property (nonatomic) UIView *view;
@@ -29,10 +29,12 @@
 @property (nonatomic) NSNumber *numRows;
 @property (nonatomic) NSNumber *cellWidth;
 @property (nonatomic) NSNumber *cellHeight;
+@property (nonatomic) NSNumber *colHigh;
+@property (nonatomic) NSNumber *rowHigh;
 
 
 - (id)initWithFrame:(CGRect)frame andData:(NSMutableArray*)data;
-
 - (void)setUpHierarchy;
+- (void)updateSelectedRow:(NSInteger)rowNum;
 
 @end

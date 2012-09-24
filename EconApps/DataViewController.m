@@ -14,7 +14,7 @@
 
 @implementation DataViewController
 
-@synthesize view, scrollView, cells, tables, data, numCols, numRows, cellWidth, cellHeight;
+@synthesize view, scrollView, cells, tables, data, numCols, numRows, cellWidth, cellHeight, colHigh, rowHigh;
 
 - (id)initWithFrame:(CGRect)frame andData:(NSMutableArray*)dataInput
 {
@@ -26,6 +26,9 @@
         [self setData:dataInput];
         [self setNumCols: [[NSNumber alloc] initWithInt:[self.data count]]];
         [self setNumRows: [[NSNumber alloc] initWithInt:[[self.data objectAtIndex:0] count]]];
+        [self setColHigh:[[NSNumber alloc] initWithInt:0]];
+        [self setRowHigh:[[NSNumber alloc] initWithInt:0]];
+        
         
         //Set the height of cells (default is 44)
         [self setCellHeight: [[NSNumber alloc] initWithInt:44]];
@@ -128,7 +131,7 @@
     
     //Get the current table by grabbing its topleft corner and dividing by its size
     NSInteger curTable = (int)tableView.frame.origin.x/[cellWidth intValue];
-    NSInteger row = [indexPath row];
+    NSInteger curRow = [indexPath row];
     
     NSString* text;
     
@@ -136,9 +139,9 @@
         text = [[NSString alloc] initWithFormat:@"%d",curTable - 1];
     } else {
         if(curTable == 0){
-            text = [[NSString alloc] initWithFormat:@"%d",row];
+            text = [[NSString alloc] initWithFormat:@"%d",curRow];
         } else{
-            int num = [[(NSMutableArray*)[self.data objectAtIndex:curTable - 1] objectAtIndex:row] intValue];
+            int num = [[(NSMutableArray*)[self.data objectAtIndex:curTable - 1] objectAtIndex:curRow] intValue];
             text = [[NSString alloc] initWithFormat:@"%d",num];
         }
     }
@@ -181,14 +184,18 @@
 
 - (void)setUpHierarchy
 {
+    [self.cells addObject:[self.cells objectAtIndex:0]];
     NSMutableArray *tmp = [[NSMutableArray alloc] initWithCapacity:[self.cells count]];
     [tmp addObjectsFromArray:self.cells];
-    [self.cells insertObject:[tmp objectAtIndex:0] atIndex:0];
     for (int i = 0; i < [tmp count]; i++) {
         UITableViewCell *cell = [tmp objectAtIndex:i];
         UITableView *table = (UITableView*)cell.superview;
-        NSInteger colNum = (int)table.frame.origin.x/[cellWidth intValue];
         NSInteger rowNum = [[table indexPathForCell:cell] row];
+        if(i == [tmp count] - 2){
+            table = (UITableView*)((UITableViewCell*)[self.cells objectAtIndex:[self.numCols intValue] + 1]).superview;
+            rowNum = [self.numRows intValue] - 1;
+        }
+        NSInteger colNum = (int)table.frame.origin.x/[cellWidth intValue];
         NSInteger indexNum;
         if (table.superview == self.view) {
             indexNum = colNum;
@@ -197,11 +204,24 @@
         }
         
         [self.cells replaceObjectAtIndex:indexNum withObject:cell];
-        
-        
-        
     }
-    
+}
+
+- (void)updateSelectedRow:(NSInteger)rowNum
+{
+    UITableViewCell *tmp;
+    for (int i = 0; i < [self.numCols intValue] + 1; i++) {
+        if(i != [colHigh intValue]){
+            tmp = [self.cells objectAtIndex:([rowHigh intValue]*([self.numCols intValue] + 1) + i)];
+            [self tableView:(UITableView*)tmp.superview willDisplayCell:tmp forRowAtIndexPath:[(UITableView*)tmp.superview indexPathForCell:tmp]];
+        }
+    }
+    if (rowNum != 0) {
+        for (int i = 0; i < [self.numCols intValue] + 1; i++) {
+            ((UITableViewCell*)[self.cells objectAtIndex:(rowNum*([self.numCols intValue] + 1) + i)]).backgroundColor = [UIColor colorWithRed:1 green:.96 blue:.56 alpha:1]; //light khaki
+        }
+    }
+    [self setRowHigh:[[NSNumber alloc] initWithInt:rowNum]];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -209,14 +229,16 @@
     NSInteger curTable = (int)tableView.frame.origin.x/[cellWidth intValue];
     if(curTable){
         UITableViewCell *tmp;
-        for (int i = 0; i < [self.cells count]; i++) {
-            tmp = [self.cells objectAtIndex:i];
-            [self tableView:(UITableView*)tmp.superview willDisplayCell:tmp forRowAtIndexPath:[(UITableView*)tmp.superview indexPathForCell:tmp]];
+        for (int i = 0; i < [self.numRows intValue] + 1; i++) {
+            if(!i || i != [rowHigh intValue]){
+                tmp = [self.cells objectAtIndex:([colHigh intValue] + ([self.numCols intValue] + 1)*i)];
+                [self tableView:(UITableView*)tmp.superview willDisplayCell:tmp forRowAtIndexPath:[(UITableView*)tmp.superview indexPathForCell:tmp]];
+            }
         }
-        NSLog(@"curTable = %d", curTable);
         for (int i = 0; i < [self.numRows intValue] + 1; i++) {
             ((UITableViewCell*)[self.cells objectAtIndex:(curTable + ([self.numCols intValue] + 1)*i)]).backgroundColor = [UIColor colorWithRed:1 green:.96 blue:.56 alpha:1]; //light khaki
         }
+        [self setColHigh: [[NSNumber alloc] initWithInt:curTable]];
     }
 }
 
