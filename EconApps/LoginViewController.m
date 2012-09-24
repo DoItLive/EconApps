@@ -43,6 +43,14 @@
     
 }
 
+- (BOOL)shouldAutorotate {
+    return YES;
+}
+
+- (NSUInteger)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskPortrait;
+}
+
 -(void)switchToWaitingView
 {
     [self performSegueWithIdentifier:@"loginViewToWaitingView" sender:self];

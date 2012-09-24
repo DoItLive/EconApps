@@ -14,6 +14,7 @@
 		BF9A2DCB160255B000542E60 /* token-1.png in Resources */ = {isa = PBXBuildFile; fileRef = BF9A2DCA160255B000542E60 /* token-1.png */; };
 		BF9A2DD21602563400542E60 /* TokenView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF9A2DD11602563400542E60 /* TokenView.m */; };
 		BF9A2DD61602583B00542E60 /* TokenStackView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF9A2DD51602583B00542E60 /* TokenStackView.m */; };
+		BFBD6190161100B200868BA8 /* waitingScreen_BG.png in Resources */ = {isa = PBXBuildFile; fileRef = BFBD618F161100B200868BA8 /* waitingScreen_BG.png */; };
 		BFF4854415F804B3003DB6C3 /* Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF8CFB915F67A3B00F1D2EA /* Connection.m */; };
 		BFF4855115F80897003DB6C3 /* WaitingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF4855015F80897003DB6C3 /* WaitingView.m */; };
 		BFF4855415F808B1003DB6C3 /* WaitingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF4855315F808B1003DB6C3 /* WaitingViewController.m */; };
@@ -42,6 +43,7 @@
 		BF9A2DD11602563400542E60 /* TokenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenView.m; sourceTree = "<group>"; };
 		BF9A2DD41602583B00542E60 /* TokenStackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenStackView.h; sourceTree = "<group>"; };
 		BF9A2DD51602583B00542E60 /* TokenStackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenStackView.m; sourceTree = "<group>"; };
+		BFBD618F161100B200868BA8 /* waitingScreen_BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = waitingScreen_BG.png; sourceTree = "<group>"; };
 		BFF4854F15F80897003DB6C3 /* WaitingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitingView.h; sourceTree = "<group>"; };
 		BFF4855015F80897003DB6C3 /* WaitingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaitingView.m; sourceTree = "<group>"; };
 		BFF4855215F808B1003DB6C3 /* WaitingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitingViewController.h; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 		BFF4855515F808B6003DB6C3 /* WaitingView */ = {
 			isa = PBXGroup;
 			children = (
+				BFBD618F161100B200868BA8 /* waitingScreen_BG.png */,
 				BFF4854F15F80897003DB6C3 /* WaitingView.h */,
 				BFF4855015F80897003DB6C3 /* WaitingView.m */,
 				BFF4855215F808B1003DB6C3 /* WaitingViewController.h */,
@@ -272,6 +275,7 @@
 				E9752B681608EA7A006CE608 /* Cookie-Monster-icon.png in Resources */,
 				BF5EA9E0160A720800197E97 /* PG_TokenStack_BG.png in Resources */,
 				BF6D9D19160B99E80007EFCA /* loginScreen_BG.png in Resources */,
+				BFBD6190161100B200868BA8 /* waitingScreen_BG.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
