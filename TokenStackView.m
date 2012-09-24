@@ -157,7 +157,7 @@
     
     int numTokens = self.size;
     self.size = 0;
-    [self.sizeLabel setText:[NSString stringWithFormat:@"%d",size]];
+    [self.sizeLabel setText:[NSString stringWithFormat:@"%d",numTokens]];
     int curToken = 0;
     for(TokenView* t in [self.holderView subviews]){
         [UIView animateWithDuration:(numTokens-curToken)/17.0
@@ -173,7 +173,6 @@
         
     }
     return numTokens;
-    //Still need to remove tokens from their superview cause theyre just floating right now
 }
 
 

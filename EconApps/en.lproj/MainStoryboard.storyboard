@@ -26,7 +26,6 @@
                                 </state>
                                 <connections>
                                     <action selector="loginButtonPressed:" destination="5" eventType="touchUpInside" id="lYw-FD-ubY"/>
-                                    <segue destination="qMT-cu-wgs" kind="modal" id="T51-x4-r5T"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="whileEditing" id="gps-E1-RS9">
@@ -73,7 +72,7 @@
                         </connections>
                     </view>
                     <connections>
-                        <segue destination="m4s-w0-6fG" kind="modal" identifier="loginViewToWaitingView" id="zDG-P7-Gpl"/>
+                        <segue destination="m4s-w0-6fG" kind="modal" identifier="loginViewToWaitingView" modalTransitionStyle="crossDissolve" id="zDG-P7-Gpl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3" sceneMemberID="firstResponder"/>
@@ -164,7 +163,4 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="Xhh-gh-JY6"/>
-    </inferredMetricsTieBreakers>
 </document>
