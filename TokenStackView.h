@@ -18,15 +18,19 @@
     
     DataViewController *grid; //Grid associated with stack if there is one, otherwise nil.
     
+    UILabel* sizeLabel;
+    
 }
 
 @property(nonatomic)DataViewController *grid;
 @property(nonatomic)UIView* holderView;
 @property(nonatomic) NSInteger size;
+@property(nonatomic)UILabel* sizeLabel;
 
 -(id)initWithSize:(NSInteger)numTokens andFrame:(CGRect)frame;
 -(void) addTokenfromPoint:(CGPoint)point;
 -(void) addTokenfromPoint:(CGPoint)point withSpeed:(CGFloat)speed;
 -(TokenView*) removeToken;
+-(int)sendTokensUp;
 
 @end

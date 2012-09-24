@@ -10,7 +10,7 @@
 
 @implementation PublicGoodsView
 
-@synthesize theGrid, localStackView, sendStackView;
+@synthesize theGrid, localStackView, sendStackView, sendButton;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -56,28 +56,30 @@
         [sendStackView setGrid:theGrid];
         [self addSubview:sendStackView];
         
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        [button setTitle:@"Send" forState:UIControlStateNormal];
+        sendButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        [sendButton setTitle:@"Send" forState:UIControlStateNormal];
         //[button addTarget:self
         //           action:@selector(aMethod:)
         // forControlEvents:UIControlEventTouchUpInside];
-        button.frame = CGRectMake(900, 30, 100, 40);
-        [self addSubview:button];
+        sendButton.frame = CGRectMake(900, 30, 100, 40);
+        [sendButton addTarget:self action:@selector(sendTokens) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:sendButton];
     }
     return self;
 }
 
--(IBAction)sendTokens:(id)sender{
+-(void)sendTokens{
 
-    int numTokenstoSend = self.sendStackView.size;
+    int numTokenstoSend = [sendStackView sendTokensUp];
     NSString* postString = [[NSString alloc] initWithFormat:@"tokens=%d",numTokenstoSend];
-    Connection *conn = [[Connection alloc] initWithFinishSelector:@selector(validateLogin:)
-                                                 withFailSelector:@selector(validateLogin:)
-                                                         toTarget:self
-                                                          withURL:kLOGIN_VIEW_URL
-                                                       withString:postString];
-    [conn connect];
-
+    //Connection *conn = [[Connection alloc] initWithFinishSelector:@selector(validateLogin:)
+    //                                             withFailSelector:@selector(validateLogin:)
+    //                                                     toTarget:self
+    //                                                      withURL:kLOGIN_VIEW_URL
+    //                                                   withString:postString];
+    //[conn connect];
+    
+    [self.sendButton setEnabled:FALSE];
     
 }
 

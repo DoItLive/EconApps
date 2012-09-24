@@ -18,10 +18,15 @@
     TokenStackView* localStackView;
     TokenStackView* sendStackView;
     
+    UIButton *sendButton;
+    
 }
 
 @property (nonatomic) DataViewController *theGrid;
 @property (nonatomic) TokenStackView *localStackView;
 @property (nonatomic) TokenStackView *sendStackView;
+@property (nonatomic) UIButton* sendButton;
+
+-(void)sendTokens;
 
 @end

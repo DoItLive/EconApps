@@ -10,13 +10,22 @@
 
 @implementation TokenStackView
 
-@synthesize holderView, size, grid;
+@synthesize holderView, size, grid, sizeLabel;
 
 -(id) initWithSize:(NSInteger)numTokens andFrame:(CGRect)frame{
     
     self = [super initWithFrame:frame];
+    
+    self.sizeLabel = [[UILabel alloc] initWithFrame:CGRectMake(3, 0, frame.size.width, frame.size.height)];
+    [self.sizeLabel setBackgroundColor:[UIColor clearColor]];
+    [self.sizeLabel setFont:[UIFont fontWithName:@"Helvetica" size:self.frame.size.height]];
+    [self.sizeLabel setTextColor:[UIColor colorWithWhite:1.0 alpha:0.2]];
+    [self.sizeLabel setText:[NSString stringWithFormat:@"0"]];
+    [self addSubview:sizeLabel];
+    
     self.holderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
     [self addSubview:holderView];
+    
     size = 0;
     for (int i=0;i<numTokens;i++) {
         [self addTokenfromPoint:holderView.center withSpeed:0];
@@ -35,16 +44,18 @@
     [t setFrame:CGRectMake(point.x-t.frame.size.width/2-self.frame.origin.x, point.y-t.frame.size.height/2-self.frame.origin.y, t.frame.size.width, t.frame.size.height)];
     [self.holderView addSubview:t];
     size++;
+    [self.sizeLabel setText:[NSString stringWithFormat:@"%d",size]];
     if (self.grid) {
         [self.grid updateSelectedRow:size];
     }
     
-    [UIView beginAnimations: @"moveToken" context: nil];
-    [UIView setAnimationDelegate: self];
-    [UIView setAnimationDuration: speed];
-    [UIView setAnimationCurve: UIViewAnimationCurveEaseInOut];
-    t.frame =  CGRectMake(self.frame.size.width/2-t.image.size.width/2, self.frame.size.height - t.image.size.height - size*2,t.frame.size.width,t.frame.size.height);
-    [UIView commitAnimations];
+    [UIView animateWithDuration:speed
+                          delay: 0.0
+                        options: UIViewAnimationOptionCurveEaseInOut
+                     animations:^{
+                            t.frame =  CGRectMake(self.frame.size.width-t.image.size.width*1.5, self.frame.size.height - t.image.size.height - size*2-10,t.frame.size.width,t.frame.size.height);
+                     }
+                     completion:nil];
     
 }
 
@@ -58,6 +69,7 @@
         TokenView* t = [self.holderView.subviews lastObject];
         [t removeFromSuperview];
         size--;
+        [self.sizeLabel setText:[NSString stringWithFormat:@"%d",size]];
         if (self.grid) {
             [self.grid updateSelectedRow:size];
         }
@@ -138,8 +150,30 @@
         default:
             break;
     }
-
     
+}
+
+-(int)sendTokensUp{
+    
+    int numTokens = self.size;
+    self.size = 0;
+    [self.sizeLabel setText:[NSString stringWithFormat:@"%d",size]];
+    int curToken = 0;
+    for(TokenView* t in [self.holderView subviews]){
+        [UIView animateWithDuration:(numTokens-curToken)/17.0
+                              delay: 0.0
+                            options: UIViewAnimationOptionCurveEaseOut
+                         animations:^{
+                             t.frame =  CGRectMake(t.frame.origin.x, -self.frame.origin.y - t.frame.size.height*2,t.frame.size.width,t.frame.size.height);
+                         }
+                         completion:^(BOOL finished){
+                             [t removeFromSuperview];
+                         }];
+        curToken++;
+        
+    }
+    return numTokens;
+    //Still need to remove tokens from their superview cause theyre just floating right now
 }
 
 
