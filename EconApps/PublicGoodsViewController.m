@@ -43,4 +43,11 @@
             || interfaceOrientation == UIInterfaceOrientationLandscapeRight);
 }
 
+- (BOOL)shouldAutorotate {
+    return YES;
+}
+
+- (NSUInteger)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskLandscape;
+}
 @end
