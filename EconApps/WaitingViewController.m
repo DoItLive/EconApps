@@ -50,6 +50,14 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (BOOL)shouldAutorotate {
+    return YES;
+}
+
+- (NSUInteger)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskPortrait;
+}
+
 -(void)switchToPublicGoodsView
 {
     [self performSegueWithIdentifier:@"waitingViewToPublicGoodsView" sender:self];
