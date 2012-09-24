@@ -192,9 +192,9 @@
         UITableViewCell *cell = [tmp objectAtIndex:i];
         UITableView *table = (UITableView*)cell.superview;
         NSInteger rowNum = [[table indexPathForCell:cell] row];
-        if(i == [tmp count] - 2){
+        if(i >= [tmp count] - [self.numRows intValue] && i < [tmp count] - 1){
             table = (UITableView*)((UITableViewCell*)[self.cells objectAtIndex:[self.numCols intValue] + 1]).superview;
-            rowNum = [self.numRows intValue] - 1;
+            rowNum = i - ([tmp count] - [self.numRows intValue]) + 1;
         }
         NSInteger colNum = (int)table.frame.origin.x/[cellWidth intValue];
         NSInteger indexNum;
@@ -205,6 +205,7 @@
         }
         
         [self.cells replaceObjectAtIndex:indexNum withObject:cell];
+        //[[cell textLabel] setText:[[NSString alloc] initWithFormat:@"%d",indexNum]];
     }
 }
 
