@@ -24,8 +24,8 @@
     //Add to notification center that way LoginView can call the function switchToWaitingView
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(switchToWaitingView) name:@"switchToWaitingView" object:nil];
     
-    NSData *imageData = UIImagePNGRepresentation([UIImage imageNamed:@"loginScreen_BG.png"]);
-    UIImage* bg = [[UIImage alloc] initWithData:imageData scale:2];
+    UIImage *img = [UIImage imageNamed:@"loginScreen_BG.png"];
+    UIImage* bg = [[UIImage alloc] initWithCGImage:img.CGImage scale:2.0 orientation:img.imageOrientation];
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:bg]];
 }
 
