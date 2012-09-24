@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "TokenView.h"
+#import "EconApps/DataViewController.h"
 
 @interface TokenStackView : UIView{
     
@@ -15,8 +16,11 @@
     NSInteger action;       //Number of fingers originally touched, i.e. if user is holding stack or single token
     UIView* holderView;     //Holds the token stack
     
+    DataViewController *grid; //Grid associated with stack if there is one, otherwise nil.
+    
 }
 
+@property(nonatomic)DataViewController *grid;
 @property(nonatomic)UIView* holderView;
 @property(nonatomic) NSInteger size;
 

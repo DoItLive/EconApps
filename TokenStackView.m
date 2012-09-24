@@ -10,7 +10,7 @@
 
 @implementation TokenStackView
 
-@synthesize holderView, size;
+@synthesize holderView, size, grid;
 
 -(id) initWithSize:(NSInteger)numTokens andFrame:(CGRect)frame{
     
@@ -35,6 +35,9 @@
     [t setFrame:CGRectMake(point.x-t.frame.size.width/2-self.frame.origin.x, point.y-t.frame.size.height/2-self.frame.origin.y, t.frame.size.width, t.frame.size.height)];
     [self.holderView addSubview:t];
     size++;
+    if (self.grid) {
+        [self.grid updateSelectedRow:size];
+    }
     
     [UIView beginAnimations: @"moveToken" context: nil];
     [UIView setAnimationDelegate: self];
@@ -55,6 +58,9 @@
         TokenView* t = [self.holderView.subviews lastObject];
         [t removeFromSuperview];
         size--;
+        if (self.grid) {
+            [self.grid updateSelectedRow:size];
+        }
         return t;
     }
     return nil;
