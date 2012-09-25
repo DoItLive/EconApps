@@ -55,6 +55,7 @@
     
     if ([target respondsToSelector:failFunction]) {
         NSLog(@"Calling [%@ %@]",NSStringFromClass([target class]),NSStringFromSelector(failFunction));
+//These ignore the compiler warning for performSelector leaks
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
         [target performSelector:failFunction];
@@ -72,6 +73,7 @@
         if([target respondsToSelector:function]){
             
             NSLog(@"Calling [%@ %@]",NSStringFromClass([target class]),NSStringFromSelector(function));
+//These ignore the compiler warning for performSelector leaks
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"            
             [target performSelector:function withObject:receivedData];

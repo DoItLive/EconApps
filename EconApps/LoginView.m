@@ -28,6 +28,7 @@
     username = [usernameField text];
     password = [passwordField text];
     
+    //Ensure there is something in the username and password fields before sending them to the server
     if ([username length] == 0 || [password length] == 0) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login Error" message:@"A username and password must be entered." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil, nil];
         [alert show];

@@ -10,11 +10,9 @@
 		0A83965D15F68447004E3429 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A83965C15F68447004E3429 /* LoginView.m */; };
 		0AB143151602BAEB0009F61B /* DataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB143141602BAEB0009F61B /* DataViewController.m */; };
 		BF5EA9E0160A720800197E97 /* PG_TokenStack_BG.png in Resources */ = {isa = PBXBuildFile; fileRef = BF5EA9DF160A720800197E97 /* PG_TokenStack_BG.png */; };
-		BF6D9D19160B99E80007EFCA /* loginScreen_BG.png in Resources */ = {isa = PBXBuildFile; fileRef = BF6D9D18160B99E80007EFCA /* loginScreen_BG.png */; };
 		BF9A2DCB160255B000542E60 /* token-1.png in Resources */ = {isa = PBXBuildFile; fileRef = BF9A2DCA160255B000542E60 /* token-1.png */; };
 		BF9A2DD21602563400542E60 /* TokenView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF9A2DD11602563400542E60 /* TokenView.m */; };
 		BF9A2DD61602583B00542E60 /* TokenStackView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF9A2DD51602583B00542E60 /* TokenStackView.m */; };
-		BFBD6190161100B200868BA8 /* waitingScreen_BG.png in Resources */ = {isa = PBXBuildFile; fileRef = BFBD618F161100B200868BA8 /* waitingScreen_BG.png */; };
 		BFF4854415F804B3003DB6C3 /* Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF8CFB915F67A3B00F1D2EA /* Connection.m */; };
 		BFF4855115F80897003DB6C3 /* WaitingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF4855015F80897003DB6C3 /* WaitingView.m */; };
 		BFF4855415F808B1003DB6C3 /* WaitingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF4855315F808B1003DB6C3 /* WaitingViewController.m */; };
@@ -26,9 +24,11 @@
 		BFF8CFA915F6767800F1D2EA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF8CFA815F6767800F1D2EA /* AppDelegate.m */; };
 		BFF8CFAC15F6767800F1D2EA /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFF8CFAA15F6767800F1D2EA /* MainStoryboard.storyboard */; };
 		BFF8CFAF15F6767800F1D2EA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF8CFAE15F6767800F1D2EA /* LoginViewController.m */; };
-		E9752B681608EA7A006CE608 /* Cookie-Monster-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E9752B671608EA7A006CE608 /* Cookie-Monster-icon.png */; };
 		E9B5CCE615F7FC8C00E71B8F /* PublicGoodsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B5CCE515F7FC8C00E71B8F /* PublicGoodsViewController.m */; };
 		E9B5CCEA15F7FE2000E71B8F /* PublicGoodsView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B5CCE915F7FE2000E71B8F /* PublicGoodsView.m */; };
+		E9F769F816122D5D0089D5C2 /* branded_background3_edited.png in Resources */ = {isa = PBXBuildFile; fileRef = E9F769F716122D5D0089D5C2 /* branded_background3_edited.png */; };
+		E9F769FA161234200089D5C2 /* icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = E9F769F9161234200089D5C2 /* icon-72.png */; };
+		E9F769FC1612355B0089D5C2 /* iconRetina.png in Resources */ = {isa = PBXBuildFile; fileRef = E9F769FB1612355B0089D5C2 /* iconRetina.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,13 +37,11 @@
 		0AB143131602BAEB0009F61B /* DataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataViewController.h; path = EconApps/DataViewController.h; sourceTree = "<group>"; };
 		0AB143141602BAEB0009F61B /* DataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataViewController.m; path = EconApps/DataViewController.m; sourceTree = "<group>"; };
 		BF5EA9DF160A720800197E97 /* PG_TokenStack_BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PG_TokenStack_BG.png; sourceTree = "<group>"; };
-		BF6D9D18160B99E80007EFCA /* loginScreen_BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginScreen_BG.png; sourceTree = "<group>"; };
 		BF9A2DCA160255B000542E60 /* token-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "token-1.png"; sourceTree = "<group>"; };
 		BF9A2DD01602563400542E60 /* TokenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenView.h; sourceTree = "<group>"; };
 		BF9A2DD11602563400542E60 /* TokenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenView.m; sourceTree = "<group>"; };
 		BF9A2DD41602583B00542E60 /* TokenStackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenStackView.h; sourceTree = "<group>"; };
 		BF9A2DD51602583B00542E60 /* TokenStackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenStackView.m; sourceTree = "<group>"; };
-		BFBD618F161100B200868BA8 /* waitingScreen_BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = waitingScreen_BG.png; sourceTree = "<group>"; };
 		BFF4854F15F80897003DB6C3 /* WaitingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitingView.h; sourceTree = "<group>"; };
 		BFF4855015F80897003DB6C3 /* WaitingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaitingView.m; sourceTree = "<group>"; };
 		BFF4855215F808B1003DB6C3 /* WaitingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitingViewController.h; sourceTree = "<group>"; };
@@ -64,11 +62,13 @@
 		BFF8CFB815F67A3B00F1D2EA /* Connection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Connection.h; sourceTree = "<group>"; };
 		BFF8CFB915F67A3B00F1D2EA /* Connection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Connection.m; sourceTree = "<group>"; };
 		E941DFDC15FA8EF200DE9C75 /* Defs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Defs.h; sourceTree = "<group>"; };
-		E9752B671608EA7A006CE608 /* Cookie-Monster-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cookie-Monster-icon.png"; sourceTree = "<group>"; };
 		E9B5CCE415F7FC8C00E71B8F /* PublicGoodsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublicGoodsViewController.h; sourceTree = "<group>"; };
 		E9B5CCE515F7FC8C00E71B8F /* PublicGoodsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublicGoodsViewController.m; sourceTree = "<group>"; };
 		E9B5CCE815F7FE2000E71B8F /* PublicGoodsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublicGoodsView.h; sourceTree = "<group>"; };
 		E9B5CCE915F7FE2000E71B8F /* PublicGoodsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublicGoodsView.m; sourceTree = "<group>"; };
+		E9F769F716122D5D0089D5C2 /* branded_background3_edited.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = branded_background3_edited.png; sourceTree = "<group>"; };
+		E9F769F9161234200089D5C2 /* icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-72.png"; sourceTree = "<group>"; };
+		E9F769FB1612355B0089D5C2 /* iconRetina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconRetina.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,7 +113,6 @@
 		BFF4854B15F80681003DB6C3 /* LoginView */ = {
 			isa = PBXGroup;
 			children = (
-				BF6D9D18160B99E80007EFCA /* loginScreen_BG.png */,
 				BFF8CFAD15F6767800F1D2EA /* LoginViewController.h */,
 				BFF8CFAE15F6767800F1D2EA /* LoginViewController.m */,
 				0A83965B15F68447004E3429 /* LoginView.h */,
@@ -142,7 +141,6 @@
 		BFF4855515F808B6003DB6C3 /* WaitingView */ = {
 			isa = PBXGroup;
 			children = (
-				BFBD618F161100B200868BA8 /* waitingScreen_BG.png */,
 				BFF4854F15F80897003DB6C3 /* WaitingView.h */,
 				BFF4855015F80897003DB6C3 /* WaitingView.m */,
 				BFF4855215F808B1003DB6C3 /* WaitingViewController.h */,
@@ -154,7 +152,9 @@
 		BFF8CF8915F6767700F1D2EA = {
 			isa = PBXGroup;
 			children = (
-				E9752B671608EA7A006CE608 /* Cookie-Monster-icon.png */,
+				E9F769FB1612355B0089D5C2 /* iconRetina.png */,
+				E9F769F9161234200089D5C2 /* icon-72.png */,
+				E9F769F716122D5D0089D5C2 /* branded_background3_edited.png */,
 				BFF8CF9E15F6767800F1D2EA /* EconApps */,
 				BFF8CF9715F6767800F1D2EA /* Frameworks */,
 				BFF8CF9515F6767800F1D2EA /* Products */,
@@ -272,10 +272,10 @@
 				BFF8CFA315F6767800F1D2EA /* InfoPlist.strings in Resources */,
 				BFF8CFAC15F6767800F1D2EA /* MainStoryboard.storyboard in Resources */,
 				BF9A2DCB160255B000542E60 /* token-1.png in Resources */,
-				E9752B681608EA7A006CE608 /* Cookie-Monster-icon.png in Resources */,
 				BF5EA9E0160A720800197E97 /* PG_TokenStack_BG.png in Resources */,
-				BF6D9D19160B99E80007EFCA /* loginScreen_BG.png in Resources */,
-				BFBD6190161100B200868BA8 /* waitingScreen_BG.png in Resources */,
+				E9F769F816122D5D0089D5C2 /* branded_background3_edited.png in Resources */,
+				E9F769FA161234200089D5C2 /* icon-72.png in Resources */,
+				E9F769FC1612355B0089D5C2 /* iconRetina.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

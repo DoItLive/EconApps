@@ -24,10 +24,11 @@
 
 -(void) initView:(NSString *)nameLabelText{
     [usernameLabel setText:nameLabelText];
+    [usernameLabel setTextColor:[UIColor whiteColor]];
     
     [activityIndicator startAnimating];
     
-    [self poll:nil];
+    [self poll:nil]; //Start polling the server
 }
 
 -(void)poll:(NSTimer*)timer{
@@ -42,11 +43,15 @@
 
 -(void)dataReceived:(NSData*)data{
     
+    // Data should come back from the server in a JSON string. It should look like:
+    // code:{0,1,2}
+    
     NSError *error;
     NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
     
     NSInteger code = [[jsonData objectForKey:@"code"] integerValue];
     
+    //Switch to the correct module based off of the information from the server
     switch (code) {
         case kPUBLIC_GOODS_MODULE:
             [[NSNotificationCenter defaultCenter] postNotificationName:@"switchToPublicGoodsView" object:nil];
@@ -61,6 +66,7 @@
     
 }
 
+//If the connection fails then just keep polling to hopefully reconnect
 -(void)connectionFailed {
     [NSTimer scheduledTimerWithTimeInterval:kPOLLING_INTERVAL target:self selector:@selector(poll:) userInfo:nil repeats:NO];
 }
