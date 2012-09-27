@@ -211,24 +211,7 @@
 
 - (void)updateSelectedRow:(NSInteger)rowNum
 {
-    UITableViewCell *tmp;
-    for (int i = 0; i < [self.numCols intValue] + 1; i++) {
-        if(i != [colHigh intValue] || ![colHigh intValue]){
-            tmp = [self.cells objectAtIndex:([rowHigh intValue]*([self.numCols intValue] + 1) + i)];
-            [self tableView:(UITableView*)tmp.superview willDisplayCell:tmp forRowAtIndexPath:[(UITableView*)tmp.superview indexPathForCell:tmp]];
-        }
-    }
-    if (rowNum != 0) {
-        for (int i = 0; i < [self.numCols intValue] + 1; i++) {
-            ((UITableViewCell*)[self.cells objectAtIndex:(rowNum*([self.numCols intValue] + 1) + i)]).backgroundColor = [UIColor colorWithRed:1 green:.96 blue:.56 alpha:1]; //light khaki
-        }
-    }
-    [self setRowHigh:[[NSNumber alloc] initWithInt:rowNum]];
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSInteger curTable = (int)tableView.frame.origin.x/[cellWidth intValue];
+    NSInteger curTable = rowNum;
     if(curTable){
         UITableViewCell *tmp;
         for (int i = 0; i < [self.numRows intValue] + 1; i++) {
@@ -242,6 +225,25 @@
         }
         [self setColHigh: [[NSNumber alloc] initWithInt:curTable]];
     }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    UITableViewCell *tmp;
+    for (int i = 0; i < [self.numCols intValue] + 1; i++) {
+        if(i != [colHigh intValue] || ![colHigh intValue]){
+            tmp = [self.cells objectAtIndex:([rowHigh intValue]*([self.numCols intValue] + 1) + i)];
+            [self tableView:(UITableView*)tmp.superview willDisplayCell:tmp forRowAtIndexPath:[(UITableView*)tmp.superview indexPathForCell:tmp]];
+        }
+    }
+    NSInteger rowNum = [indexPath row] + 1;
+    if (rowNum != 0) {
+        for (int i = 0; i < [self.numCols intValue] + 1; i++) {
+            ((UITableViewCell*)[self.cells objectAtIndex:(rowNum*([self.numCols intValue] + 1) + i)]).backgroundColor = [UIColor colorWithRed:1 green:.96 blue:.56 alpha:1]; //light khaki
+        }
+    }
+    [self setRowHigh:[[NSNumber alloc] initWithInt:rowNum]];
 }
 
 @end
