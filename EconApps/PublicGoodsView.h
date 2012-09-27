@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 #import "DataViewController.h"
 #import "TokenStackView.h"
 #import "Defs.h"
 #import "Connection.h"
+#import "DACircularProgressView.h"
 
 @interface PublicGoodsView : UIView{
     
@@ -19,6 +21,7 @@
     TokenStackView* sendStackView;
     
     UIButton *sendButton;
+    DACircularProgressView* progressView;
     
 }
 
@@ -26,7 +29,11 @@
 @property (nonatomic) TokenStackView *localStackView;
 @property (nonatomic) TokenStackView *sendStackView;
 @property (nonatomic) UIButton* sendButton;
+@property (nonatomic) DACircularProgressView* progressView;
 
--(void)sendTokens;
+-(void)buttonTouchDown;
+-(void)buttonTouchUp;
+-(void)buttonLeft;
+-(void)moveTokensToPot;
 
 @end

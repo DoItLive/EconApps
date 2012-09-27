@@ -20,17 +20,20 @@
     
     UILabel* sizeLabel;
     
+    UILabel* nameLabel;
+    
 }
 
 @property(nonatomic)DataViewController *grid;
 @property(nonatomic)UIView* holderView;
 @property(nonatomic) NSInteger size;
 @property(nonatomic)UILabel* sizeLabel;
+@property(nonatomic)UILabel* nameLabel;
 
--(id)initWithSize:(NSInteger)numTokens andFrame:(CGRect)frame;
+-(id)initWithSize:(NSInteger)numTokens andFrame:(CGRect)frame andName:(NSString*)name;
 -(void) addTokenfromPoint:(CGPoint)point;
 -(void) addTokenfromPoint:(CGPoint)point withSpeed:(CGFloat)speed;
 -(TokenView*) removeToken;
--(int)sendTokensUp;
+-(NSMutableArray*)sendTokensUp;
 
 @end

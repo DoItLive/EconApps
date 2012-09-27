@@ -9,12 +9,16 @@
 /* Begin PBXBuildFile section */
 		0A83965D15F68447004E3429 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A83965C15F68447004E3429 /* LoginView.m */; };
 		0AB143151602BAEB0009F61B /* DataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB143141602BAEB0009F61B /* DataViewController.m */; };
+		BF20D47F1614CB0C00640DB6 /* token-blank.png in Resources */ = {isa = PBXBuildFile; fileRef = BF20D47E1614CB0C00640DB6 /* token-blank.png */; };
 		BF5EA9E0160A720800197E97 /* PG_TokenStack_BG.png in Resources */ = {isa = PBXBuildFile; fileRef = BF5EA9DF160A720800197E97 /* PG_TokenStack_BG.png */; };
 		BF6D9D19160B99E80007EFCA /* loginScreen_BG.png in Resources */ = {isa = PBXBuildFile; fileRef = BF6D9D18160B99E80007EFCA /* loginScreen_BG.png */; };
 		BF9A2DCB160255B000542E60 /* token-1.png in Resources */ = {isa = PBXBuildFile; fileRef = BF9A2DCA160255B000542E60 /* token-1.png */; };
 		BF9A2DD21602563400542E60 /* TokenView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF9A2DD11602563400542E60 /* TokenView.m */; };
 		BF9A2DD61602583B00542E60 /* TokenStackView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF9A2DD51602583B00542E60 /* TokenStackView.m */; };
 		BFBD6190161100B200868BA8 /* waitingScreen_BG.png in Resources */ = {isa = PBXBuildFile; fileRef = BFBD618F161100B200868BA8 /* waitingScreen_BG.png */; };
+		BFBD619516121DD900868BA8 /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = BFBD619416121DD900868BA8 /* DACircularProgressView.m */; };
+		BFBD619716121E2E00868BA8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFBD619616121E2E00868BA8 /* QuartzCore.framework */; };
+		BFBD61A11614C27400868BA8 /* potOfGold.png in Resources */ = {isa = PBXBuildFile; fileRef = BFBD61A01614C27400868BA8 /* potOfGold.png */; };
 		BFF4854415F804B3003DB6C3 /* Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF8CFB915F67A3B00F1D2EA /* Connection.m */; };
 		BFF4855115F80897003DB6C3 /* WaitingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF4855015F80897003DB6C3 /* WaitingView.m */; };
 		BFF4855415F808B1003DB6C3 /* WaitingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF4855315F808B1003DB6C3 /* WaitingViewController.m */; };
@@ -36,6 +40,7 @@
 		0A83965C15F68447004E3429 /* LoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginView.m; sourceTree = "<group>"; };
 		0AB143131602BAEB0009F61B /* DataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataViewController.h; path = EconApps/DataViewController.h; sourceTree = "<group>"; };
 		0AB143141602BAEB0009F61B /* DataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataViewController.m; path = EconApps/DataViewController.m; sourceTree = "<group>"; };
+		BF20D47E1614CB0C00640DB6 /* token-blank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "token-blank.png"; sourceTree = "<group>"; };
 		BF5EA9DF160A720800197E97 /* PG_TokenStack_BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PG_TokenStack_BG.png; sourceTree = "<group>"; };
 		BF6D9D18160B99E80007EFCA /* loginScreen_BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginScreen_BG.png; sourceTree = "<group>"; };
 		BF9A2DCA160255B000542E60 /* token-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "token-1.png"; sourceTree = "<group>"; };
@@ -44,6 +49,10 @@
 		BF9A2DD41602583B00542E60 /* TokenStackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenStackView.h; sourceTree = "<group>"; };
 		BF9A2DD51602583B00542E60 /* TokenStackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenStackView.m; sourceTree = "<group>"; };
 		BFBD618F161100B200868BA8 /* waitingScreen_BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = waitingScreen_BG.png; sourceTree = "<group>"; };
+		BFBD619316121DD900868BA8 /* DACircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DACircularProgressView.h; sourceTree = "<group>"; };
+		BFBD619416121DD900868BA8 /* DACircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACircularProgressView.m; sourceTree = "<group>"; };
+		BFBD619616121E2E00868BA8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		BFBD61A01614C27400868BA8 /* potOfGold.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = potOfGold.png; sourceTree = "<group>"; };
 		BFF4854F15F80897003DB6C3 /* WaitingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitingView.h; sourceTree = "<group>"; };
 		BFF4855015F80897003DB6C3 /* WaitingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaitingView.m; sourceTree = "<group>"; };
 		BFF4855215F808B1003DB6C3 /* WaitingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitingViewController.h; sourceTree = "<group>"; };
@@ -76,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFBD619716121E2E00868BA8 /* QuartzCore.framework in Frameworks */,
 				BFF8CF9915F6767800F1D2EA /* UIKit.framework in Frameworks */,
 				BFF8CF9B15F6767800F1D2EA /* Foundation.framework in Frameworks */,
 				BFF8CF9D15F6767800F1D2EA /* CoreGraphics.framework in Frameworks */,
@@ -99,9 +109,20 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		BFBD619216121DD900868BA8 /* DACircularProgress */ = {
+			isa = PBXGroup;
+			children = (
+				BFBD619316121DD900868BA8 /* DACircularProgressView.h */,
+				BFBD619416121DD900868BA8 /* DACircularProgressView.m */,
+			);
+			path = DACircularProgress;
+			sourceTree = "<group>";
+		};
 		BFF4854915F8066F003DB6C3 /* PublicGoodsView */ = {
 			isa = PBXGroup;
 			children = (
+				BF20D47E1614CB0C00640DB6 /* token-blank.png */,
+				BFBD61A01614C27400868BA8 /* potOfGold.png */,
 				E9B5CCE415F7FC8C00E71B8F /* PublicGoodsViewController.h */,
 				E9B5CCE515F7FC8C00E71B8F /* PublicGoodsViewController.m */,
 				E9B5CCE815F7FE2000E71B8F /* PublicGoodsView.h */,
@@ -172,6 +193,7 @@
 		BFF8CF9715F6767800F1D2EA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BFBD619616121E2E00868BA8 /* QuartzCore.framework */,
 				BFF8CF9815F6767800F1D2EA /* UIKit.framework */,
 				BFF8CF9A15F6767800F1D2EA /* Foundation.framework */,
 				BFF8CF9C15F6767800F1D2EA /* CoreGraphics.framework */,
@@ -182,6 +204,7 @@
 		BFF8CF9E15F6767800F1D2EA /* EconApps */ = {
 			isa = PBXGroup;
 			children = (
+				BFBD619216121DD900868BA8 /* DACircularProgress */,
 				E941DFDC15FA8EF200DE9C75 /* Defs.h */,
 				BFF8CFB815F67A3B00F1D2EA /* Connection.h */,
 				BFF8CFB915F67A3B00F1D2EA /* Connection.m */,
@@ -276,6 +299,8 @@
 				BF5EA9E0160A720800197E97 /* PG_TokenStack_BG.png in Resources */,
 				BF6D9D19160B99E80007EFCA /* loginScreen_BG.png in Resources */,
 				BFBD6190161100B200868BA8 /* waitingScreen_BG.png in Resources */,
+				BFBD61A11614C27400868BA8 /* potOfGold.png in Resources */,
+				BF20D47F1614CB0C00640DB6 /* token-blank.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,6 +323,7 @@
 				0AB143151602BAEB0009F61B /* DataViewController.m in Sources */,
 				BF9A2DD21602563400542E60 /* TokenView.m in Sources */,
 				BF9A2DD61602583B00542E60 /* TokenStackView.m in Sources */,
+				BFBD619516121DD900868BA8 /* DACircularProgressView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
