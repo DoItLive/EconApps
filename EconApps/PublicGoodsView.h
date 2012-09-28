@@ -24,6 +24,7 @@
     UIButton *sendButton;
     DACircularProgressView* progressView;
     
+    UserData *userData;
 }
 
 @property (nonatomic) DataViewController *theGrid;

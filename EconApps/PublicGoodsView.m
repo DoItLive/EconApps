@@ -7,6 +7,7 @@
 //
 
 #import "PublicGoodsView.h"
+#import "Defs.h"
 
 @implementation PublicGoodsView
 
@@ -17,6 +18,8 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor purpleColor];
+        
+        userData = [UserData userDataInstance]; //Get pointer to userData
         
         //Test to fill table with junk
         NSNumber* one = [[NSNumber alloc] initWithInt:1];
