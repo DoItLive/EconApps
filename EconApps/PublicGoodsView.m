@@ -79,7 +79,7 @@
         progressView.hidden = YES;
         [self addSubview:progressView];
         
-        TimerView* timerView = [[TimerView alloc] initWithFrame:CGRectMake(30, sendButton.frame.origin.y, 100, 100) andDuration:70];
+        TimerView* timerView = [[TimerView alloc] initWithFrame:CGRectMake(30, sendButton.frame.origin.y, 100, 100) andDuration:630];
         [self addSubview:timerView];
         
     }

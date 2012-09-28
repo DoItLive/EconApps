@@ -27,6 +27,7 @@
 {
     [super viewDidLoad];
     self.view = [self.view initWithFrame:self.view.frame];
+
 }
 
 - (void)viewDidUnload
