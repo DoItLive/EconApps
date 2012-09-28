@@ -56,12 +56,4 @@
     [self performSegueWithIdentifier:@"loginViewToWaitingView" sender:self];
 }
 
-//Pass the first and last name string to the waiting view controller
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([[segue identifier] isEqualToString:@"loginViewToWaitingView"]) {
-        WaitingViewController *waitingView = [segue destinationViewController];
-        waitingView.usernameLabelText = [NSString stringWithFormat:@"%@ %@",[(LoginView*)self.view firstName],[(LoginView*)self.view lastName]];
-    }
-}
-
 @end

@@ -24,8 +24,10 @@
 		BFF8CFA915F6767800F1D2EA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF8CFA815F6767800F1D2EA /* AppDelegate.m */; };
 		BFF8CFAC15F6767800F1D2EA /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFF8CFAA15F6767800F1D2EA /* MainStoryboard.storyboard */; };
 		BFF8CFAF15F6767800F1D2EA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF8CFAE15F6767800F1D2EA /* LoginViewController.m */; };
+		E92BE3B116163A02002A9EF5 /* UserData.m in Sources */ = {isa = PBXBuildFile; fileRef = E92BE3B016163A02002A9EF5 /* UserData.m */; };
 		E9B5CCE615F7FC8C00E71B8F /* PublicGoodsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B5CCE515F7FC8C00E71B8F /* PublicGoodsViewController.m */; };
 		E9B5CCEA15F7FE2000E71B8F /* PublicGoodsView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B5CCE915F7FE2000E71B8F /* PublicGoodsView.m */; };
+		E9B8F8EF1614CC940064E851 /* Socket.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B8F8EE1614CC940064E851 /* Socket.m */; };
 		E9F769F816122D5D0089D5C2 /* branded_background3_edited.png in Resources */ = {isa = PBXBuildFile; fileRef = E9F769F716122D5D0089D5C2 /* branded_background3_edited.png */; };
 		E9F769FA161234200089D5C2 /* icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = E9F769F9161234200089D5C2 /* icon-72.png */; };
 		E9F769FC1612355B0089D5C2 /* iconRetina.png in Resources */ = {isa = PBXBuildFile; fileRef = E9F769FB1612355B0089D5C2 /* iconRetina.png */; };
@@ -61,11 +63,15 @@
 		BFF8CFAE15F6767800F1D2EA /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		BFF8CFB815F67A3B00F1D2EA /* Connection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Connection.h; sourceTree = "<group>"; };
 		BFF8CFB915F67A3B00F1D2EA /* Connection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Connection.m; sourceTree = "<group>"; };
+		E92BE3AF16163A02002A9EF5 /* UserData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserData.h; sourceTree = "<group>"; };
+		E92BE3B016163A02002A9EF5 /* UserData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserData.m; sourceTree = "<group>"; };
 		E941DFDC15FA8EF200DE9C75 /* Defs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Defs.h; sourceTree = "<group>"; };
 		E9B5CCE415F7FC8C00E71B8F /* PublicGoodsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublicGoodsViewController.h; sourceTree = "<group>"; };
 		E9B5CCE515F7FC8C00E71B8F /* PublicGoodsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublicGoodsViewController.m; sourceTree = "<group>"; };
 		E9B5CCE815F7FE2000E71B8F /* PublicGoodsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublicGoodsView.h; sourceTree = "<group>"; };
 		E9B5CCE915F7FE2000E71B8F /* PublicGoodsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublicGoodsView.m; sourceTree = "<group>"; };
+		E9B8F8ED1614CC940064E851 /* Socket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Socket.h; sourceTree = "<group>"; };
+		E9B8F8EE1614CC940064E851 /* Socket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Socket.m; sourceTree = "<group>"; };
 		E9F769F716122D5D0089D5C2 /* branded_background3_edited.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = branded_background3_edited.png; sourceTree = "<group>"; };
 		E9F769F9161234200089D5C2 /* icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-72.png"; sourceTree = "<group>"; };
 		E9F769FB1612355B0089D5C2 /* iconRetina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconRetina.png; sourceTree = "<group>"; };
@@ -185,6 +191,10 @@
 				E941DFDC15FA8EF200DE9C75 /* Defs.h */,
 				BFF8CFB815F67A3B00F1D2EA /* Connection.h */,
 				BFF8CFB915F67A3B00F1D2EA /* Connection.m */,
+				E9B8F8ED1614CC940064E851 /* Socket.h */,
+				E9B8F8EE1614CC940064E851 /* Socket.m */,
+				E92BE3AF16163A02002A9EF5 /* UserData.h */,
+				E92BE3B016163A02002A9EF5 /* UserData.m */,
 				BFF8CFA715F6767800F1D2EA /* AppDelegate.h */,
 				BFF8CFA815F6767800F1D2EA /* AppDelegate.m */,
 				BFF8CFAA15F6767800F1D2EA /* MainStoryboard.storyboard */,
@@ -298,6 +308,8 @@
 				0AB143151602BAEB0009F61B /* DataViewController.m in Sources */,
 				BF9A2DD21602563400542E60 /* TokenView.m in Sources */,
 				BF9A2DD61602583B00542E60 /* TokenStackView.m in Sources */,
+				E9B8F8EF1614CC940064E851 /* Socket.m in Sources */,
+				E92BE3B116163A02002A9EF5 /* UserData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

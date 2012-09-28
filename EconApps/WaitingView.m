@@ -22,8 +22,10 @@
     return self;
 }
 
--(void) initView:(NSString *)nameLabelText{
-    [usernameLabel setText:nameLabelText];
+-(void) initView {
+    
+    userData = [UserData userDataInstance];
+    [usernameLabel setText:[NSString stringWithFormat:@"%@ %@",userData.firstName,userData.lastName]];
     [usernameLabel setTextColor:[UIColor whiteColor]];
     
     [activityIndicator startAnimating];

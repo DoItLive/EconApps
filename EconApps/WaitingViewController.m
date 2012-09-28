@@ -15,8 +15,6 @@
 
 @implementation WaitingViewController
 
-@synthesize usernameLabelText;
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -38,10 +36,10 @@
 
 }
 
-//Calling initPolling in viewDidAppear instead of viewDidLoad because otherwise it will try to move on to the next segue before the current
+//Calling initView in viewDidAppear instead of viewDidLoad because otherwise it will try to move on to the next segue before the current
 //segue is done.  Also pass in the username label for the waiting view.
 - (void)viewDidAppear:(BOOL)animated {
-    [(WaitingView*)self.view initView:usernameLabelText];
+    [(WaitingView*)self.view initView];
 }
 
 - (void)viewDidUnload
@@ -66,14 +64,6 @@
 -(void)switchToPublicGoodsView
 {
     [self performSegueWithIdentifier:@"waitingViewToPublicGoodsView" sender:self];
-}
-
-//Pass the username label text to the next view
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([[segue identifier] isEqualToString:@"waitingViewToPublicGoodsView"]) {
-        PublicGoodsViewController *publicGoods = [segue destinationViewController];
-        publicGoods.nameLabelText = usernameLabelText;
-    }
 }
 
 @end

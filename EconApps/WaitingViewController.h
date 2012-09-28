@@ -11,11 +11,7 @@
 
 @interface WaitingViewController : UIViewController {
     
-    NSString *usernameLabelText;
-
 }
-
-@property (nonatomic) NSString *usernameLabelText;
 
 -(void)switchToPublicGoodsView;
 

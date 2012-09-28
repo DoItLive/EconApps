@@ -11,6 +11,7 @@
 #import "TokenStackView.h"
 #import "Defs.h"
 #import "Connection.h"
+#import "UserData.h"
 
 @interface PublicGoodsView : UIView{
     
@@ -20,6 +21,7 @@
     
     UIButton *sendButton;
     
+    UserData *userData;
 }
 
 @property (nonatomic) DataViewController *theGrid;

@@ -7,6 +7,7 @@
 //
 
 #import "PublicGoodsView.h"
+#import "Defs.h"
 
 @implementation PublicGoodsView
 
@@ -17,6 +18,8 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor purpleColor];
+        
+        userData = [UserData userDataInstance]; //Get pointer to userData
         
         //Test to fill table with junk
         NSNumber* one = [[NSNumber alloc] initWithInt:1];
@@ -70,12 +73,12 @@
 
     int numTokenstoSend = [sendStackView sendTokensUp];
     NSString* postString = [[NSString alloc] initWithFormat:@"tokens=%d",numTokenstoSend];
-    //Connection *conn = [[Connection alloc] initWithFinishSelector:@selector(validateLogin:)
-    //                                             withFailSelector:@selector(validateLogin:)
-    //                                                     toTarget:self
-    //                                                      withURL:kLOGIN_VIEW_URL
-    //                                                   withString:postString];
-    //[conn connect];
+    Connection *conn = [[Connection alloc] initWithFinishSelector:nil
+                                                 withFailSelector:nil
+                                                         toTarget:self
+                                                          withURL:kSEND_TOKENS_URL
+                                                       withString:postString];
+    [conn connect];
     
     [self.sendButton setEnabled:FALSE];
     [self.localStackView setUserInteractionEnabled:FALSE];
