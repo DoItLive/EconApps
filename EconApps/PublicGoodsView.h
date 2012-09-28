@@ -13,6 +13,7 @@
 #import "Defs.h"
 #import "Connection.h"
 #import "DACircularProgressView.h"
+#import "TimerView.h"
 
 @interface PublicGoodsView : UIView{
     

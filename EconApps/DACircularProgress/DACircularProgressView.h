@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 
 @interface DACircularProgressView : UIView
 
@@ -16,6 +17,6 @@
 @property(nonatomic) CGFloat thicknessRatio UI_APPEARANCE_SELECTOR;
 @property(nonatomic) CGFloat progress;
 
-- (void)setProgress:(CGFloat)progress animated:(BOOL)animated duration:(CGFloat)duration;
+- (void)setProgress:(CGFloat)progress animated:(BOOL)animated duration:(CGFloat)duration andTimingFunc:(CAMediaTimingFunction*)func;
 
 @end

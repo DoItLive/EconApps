@@ -49,7 +49,7 @@
         [self addSubview:theGrid.view];
         //[self.theGrid setUpHierarchy];
         
-        localStackView = [[TokenStackView alloc] initWithSize:10 andFrame:CGRectMake(60, 30, 300, 150) andName:@"My Tokens"];
+        localStackView = [[TokenStackView alloc] initWithSize:10 andFrame:CGRectMake(160, 30, 300, 150) andName:@"My Tokens"];
         [self addSubview:localStackView];
 
         sendStackView = [[TokenStackView alloc] initWithSize:0 andFrame:CGRectMake(567, 30, 300, 150) andName:@"Tokens to Send"];
@@ -68,13 +68,16 @@
         [sendButton addTarget:self action:@selector(buttonLeft) forControlEvents:UIControlEventTouchDragExit];
         [self addSubview:sendButton];
         
-        progressView = [[DACircularProgressView alloc] initWithFrame:sendButton.frame];
+        progressView = [[DACircularProgressView alloc] initWithFrame:CGRectMake(sendButton.center.x-50, sendButton.center.y-50, 100, 100)];
         progressView.roundedCorners = NO;
         progressView.progressTintColor = [UIColor whiteColor];
-        progressView.trackTintColor = [UIColor clearColor];
-        [progressView setThicknessRatio:0.32];
+        progressView.trackTintColor = [UIColor colorWithWhite:1.0 alpha:0.3];
+        [progressView setThicknessRatio:0.33];
         progressView.hidden = YES;
         [self addSubview:progressView];
+        
+        TimerView* timerView = [[TimerView alloc] initWithFrame:CGRectMake(30, sendButton.frame.origin.y, 100, 100) andDuration:70];
+        [self addSubview:timerView];
         
     }
     return self;
@@ -83,7 +86,7 @@
 -(void)buttonTouchDown{
     
     progressView.hidden = NO;
-    [progressView setProgress:1.f animated:YES duration:1.0];
+    [progressView setProgress:1.f animated:YES duration:1.0 andTimingFunc:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
     
 }
 
@@ -159,7 +162,7 @@
         });
         
         [path removeAllPoints];
-        curToken++;
+            curToken++;
         
     }
     

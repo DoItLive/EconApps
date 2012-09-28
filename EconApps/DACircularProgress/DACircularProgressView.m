@@ -153,17 +153,17 @@
 
 - (void)setProgress:(CGFloat)progress
 {
-    [self setProgress:progress animated:NO duration:0.0];
+    [self setProgress:progress animated:NO duration:0.0 andTimingFunc:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
 }
 
-- (void)setProgress:(CGFloat)progress animated:(BOOL)animated duration:(CGFloat)duration
+- (void)setProgress:(CGFloat)progress animated:(BOOL)animated duration:(CGFloat)duration andTimingFunc:(CAMediaTimingFunction*)func
 {
     CGFloat pinnedProgress = MIN(MAX(progress, 0.f), 1.f);
     if (animated)
     {
         CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"progress"];
         animation.duration = duration; // Same duration as UIProgressView animation
-        animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        animation.timingFunction = func;
         animation.fromValue = [NSNumber numberWithFloat:self.progress];
         animation.toValue = [NSNumber numberWithFloat:pinnedProgress];
         [self.circularProgressLayer addAnimation:animation forKey:@"progress"];
