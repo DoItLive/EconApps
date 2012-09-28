@@ -14,6 +14,7 @@
 #import "Connection.h"
 #import "DACircularProgressView.h"
 #import "TimerView.h"
+#import "UserData.h"
 
 @interface PublicGoodsView : UIView{
     
