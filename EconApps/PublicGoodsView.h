@@ -39,4 +39,7 @@
 -(void)buttonLeft;
 -(void)moveTokensToPot;
 
+-(void)poll:(NSTimer*)timer;
+-(void)dataReceived:(NSData*)data;
+
 @end

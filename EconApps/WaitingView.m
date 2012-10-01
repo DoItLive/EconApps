@@ -62,15 +62,14 @@
             [[NSNotificationCenter defaultCenter] postNotificationName:@"switchToPitMarketView" object:nil];
             break;
         default:
-            [NSTimer scheduledTimerWithTimeInterval:kPOLLING_INTERVAL target:self selector:@selector(poll:) userInfo:nil repeats:NO];
+            [NSTimer scheduledTimerWithTimeInterval:kWAITING_POLLING_INTERVAL target:self selector:@selector(poll:) userInfo:nil repeats:NO];
             break;
     }
-    
 }
 
 //If the connection fails then just keep polling to hopefully reconnect
 -(void)connectionFailed {
-    [NSTimer scheduledTimerWithTimeInterval:kPOLLING_INTERVAL target:self selector:@selector(poll:) userInfo:nil repeats:NO];
+    [NSTimer scheduledTimerWithTimeInterval:kWAITING_POLLING_INTERVAL target:self selector:@selector(poll:) userInfo:nil repeats:NO];
 }
 
 @end
