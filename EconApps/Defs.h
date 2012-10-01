@@ -20,6 +20,11 @@ typedef enum LOGIN_VIEW_CODES {
     KINVALID_PASSWORD = 2,
 } LOGIN_VIEW_CODES;
 
+typedef enum TABLE_STYLE {
+    kUNIFORM = 0,
+    kNON_UNIFORM = 1,
+} TABLE_STYLE;
+
 #define kDATABASE_NAME @"econapps_db"
 #define kDATABASE_USER @"econuser"
 #define kDATABASE_PASS @"Q!W@E#R$T%"

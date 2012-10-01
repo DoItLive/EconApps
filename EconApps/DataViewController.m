@@ -14,66 +14,100 @@
 
 @implementation DataViewController
 
-@synthesize view, scrollView, cells, tables, data, numCols, numRows, cellWidth, cellHeight, colHigh, rowHigh;
+@synthesize view, style, allowHighlighting, numberBuilt, scrollView, cells, tables, data, numberOfColumns, numberOfRows, cellWidth, cellHeight, highlightedColumn, highlightedRow;
 
-- (id)initWithFrame:(CGRect)frame andData:(NSMutableArray*)dataInput
+- (id)initWithFrame:(CGRect)frameIn andData:(NSMutableArray*)dataIn andStyle:(TABLE_STYLE)styleIn
 {
     if (self) {
-        //Build overall view with frame
-        self.view = [[UIView alloc] initWithFrame:frame];
         
-        //Set up the data source and #rows and columns
-        [self setData:dataInput];
-        [self setNumCols: [[NSNumber alloc] initWithInt:[self.data count]]];
-        [self setNumRows: [[NSNumber alloc] initWithInt:[[self.data objectAtIndex:0] count]]];
-        [self setColHigh:[[NSNumber alloc] initWithInt:0]];
-        [self setRowHigh:[[NSNumber alloc] initWithInt:0]];
+        //Set up view, data, and style
+        [self setView:[[UIView alloc] initWithFrame:frameIn]];
+        [self setData:dataIn];
+        [self setStyle:styleIn];
         
         
-        //Set the height of cells (default is 44)
-        [self setCellHeight: [[NSNumber alloc] initWithInt:44]];
+        //Set up important values
+        [self setNumberOfColumns:[[NSNumber alloc] initWithInt:[self.data count]]];
+        [self setNumberOfRows:[[NSNumber alloc] initWithInt:[[self.data objectAtIndex:0] count]]];
         
-        //Calculate cell width based on number of columns +1 for the row headers
-        [self setCellWidth: [[NSNumber alloc] initWithInt:frame.size.width/([self.numCols intValue] + 1) - 1]];
+        if (self.style == kUNIFORM) {
+            [self setAllowHighlighting:YES];
+        } else {
+            [self setAllowHighlighting:NO];
+        }
+        
+        if (self.allowHighlighting) {
+            [self setHighlightedColumn:[[NSNumber alloc] initWithInt:1]];
+            [self setHighlightedRow:[[NSNumber alloc] initWithInt:0]];
+        }
+
+        [self setCellHeight:[[NSNumber alloc] initWithInt:44]]; //default is 44
+        
+        if (style == kUNIFORM) {
+            [self setCellWidth:[[NSNumber alloc] initWithInt:self.view.frame.size.width/[self.numberOfColumns intValue] - 1]];
+        }
         
         //Build the scrollview for the tableviews filling up the frame minus one cell height for the column headers
-        self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0 + [cellHeight intValue], frame.size.width, frame.size.height - [cellHeight intValue])];
+        self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, [self.cellHeight intValue], self.view.frame.size.width, self.view.frame.size.height - [self.cellHeight intValue])];
         self.scrollView.showsHorizontalScrollIndicator = FALSE;
         self.scrollView.bounces = FALSE;
         [self.view addSubview:self.scrollView];
         
         //Content size big enough so that tables won't scroll
-        self.scrollView.contentSize = CGSizeMake(frame.size.width,[self.numRows intValue]*[self.cellHeight intValue]);
+        [self.scrollView setContentSize: CGSizeMake(self.view.frame.size.width,([self.numberOfRows intValue] - 1)*[self.cellHeight intValue])];
         
-        //Holds all the data
-        self.tables = [[NSMutableArray alloc] initWithCapacity:2*([self.numCols intValue] + 1)];
-        self.cells = [[NSMutableArray alloc] initWithCapacity:([self.numCols intValue] + 1)*([self.numRows intValue] + 1)];
+        self.tables = [[NSMutableArray alloc] initWithCapacity:[self.numberOfColumns intValue]*2];
+        self.cells = [[NSMutableArray alloc] initWithCapacity:[self.numberOfColumns intValue]*[self.numberOfRows intValue]];
         
-        for (int i=0;i<[self.numCols intValue];i++){
-            UITableView *t = [[UITableView alloc] initWithFrame:CGRectMake((i + 1)*([cellWidth intValue] + 1), 0, [self.cellWidth intValue], [self.cellHeight intValue])];
-            [t setDelegate:self];
-            [t setDataSource:self];
-            t.showsVerticalScrollIndicator = NO;
-            t.backgroundColor = [UIColor clearColor];
-            t.separatorColor = [UIColor purpleColor];
-            t.rowHeight = [cellHeight intValue];
-            t.bounces = FALSE;
-            [self.tables addObject:t];
-            [self.view addSubview:t];
+        UITableViewCell *cell;
+        static NSString *CellIdentifier = @"Cell";
+        if (cell==nil)
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        
+        for (int i = 0; i < [self.numberOfColumns intValue]*[self.numberOfRows intValue]; i++) {
+            [self.cells addObject:cell];
         }
+        [self setNumberBuilt:0];
         
-        for (int i=0;i<[self.numCols intValue] + 1;i++){
-            UITableView *t = [[UITableView alloc] initWithFrame:CGRectMake(i*([cellWidth intValue] + 1), 0, [cellWidth intValue], self.scrollView.contentSize.height)];
-            [t setDelegate:self];
-            [t setDataSource:self];
-            t.showsVerticalScrollIndicator = NO;
-            t.backgroundColor = [UIColor clearColor];
-            t.separatorColor = [UIColor purpleColor];
-            t.rowHeight = [cellHeight intValue];
-            [self.tables addObject:t];
-            [self.scrollView addSubview:t];
+        for (int i = 0; i < [self.numberOfColumns intValue]*2; i++){
+            if (!(!i && self.style == kUNIFORM)) {
+                int j = i%[self.numberOfColumns intValue];
+                int currentCellWidth = [self.cellWidth intValue];
+                if (self.style == kNON_UNIFORM) {
+                    currentCellWidth = [self cellWidthForColumn:j];
+                }
+                int currentOriginX;
+                if (!j) {
+                    currentOriginX = 1;
+                } else if (i == 1 && self.style == kUNIFORM) {
+                    currentOriginX = [self.cellWidth intValue] + 2;
+                } else {
+                    currentOriginX = ((UITableView*)[self.tables objectAtIndex:[self.tables count] - 1]).frame.origin.x + ((UITableView*)[self.tables objectAtIndex:[self.tables count] - 1]).frame.size.width + 1;
+                }
+                int currentHeight;
+                if (i < [self.numberOfColumns intValue]) {
+                    currentHeight = [self.cellHeight intValue];
+                } else {
+                    currentHeight = ([self.numberOfRows intValue] - 1)*[self.cellHeight intValue];
+                }
+                UITableView *t = [[UITableView alloc] initWithFrame:CGRectMake(currentOriginX, 0, currentCellWidth, currentHeight)];
+                [t setDelegate:self];
+                [t setDataSource:self];
+                t.showsVerticalScrollIndicator = NO;
+                t.backgroundColor = [UIColor clearColor];
+                t.separatorColor = [UIColor purpleColor];
+                t.rowHeight = [cellHeight intValue];
+                t.bounces = FALSE;
+                [self.tables addObject:t];
+                if (i < [self.numberOfColumns intValue]) {
+                    [self.view addSubview:t];
+                } else {
+                    [self.scrollView addSubview:t];
+                }
+            }
+         
         }
-        
+    
        
         
     }
@@ -83,6 +117,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -117,8 +152,7 @@
     if(tableView.superview == self.view){
         return 1;
     } else {
-    
-        return [self.numRows intValue];
+        return [self.numberOfRows intValue] - 1;
     }
 }
 
@@ -130,52 +164,60 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     
     //Get the current table by grabbing its topleft corner and dividing by its size
-    NSInteger curTable = (int)tableView.frame.origin.x/[cellWidth intValue];
-    NSInteger curRow = [indexPath row];
-    
-    NSString* text;
-    
-    if(tableView.superview == self.view){
-        text = [[NSString alloc] initWithFormat:@"%d",curTable - 1];
+    NSInteger currentRow = [indexPath row];
+    NSInteger currentColumn;
+    NSInteger j = [self.tables indexOfObject:tableView];
+    if (self.style == kUNIFORM) {
+        currentColumn = (j + 1)%[self.numberOfColumns intValue];
+        if (j + 1 >= [self.numberOfColumns intValue]) {
+            currentRow++;
+        }
     } else {
-        if(curTable == 0){
-            text = [[NSString alloc] initWithFormat:@"%d",curRow];
-        } else{
-            int num = [[(NSMutableArray*)[self.data objectAtIndex:curTable - 1] objectAtIndex:curRow] intValue];
-            text = [[NSString alloc] initWithFormat:@"%d",num];
+        currentColumn = j%[self.numberOfColumns intValue];
+        if (j >= [self.numberOfColumns intValue]) {
+            currentRow++;
         }
     }
-        
-    [[cell textLabel] setText:text];
+    
+    [[cell textLabel] setText:[[self.data objectAtIndex:currentColumn] objectAtIndex:currentRow]];
+    
     cell.textLabel.textAlignment = 1;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    [self.cells addObject:cell];
-    
-    if ([self.cells count] >= ([self.numCols intValue] + 1)*([self.numRows intValue] + 1) - 1) {
-        [self setUpHierarchy];
-        [self updateSelectedRow:1];
+    if (self.numberBuilt < [self.cells count]) {
+        NSInteger indexNum = currentRow*[self.numberOfColumns intValue] + currentColumn;
+        [self.cells replaceObjectAtIndex:indexNum withObject:cell];
+        self.numberBuilt++;
+        //[[cell textLabel] setText:[[NSString alloc] initWithFormat:@"%d",indexNum]];
+        if (self.numberBuilt + 1 == [self.cells count]) {
+            [self updateSelectedColumn:1];
+        }
     }
     
     return cell;
 }
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (tableView.superview == self.view || !((int)tableView.frame.origin.x/[cellWidth intValue])) {
-        cell.backgroundColor = [UIColor colorWithRed:.27 green:.51 blue:.71 alpha:1]; //steel blue
-    } else if (!([indexPath row] % 2)){
-        //if (!((int)tableView.frame.origin.x/[cellWidth intValue])) {
-            cell.backgroundColor = [UIColor whiteColor];
-        //} else {
-        //    cell.backgroundColor = [UIColor colorWithRed:1 green:.88 blue:1 alpha:1]; //light thistle
-        //}  [UIColor colorWithRed:.27 green:.51 blue:.71 alpha:1]; //steel blue
-        
+    NSInteger currentRow = [indexPath row];
+    NSInteger currentColumn;
+    NSInteger j = [self.tables indexOfObject:tableView];
+    if (self.style == kUNIFORM) {
+        currentColumn = (j + 1)%[self.numberOfColumns intValue];
+        if (j + 1 >= [self.numberOfColumns intValue]) {
+            currentRow++;
+        }
     } else {
-        //if (!((int)tableView.frame.origin.x/[cellWidth intValue])) {
-        //    cell.backgroundColor = [UIColor colorWithRed:.69 green:.77 blue:.87 alpha:1]; //light steel blue
-        //} else {
-            cell.backgroundColor = [UIColor colorWithRed:.93 green:.82 blue:.93 alpha:1]; //light thistle
-        //}
+        currentColumn = j%[self.numberOfColumns intValue];
+        if (j >= [self.numberOfColumns intValue]) {
+            currentRow++;
+        }
+    }
+    if (!currentRow || !currentColumn) {
+        cell.backgroundColor = [UIColor colorWithRed:.27 green:.51 blue:.71 alpha:1]; //steel blue
+    } else if (currentRow%2){
+        cell.backgroundColor = [UIColor whiteColor];  
+    } else {
+        cell.backgroundColor = [UIColor colorWithRed:.93 green:.82 blue:.93 alpha:1]; //light thistle
     }
 }
 
@@ -183,67 +225,71 @@
 
 #pragma mark - Table view delegate
 
-- (void)setUpHierarchy
+- (int)cellWidthForColumn:(int)columnIn
 {
-    [self.cells addObject:[self.cells objectAtIndex:0]];
-    NSMutableArray *tmp = [[NSMutableArray alloc] initWithCapacity:[self.cells count]];
-    [tmp addObjectsFromArray:self.cells];
-    for (int i = 0; i < [tmp count]; i++) {
-        UITableViewCell *cell = [tmp objectAtIndex:i];
-        UITableView *table = (UITableView*)cell.superview;
-        NSInteger rowNum = [[table indexPathForCell:cell] row];
-        if(i >= [tmp count] - [self.numRows intValue] && i < [tmp count] - 1){
-            table = (UITableView*)((UITableViewCell*)[self.cells objectAtIndex:[self.numCols intValue] + 1]).superview;
-            rowNum = i - ([tmp count] - [self.numRows intValue]) + 1;
-        }
-        NSInteger colNum = (int)table.frame.origin.x/[cellWidth intValue];
-        NSInteger indexNum;
-        if (table.superview == self.view) {
-            indexNum = colNum;
-        } else {
-            indexNum = (rowNum + 1)*([self.numCols intValue] + 1) + colNum;
-        }
-        
-        [self.cells replaceObjectAtIndex:indexNum withObject:cell];
-        //[[cell textLabel] setText:[[NSString alloc] initWithFormat:@"%d",indexNum]];
+    double headerTotal = 0;
+    for (int i = 0; i < [self.numberOfColumns intValue]; i++) {
+        headerTotal+=[(NSString *)[[self.data objectAtIndex:i] objectAtIndex:0] length];
     }
+    double columnLength = [(NSString *)[[self.data objectAtIndex:columnIn] objectAtIndex:0] length];
+    double ratio = columnLength/headerTotal;
+    NSInteger  size = ((int)(ratio*self.view.frame.size.width + .5)) - 1;
+    
+    NSLog(@"size %d",size);
+    return size;
 }
 
-- (void)updateSelectedRow:(NSInteger)rowNum
+
+- (void)updateSelectedColumn:(NSInteger)stackSize
 {
-    NSInteger curTable = rowNum;
-    if(curTable){
-        UITableViewCell *tmp;
-        for (int i = 0; i < [self.numRows intValue] + 1; i++) {
-            if(!i || i != [rowHigh intValue]){
-                tmp = [self.cells objectAtIndex:([colHigh intValue] + ([self.numCols intValue] + 1)*i)];
-                [self tableView:(UITableView*)tmp.superview willDisplayCell:tmp forRowAtIndexPath:[(UITableView*)tmp.superview indexPathForCell:tmp]];
+    if (allowHighlighting) {
+        NSInteger currentColumn = stackSize;
+        if(currentColumn){
+            UITableViewCell *tmp;
+            for (int i = 0; i < [self.numberOfRows intValue]; i++) {
+                if(!i || i != [highlightedRow intValue]){
+                    tmp = [self.cells objectAtIndex:([highlightedColumn intValue] + [self.numberOfColumns intValue]*i)];
+                    [self tableView:(UITableView*)tmp.superview willDisplayCell:tmp forRowAtIndexPath:[(UITableView*)tmp.superview indexPathForCell:tmp]];
+                }
             }
+            for (int i = 0; i < [self.numberOfRows intValue]; i++) {
+                ((UITableViewCell*)[self.cells objectAtIndex:(currentColumn + [self.numberOfColumns intValue]*i)]).backgroundColor = [UIColor colorWithRed:1 green:.96 blue:.56 alpha:1]; //light khaki
+            }
+            [self setHighlightedColumn: [[NSNumber alloc] initWithInt:currentColumn]];
         }
-        for (int i = 0; i < [self.numRows intValue] + 1; i++) {
-            ((UITableViewCell*)[self.cells objectAtIndex:(curTable + ([self.numCols intValue] + 1)*i)]).backgroundColor = [UIColor colorWithRed:1 green:.96 blue:.56 alpha:1]; //light khaki
-        }
-        [self setColHigh: [[NSNumber alloc] initWithInt:curTable]];
     }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (allowHighlighting) {
+        UITableViewCell *tmp;
+        for (int i = 0; i < [self.numberOfColumns intValue]; i++) {
+            if(i != [highlightedColumn intValue] || ![highlightedColumn intValue]){
+                tmp = [self.cells objectAtIndex:([highlightedRow intValue]*[self.numberOfColumns intValue] + i)];
+                [self tableView:(UITableView*)tmp.superview willDisplayCell:tmp forRowAtIndexPath:[(UITableView*)tmp.superview indexPathForCell:tmp]];
+            }
+        }
     
-    UITableViewCell *tmp;
-    for (int i = 0; i < [self.numCols intValue] + 1; i++) {
-        if(i != [colHigh intValue] || ![colHigh intValue]){
-            tmp = [self.cells objectAtIndex:([rowHigh intValue]*([self.numCols intValue] + 1) + i)];
-            [self tableView:(UITableView*)tmp.superview willDisplayCell:tmp forRowAtIndexPath:[(UITableView*)tmp.superview indexPathForCell:tmp]];
+        NSInteger currentRow = [indexPath row];
+        NSInteger j = [self.tables indexOfObject:tableView];
+        if (self.style == kUNIFORM) {
+            if (j + 1 >= [self.numberOfColumns intValue]) {
+                currentRow++;
+            }
+        } else {
+            if (j >= [self.numberOfColumns intValue]) {
+                currentRow++;
+            }
         }
-    }
-    NSInteger rowNum = [indexPath row] + 1;
-    if (rowNum != 0) {
-        for (int i = 0; i < [self.numCols intValue] + 1; i++) {
-            ((UITableViewCell*)[self.cells objectAtIndex:(rowNum*([self.numCols intValue] + 1) + i)]).backgroundColor = [UIColor colorWithRed:1 green:.96 blue:.56 alpha:1]; //light khaki
+    
+        if (currentRow != 0) {
+            for (int i = 0; i < [self.numberOfColumns intValue]; i++) {
+                ((UITableViewCell*)[self.cells objectAtIndex:(currentRow*[self.numberOfColumns intValue] + i)]).backgroundColor = [UIColor colorWithRed:1 green:.96 blue:.56 alpha:1]; //light khaki
+            }
         }
+        [self setHighlightedRow:[[NSNumber alloc] initWithInt:currentRow]];
     }
-    [self setRowHigh:[[NSNumber alloc] initWithInt:rowNum]];
 }
 
 @end
