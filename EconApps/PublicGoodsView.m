@@ -22,13 +22,13 @@
         userData = [UserData userDataInstance]; //Get pointer to userData
         
         //Test to fill table with junk
-        NSString* one = [[NSString alloc] initWithFormat:@"I like fishsticks"];
+        NSString* one = [[NSString alloc] initWithFormat:@"1"];
         NSString* two = [[NSString alloc] initWithFormat:@"2"];
-        NSString* three = [[NSString alloc] initWithFormat:@"Thomas doesnt love you"];
+        NSString* three = [[NSString alloc] initWithFormat:@"3"];
         NSString* four = [[NSString alloc] initWithFormat:@"4"];
-        NSString* five = [[NSString alloc] initWithFormat:@"timbuktu"];
+        NSString* five = [[NSString alloc] initWithFormat:@"5"];
         NSString* six = [[NSString alloc] initWithFormat:@"6"];
-        NSString* seven = [[NSString alloc] initWithFormat:@"theres a pie over there"];
+        NSString* seven = [[NSString alloc] initWithFormat:@"7"];
         NSString* eight = [[NSString alloc] initWithFormat:@"8"];
         NSString* nine = [[NSString alloc] initWithFormat:@"9"];
         NSString* ten = [[NSString alloc] initWithFormat:@"10"];
@@ -48,7 +48,7 @@
         NSMutableArray *array12 = [[NSMutableArray alloc] initWithObjects:five,three,three,four,five,six,seven,eight,nine,ten,eleven, nil];
         NSMutableArray *data = [[NSMutableArray alloc] initWithObjects:array1,array2,array3,array4,array5,array6,array7,array8,array9,array10,array11,array12, nil];
         
-        self.theGrid = [[DataViewController alloc] initWithFrame:CGRectMake(10, 200, self.frame.size.height, 300) andData:data andStyle:kNON_UNIFORM];
+        self.theGrid = [[DataViewController alloc] initWithFrame:CGRectMake(10, 200, self.frame.size.height, 300) andData:data andStyle:kUNIFORM];
         [self addSubview:theGrid.view];
         //[self.theGrid setUpHierarchy];
         
