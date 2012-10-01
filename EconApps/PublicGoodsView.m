@@ -19,17 +19,17 @@
         self.backgroundColor = [UIColor purpleColor];
         
         //Test to fill table with junk
-        NSNumber* one = [[NSNumber alloc] initWithInt:1];
-        NSNumber* two = [[NSNumber alloc] initWithInt:2];
-        NSNumber* three = [[NSNumber alloc] initWithInt:3];
-        NSNumber* four = [[NSNumber alloc] initWithInt:4];
-        NSNumber* five = [[NSNumber alloc] initWithInt:5];
-        NSNumber* six = [[NSNumber alloc] initWithInt:6];
-        NSNumber* seven = [[NSNumber alloc] initWithInt:7];
-        NSNumber* eight = [[NSNumber alloc] initWithInt:8];
-        NSNumber* nine = [[NSNumber alloc] initWithInt:9];
-        NSNumber* ten = [[NSNumber alloc] initWithInt:10];
-        NSNumber* eleven = [[NSNumber alloc] initWithInt:11];
+        NSString* one = [[NSString alloc] initWithFormat:@"I like fishsticks"];
+        NSString* two = [[NSString alloc] initWithFormat:@"2"];
+        NSString* three = [[NSString alloc] initWithFormat:@"Thomas doesnt love you"];
+        NSString* four = [[NSString alloc] initWithFormat:@"4"];
+        NSString* five = [[NSString alloc] initWithFormat:@"timbuktu"];
+        NSString* six = [[NSString alloc] initWithFormat:@"6"];
+        NSString* seven = [[NSString alloc] initWithFormat:@"theres a pie over there"];
+        NSString* eight = [[NSString alloc] initWithFormat:@"8"];
+        NSString* nine = [[NSString alloc] initWithFormat:@"9"];
+        NSString* ten = [[NSString alloc] initWithFormat:@"10"];
+        NSString* eleven = [[NSString alloc] initWithFormat:@"11"];
 
         NSMutableArray *array1 = [[NSMutableArray alloc] initWithObjects:seven,two,three,four,five,six,seven,eight,nine,ten,eleven, nil];
         NSMutableArray *array2 = [[NSMutableArray alloc] initWithObjects:two,two,three,four,five,six,seven,eight,nine,ten,eleven, nil];
@@ -45,7 +45,7 @@
         NSMutableArray *array12 = [[NSMutableArray alloc] initWithObjects:five,three,three,four,five,six,seven,eight,nine,ten,eleven, nil];
         NSMutableArray *data = [[NSMutableArray alloc] initWithObjects:array1,array2,array3,array4,array5,array6,array7,array8,array9,array10,array11,array12, nil];
         
-        self.theGrid = [[DataViewController alloc] initWithFrame:CGRectMake(10, 200, self.frame.size.height, 300) andData:data];
+        self.theGrid = [[DataViewController alloc] initWithFrame:CGRectMake(10, 200, self.frame.size.height, 300) andData:data andStyle:kNON_UNIFORM];
         [self addSubview:theGrid.view];
         //[self.theGrid setUpHierarchy];
         
