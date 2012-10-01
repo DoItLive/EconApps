@@ -24,8 +24,8 @@
     //Add to notification center that way LoginView can call the function switchToWaitingView
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(switchToWaitingView) name:@"switchToWaitingView" object:nil];
     
-    UIImage *img = [UIImage imageNamed:@"loginScreen_BG.png"];
-    UIImage* bg = [[UIImage alloc] initWithCGImage:img.CGImage scale:2.0 orientation:img.imageOrientation];
+    UIImage *img = [UIImage imageNamed:@"branded_background3_edited.png"];
+    UIImage* bg = [[UIImage alloc] initWithCGImage:img.CGImage scale:1.0 orientation:img.imageOrientation];
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:bg]];
 }
 
@@ -54,14 +54,6 @@
 -(void)switchToWaitingView
 {
     [self performSegueWithIdentifier:@"loginViewToWaitingView" sender:self];
-}
-
-//Pass the first and last name string to the waiting view controller
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([[segue identifier] isEqualToString:@"loginViewToWaitingView"]) {
-        WaitingViewController *waitingView = [segue destinationViewController];
-        waitingView.usernameLabelText = [NSString stringWithFormat:@"%@ %@",[(LoginView*)self.view firstName],[(LoginView*)self.view lastName]];
-    }
 }
 
 @end

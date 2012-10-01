@@ -33,6 +33,7 @@ typedef enum TABLE_STYLE {
 
 #define kLOGIN_VIEW_URL kSERVER_URL@"login.php"
 #define kWAITING_VIEW_URL @"http://linus.highpoint.edu/~tlangford/econApps/waiting_test.php"
+#define kSEND_TOKENS_URL @"http://linus.highpoint.edu/~tlangford/econApps/tokenSend_test.php"
 
 #define kPOLLING_INTERVAL 3 //Every x seconds
 

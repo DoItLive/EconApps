@@ -15,8 +15,6 @@
 
 @implementation PublicGoodsViewController
 
-@synthesize nameLabelText;
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -29,6 +27,7 @@
 {
     [super viewDidLoad];
     self.view = [self.view initWithFrame:self.view.frame];
+
 }
 
 - (void)viewDidUnload

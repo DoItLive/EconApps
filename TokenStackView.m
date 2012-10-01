@@ -10,15 +10,16 @@
 
 @implementation TokenStackView
 
-@synthesize holderView, size, grid, sizeLabel;
+@synthesize holderView, size, grid, sizeLabel, nameLabel;
 
--(id) initWithSize:(NSInteger)numTokens andFrame:(CGRect)frame{
+-(id) initWithSize:(NSInteger)numTokens andFrame:(CGRect)frame andName:(NSString *)name{
     
     self = [super initWithFrame:frame];
     
-    self.sizeLabel = [[UILabel alloc] initWithFrame:CGRectMake(3, 0, frame.size.width, frame.size.height)];
+    UIFont* sizeFont = [UIFont fontWithName:@"Helvetica" size:self.frame.size.height-20];
+    self.sizeLabel = [[UILabel alloc] initWithFrame:CGRectMake(3, 15, frame.size.width, frame.size.height)];
     [self.sizeLabel setBackgroundColor:[UIColor clearColor]];
-    [self.sizeLabel setFont:[UIFont fontWithName:@"Helvetica" size:self.frame.size.height]];
+    [self.sizeLabel setFont:sizeFont];
     [self.sizeLabel setTextColor:[UIColor colorWithWhite:1.0 alpha:0.2]];
     [self.sizeLabel setText:[NSString stringWithFormat:@"0"]];
     [self addSubview:sizeLabel];
@@ -30,6 +31,15 @@
     for (int i=0;i<numTokens;i++) {
         [self addTokenfromPoint:holderView.center withSpeed:0];
     }
+    
+    UIFont* nameFont = [UIFont fontWithName:@"Futura" size:30];
+    self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(frame.size.width-[name sizeWithFont:nameFont].width-10, 0, [name sizeWithFont:nameFont].width, [name sizeWithFont:nameFont].height)];
+    self.nameLabel.text = name;
+    self.nameLabel.textAlignment = UITextAlignmentLeft;
+    self.nameLabel.textColor = [UIColor colorWithWhite:1.0 alpha:0.15];
+    self.nameLabel.font = nameFont;
+    self.nameLabel.backgroundColor = [UIColor clearColor];
+    [self addSubview:nameLabel];
     
     [self setBackgroundColor:[[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"PG_TokenStack_BG.png"]]];
     action = 0;
@@ -153,26 +163,16 @@
     
 }
 
--(int)sendTokensUp{
+-(NSMutableArray*)sendTokensUp{
     
-    int numTokens = self.size;
+    NSMutableArray* tokens = [[NSMutableArray alloc] initWithCapacity:self.size];
     self.size = 0;
-    [self.sizeLabel setText:[NSString stringWithFormat:@"%d",numTokens]];
-    int curToken = 0;
     for(TokenView* t in [self.holderView subviews]){
-        [UIView animateWithDuration:(numTokens-curToken)/17.0
-                              delay: 0.0
-                            options: UIViewAnimationOptionCurveEaseOut
-                         animations:^{
-                             t.frame =  CGRectMake(t.frame.origin.x, -self.frame.origin.y - t.frame.size.height*2,t.frame.size.width,t.frame.size.height);
-                         }
-                         completion:^(BOOL finished){
-                             [t removeFromSuperview];
-                         }];
-        curToken++;
+        [tokens addObject:t];
+        [t removeFromSuperview];
         
     }
-    return numTokens;
+    return tokens;
 }
 
 

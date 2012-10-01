@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import "Connection.h"
+#import "UserData.h"
 
 @interface LoginView : UIView {
 
@@ -18,12 +19,9 @@
     
     NSString *username;
     NSString *password;
-    NSString *firstName;
-    NSString *lastName;
+    
+    UserData *userData;
 }
-
-@property (nonatomic) NSString *firstName;
-@property (nonatomic) NSString *lastName;
 
 @property (nonatomic) IBOutlet UIButton *loginButton;
 @property (nonatomic) IBOutlet UITextField *usernameField;

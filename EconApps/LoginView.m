@@ -11,7 +11,7 @@
 
 @implementation LoginView
 
-@synthesize loginButton, usernameField, passwordField, firstName, lastName;
+@synthesize loginButton, usernameField, passwordField;
 
 
 - (id)initWithFrame:(CGRect)frame
@@ -28,6 +28,7 @@
     username = [usernameField text];
     password = [passwordField text];
     
+    //Ensure there is something in the username and password fields before sending them to the server
     if ([username length] == 0 || [password length] == 0) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login Error" message:@"A username and password must be entered." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil, nil];
         [alert show];
@@ -58,9 +59,12 @@
     NSInteger code = [[jsonData objectForKey:@"code"] integerValue];
     
     if (code == kVALID_LOGIN) {
-        firstName = [NSString stringWithString:[jsonData objectForKey:@"first"]];
-        lastName = [NSString stringWithString:[jsonData objectForKey:@"last"]];
+        userData = [UserData userDataInstance];
+        userData.firstName = [NSString stringWithString:[jsonData objectForKey:@"first"]];
+        userData.lastName = [NSString stringWithString:[jsonData objectForKey:@"last"]];
+        userData.userName = username;
         [[NSNotificationCenter defaultCenter] postNotificationName:@"switchToWaitingView" object:nil];
+        
     } else if (code == KINVALID_USERNAME || code == KINVALID_PASSWORD) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login Error" message:[jsonData objectForKey:@"err_msg"] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil, nil];
         [alert show];

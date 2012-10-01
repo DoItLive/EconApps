@@ -8,17 +8,20 @@
 
 #import <UIKit/UIKit.h>
 #import "Connection.h"
+#import "UserData.h"
 
 @interface WaitingView : UIView{
     
     UILabel *usernameLabel;
     UIActivityIndicatorView *activityIndicator;
+    
+    UserData *userData;
 }
 
 @property (nonatomic) IBOutlet UILabel *usernameLabel;
 @property (nonatomic, strong) IBOutlet UIActivityIndicatorView *activityIndicator;
 
--(void)initView:(NSString*)nameLabelText;
+-(void)initView;
 -(void)poll:(NSTimer*)timer;
 -(void)dataReceived:(NSData*)data;
 
