@@ -87,6 +87,8 @@
     return self;
 }
 
+#pragma mark - Token Functions
+
 -(void)buttonTouchDown{
     
     progressView.hidden = NO;
@@ -185,7 +187,9 @@
     
 }
 
-//===============================Polling the server===============================================
+
+#pragma mark - Polling
+
 -(void)poll:(NSTimer*)timer{
     
     Connection *conn = [[Connection alloc] initWithFinishSelector:@selector(dataReceived:)

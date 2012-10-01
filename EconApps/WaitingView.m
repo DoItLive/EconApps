@@ -33,6 +33,8 @@
     [self poll:nil]; //Start polling the server
 }
 
+#pragma mark - Polling
+
 -(void)poll:(NSTimer*)timer{
     
     Connection *conn = [[Connection alloc] initWithFinishSelector:@selector(dataReceived:)
