@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Defs.h"
 
 @interface DataViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>{
+    
+    TABLE_STYLE style;
+    BOOL allowHighlighting;
+    NSInteger numberBuilt;
     
     UIView *view;
     UIScrollView *scrollView;
@@ -17,24 +22,27 @@
     NSMutableArray *tables;
     
     NSMutableArray *data;
-    NSNumber *numCols, *numRows, *cellWidth, *cellHeight, *colHigh, *rowHigh;
+    NSNumber *numberOfColumns, *numberOfRows, *cellWidth, *cellHeight, *highlightedColumn, *highlightedRow;
 }
 
+@property (nonatomic) TABLE_STYLE style;
+@property (nonatomic) BOOL allowHighlighting;
+@property (nonatomic) NSInteger numberBuilt;
 @property (nonatomic) UIView *view;
 @property (nonatomic) UIScrollView *scrollView;
 @property (nonatomic) NSMutableArray *cells;
 @property (nonatomic) NSMutableArray *tables;
 @property (nonatomic) NSMutableArray *data;
-@property (nonatomic) NSNumber *numCols;
-@property (nonatomic) NSNumber *numRows;
+@property (nonatomic) NSNumber *numberOfColumns;
+@property (nonatomic) NSNumber *numberOfRows;
 @property (nonatomic) NSNumber *cellWidth;
 @property (nonatomic) NSNumber *cellHeight;
-@property (nonatomic) NSNumber *colHigh;
-@property (nonatomic) NSNumber *rowHigh;
+@property (nonatomic) NSNumber *highlightedColumn;
+@property (nonatomic) NSNumber *highlightedRow;
 
 
-- (id)initWithFrame:(CGRect)frame andData:(NSMutableArray*)data;
-- (void)setUpHierarchy;
-- (void)updateSelectedRow:(NSInteger)rowNum;
+- (id)initWithFrame:(CGRect)frameIn andData:(NSMutableArray*)dataIn andStyle:(TABLE_STYLE)styleIn;
+- (int)cellWidthForColumn:(int)columnIn;
+- (void)updateSelectedColumn:(NSInteger)rowNum;
 
 @end

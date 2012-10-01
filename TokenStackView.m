@@ -56,7 +56,7 @@
     size++;
     [self.sizeLabel setText:[NSString stringWithFormat:@"%d",size]];
     if (self.grid) {
-        [self.grid updateSelectedRow:size + 1];
+        [self.grid updateSelectedColumn: size + 1];
     }
     
     [UIView animateWithDuration:speed
@@ -81,7 +81,7 @@
         size--;
         [self.sizeLabel setText:[NSString stringWithFormat:@"%d",size]];
         if (self.grid) {
-            [self.grid updateSelectedRow:size + 1];
+            [self.grid updateSelectedColumn: size + 1];
         }
         return t;
     }
