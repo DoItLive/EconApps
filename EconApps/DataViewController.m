@@ -44,7 +44,7 @@
         [self setCellHeight:[[NSNumber alloc] initWithInt:44]]; //default is 44
         
         if (style == kUNIFORM) {
-            [self setCellWidth:[[NSNumber alloc] initWithInt:self.view.frame.size.width/[self.numberOfColumns intValue] - 1]];
+            [self setCellWidth:[[NSNumber alloc] initWithInt:(int)(self.view.frame.size.width/[self.numberOfColumns doubleValue]) - 1]];
         }
         
         //Build the scrollview for the tableviews filling up the frame minus one cell height for the column headers
@@ -212,13 +212,14 @@
             currentRow++;
         }
     }
-    if (!currentRow || !currentColumn) {
+    if (!currentRow || (!currentColumn && self.style == kUNIFORM)) {
         cell.backgroundColor = [UIColor colorWithRed:.27 green:.51 blue:.71 alpha:1]; //steel blue
     } else if (currentRow%2){
         cell.backgroundColor = [UIColor whiteColor];  
     } else {
         cell.backgroundColor = [UIColor colorWithRed:.93 green:.82 blue:.93 alpha:1]; //light thistle
     }
+    [cell.textLabel setFont:[UIFont fontWithName:@"Helvetica" size:17]];
 }
 
 
@@ -229,13 +230,15 @@
 {
     double headerTotal = 0;
     for (int i = 0; i < [self.numberOfColumns intValue]; i++) {
-        headerTotal+=[(NSString *)[[self.data objectAtIndex:i] objectAtIndex:0] length];
+        headerTotal+=([(NSString *)[[self.data objectAtIndex:i] objectAtIndex:0] sizeWithFont:[UIFont fontWithName:@"Helvetica" size:17]].width + 2);
     }
-    double columnLength = [(NSString *)[[self.data objectAtIndex:columnIn] objectAtIndex:0] length];
+    double columnLength = ([(NSString *)[[self.data objectAtIndex:columnIn] objectAtIndex:0] sizeWithFont:[UIFont fontWithName:@"Helvetica" size:17]].width + 2);
     double ratio = columnLength/headerTotal;
-    NSInteger  size = ((int)(ratio*self.view.frame.size.width + .5)) - 1;
+    if (headerTotal >= self.view.frame.size.width) {
+        ratio = 0;
+    }
+    NSInteger  size = columnLength + ((int)(ratio*(self.view.frame.size.width - headerTotal))) - 1;
     
-    NSLog(@"size %d",size);
     return size;
 }
 

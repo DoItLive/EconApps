@@ -11,7 +11,7 @@
 
 @implementation PublicGoodsView
 
-@synthesize theGrid, localStackView, sendStackView, sendButton, progressView;
+@synthesize theGrid, theOtherGrid, localStackView, sendStackView, sendButton, progressView;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -22,35 +22,56 @@
         userData = [UserData userDataInstance]; //Get pointer to userData
         
         //Test to fill table with junk
-        NSString* one = [[NSString alloc] initWithFormat:@"I like fishsticks"];
+        NSString* zero = [[NSString alloc] initWithFormat:@"0"];
+        NSString* one = [[NSString alloc] initWithFormat:@"1"];
         NSString* two = [[NSString alloc] initWithFormat:@"2"];
-        NSString* three = [[NSString alloc] initWithFormat:@"Thomas doesnt love you"];
+        NSString* three = [[NSString alloc] initWithFormat:@"3"];
         NSString* four = [[NSString alloc] initWithFormat:@"4"];
-        NSString* five = [[NSString alloc] initWithFormat:@"timbuktu"];
+        NSString* five = [[NSString alloc] initWithFormat:@"5"];
         NSString* six = [[NSString alloc] initWithFormat:@"6"];
-        NSString* seven = [[NSString alloc] initWithFormat:@"theres a pie over there"];
+        NSString* seven = [[NSString alloc] initWithFormat:@"7"];
         NSString* eight = [[NSString alloc] initWithFormat:@"8"];
         NSString* nine = [[NSString alloc] initWithFormat:@"9"];
         NSString* ten = [[NSString alloc] initWithFormat:@"10"];
-        NSString* eleven = [[NSString alloc] initWithFormat:@"11"];
+        
 
-        NSMutableArray *array1 = [[NSMutableArray alloc] initWithObjects:seven,two,three,four,five,six,seven,eight,nine,ten,eleven, nil];
-        NSMutableArray *array2 = [[NSMutableArray alloc] initWithObjects:two,two,three,four,five,six,seven,eight,nine,ten,eleven, nil];
-        NSMutableArray *array3 = [[NSMutableArray alloc] initWithObjects:three,two,three,four,five,six,seven,eight,nine,ten,eleven, nil];
-        NSMutableArray *array4 = [[NSMutableArray alloc] initWithObjects:four,two,three,four,five,six,seven,eight,nine,ten,eleven, nil];
-        NSMutableArray *array5 = [[NSMutableArray alloc] initWithObjects:five,two,three,four,five,six,seven,eight,nine,ten,eleven, nil];
-        NSMutableArray *array6 = [[NSMutableArray alloc] initWithObjects:six,two,three,four,five,six,seven,eight,nine,ten,eleven, nil];
-        NSMutableArray *array7 = [[NSMutableArray alloc] initWithObjects:seven,two,three,four,five,six,seven,eight,nine,ten,eleven, nil];
-        NSMutableArray *array8 = [[NSMutableArray alloc] initWithObjects:one,three,three,four,five,six,seven,eight,nine,ten,eleven, nil];
-        NSMutableArray *array9 = [[NSMutableArray alloc] initWithObjects:two,three,three,four,five,six,seven,eight,nine,ten,eleven, nil];
-        NSMutableArray *array10 = [[NSMutableArray alloc] initWithObjects:three,three,three,four,five,six,seven,eight,nine,ten,eleven, nil];
-        NSMutableArray *array11 = [[NSMutableArray alloc] initWithObjects:four,three,three,four,five,six,seven,eight,nine,ten,eleven, nil];
-        NSMutableArray *array12 = [[NSMutableArray alloc] initWithObjects:five,three,three,four,five,six,seven,eight,nine,ten,eleven, nil];
+        NSMutableArray *array1 = [[NSMutableArray alloc] initWithObjects:zero,zero,one,two,three,four,five,six,seven,eight,nine,ten, nil];
+        NSMutableArray *array2 = [[NSMutableArray alloc] initWithObjects:zero,zero,one,two,three,four,five,six,seven,eight,nine,ten, nil];
+        NSMutableArray *array3 = [[NSMutableArray alloc] initWithObjects:one,one,two,three,four,five,six,seven,eight,nine,ten,zero, nil];
+        NSMutableArray *array4 = [[NSMutableArray alloc] initWithObjects:two,two,three,four,five,six,seven,eight,nine,ten,zero,one, nil];
+        NSMutableArray *array5 = [[NSMutableArray alloc] initWithObjects:three,three,four,five,six,seven,eight,nine,ten,zero,one,two, nil];
+        NSMutableArray *array6 = [[NSMutableArray alloc] initWithObjects:four,four,five,six,seven,eight,nine,ten,zero,one,two,three, nil];
+        NSMutableArray *array7 = [[NSMutableArray alloc] initWithObjects:five,five,six,seven,eight,nine,ten,zero,one,two,three,four, nil];
+        NSMutableArray *array8 = [[NSMutableArray alloc] initWithObjects:six,six,seven,eight,nine,ten,zero,one,two,three,four,five, nil];
+        NSMutableArray *array9 = [[NSMutableArray alloc] initWithObjects:seven,seven,eight,nine,ten,zero,one,two,three,four,five,six, nil];
+        NSMutableArray *array10 = [[NSMutableArray alloc] initWithObjects:eight,eight,nine,ten,zero,one,two,three,four,five,six,seven, nil];
+        NSMutableArray *array11 = [[NSMutableArray alloc] initWithObjects:nine,nine,ten,zero,one,two,three,four,five,six,seven,eight, nil];
+        NSMutableArray *array12 = [[NSMutableArray alloc] initWithObjects:ten,ten,zero,one,two,three,four,five,six,seven,eight,nine, nil];
         NSMutableArray *data = [[NSMutableArray alloc] initWithObjects:array1,array2,array3,array4,array5,array6,array7,array8,array9,array10,array11,array12, nil];
         
-        self.theGrid = [[DataViewController alloc] initWithFrame:CGRectMake(10, 200, self.frame.size.height, 300) andData:data andStyle:kNON_UNIFORM];
+        
+        NSString* round = [[NSString alloc] initWithFormat:@"Round"];
+        NSString* yousent = [[NSString alloc] initWithFormat:@"You Sent"];
+        NSString* avgsent = [[NSString alloc] initWithFormat:@"Average Others Sent"];
+        NSString* total = [[NSString alloc] initWithFormat:@"Total Sent"];
+        NSString* outcome = [[NSString alloc] initWithFormat:@"Outcome"];
+        NSString* roundearnings = [[NSString alloc] initWithFormat:@"Round Earnings"];
+        NSString* totalearnings = [[NSString alloc] initWithFormat:@"Total Earnings"];
+        
+        NSMutableArray *arraya = [[NSMutableArray alloc] initWithObjects:round,one,two,three,four,five, nil];
+        NSMutableArray *arrayb = [[NSMutableArray alloc] initWithObjects:yousent,ten,eight,four,seven,three, nil];
+        NSMutableArray *arrayc = [[NSMutableArray alloc] initWithObjects:avgsent,three,four,two,six,nine, nil];
+        NSMutableArray *arrayd = [[NSMutableArray alloc] initWithObjects:total,five,nine,four,three,seven, nil];
+        NSMutableArray *arraye = [[NSMutableArray alloc] initWithObjects:outcome,one,two,three,four,five, nil];
+        NSMutableArray *arrayf = [[NSMutableArray alloc] initWithObjects:roundearnings,five,four,three,two,one, nil];
+        NSMutableArray *arrayg = [[NSMutableArray alloc] initWithObjects:totalearnings,five,six,seven,eight,nine, nil];
+        NSMutableArray *otherData = [[NSMutableArray alloc] initWithObjects:arraya,arrayb,arrayc,arrayd,arraye,arrayf,arrayg, nil];
+        
+        self.theGrid = [[DataViewController alloc] initWithFrame:CGRectMake(10, 200, self.frame.size.height, 250) andData:data andStyle:kUNIFORM];
         [self addSubview:theGrid.view];
-        //[self.theGrid setUpHierarchy];
+      
+        self.theOtherGrid = [[DataViewController alloc] initWithFrame:CGRectMake(10, 500, self.frame.size.height, 200) andData:otherData andStyle:kNON_UNIFORM];
+        [self addSubview:theOtherGrid.view];
         
         localStackView = [[TokenStackView alloc] initWithSize:10 andFrame:CGRectMake(160, 30, 300, 150) andName:@"My Tokens"];
         [self addSubview:localStackView];

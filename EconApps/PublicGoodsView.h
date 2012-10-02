@@ -19,6 +19,7 @@
 @interface PublicGoodsView : UIView{
     
     DataViewController *theGrid;
+    DataViewController *theOtherGrid;
     TokenStackView* localStackView;
     TokenStackView* sendStackView;
     
@@ -29,6 +30,7 @@
 }
 
 @property (nonatomic) DataViewController *theGrid;
+@property (nonatomic) DataViewController *theOtherGrid;
 @property (nonatomic) TokenStackView *localStackView;
 @property (nonatomic) TokenStackView *sendStackView;
 @property (nonatomic) UIButton* sendButton;
