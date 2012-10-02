@@ -11,7 +11,7 @@
 
 @implementation PublicGoodsView
 
-@synthesize theGrid, theOtherGrid, localStackView, sendStackView, sendButton, progressView;
+@synthesize theGrid, theOtherGrid, localStackView, sendStackView, sendButton, progressView, potView, potViewLabel;
 
 - (id)initWithFrame:(CGRect)frame
 {
