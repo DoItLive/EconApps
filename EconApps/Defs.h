@@ -25,9 +25,13 @@ typedef enum TABLE_STYLE {
     kNON_UNIFORM = 1,
 } TABLE_STYLE;
 
+#pragma mark - Database Info
+
 #define kDATABASE_NAME @"econapps_db"
 #define kDATABASE_USER @"econuser"
 #define kDATABASE_PASS @"Q!W@E#R$T%"
+
+#pragma mark - Server URL's
 
 #define kSERVER_URL @"http://10.2.96.19/"
 
@@ -35,6 +39,9 @@ typedef enum TABLE_STYLE {
 #define kWAITING_VIEW_URL @"http://linus.highpoint.edu/~tlangford/econApps/waiting_test.php"
 #define kSEND_TOKENS_URL @"http://linus.highpoint.edu/~tlangford/econApps/tokenSend_test.php"
 
-#define kPOLLING_INTERVAL 3 //Every x seconds
+#pragma mark - Polling Intervals
+
+#define kWAITING_POLLING_INTERVAL 3 //Every x seconds
+#define kPUBLIC_GOODS_POLLING_INTERVAL 1
 
 #endif

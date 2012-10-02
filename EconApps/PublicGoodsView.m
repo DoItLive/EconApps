@@ -100,6 +100,8 @@
     return self;
 }
 
+#pragma mark - Token Functions
+
 -(void)buttonTouchDown{
     
     progressView.hidden = NO;
@@ -178,12 +180,12 @@
     
     
     NSString* postString = [[NSString alloc] initWithFormat:@"tokens=%d",[tokens count]];
-    //Connection *conn = [[Connection alloc] initWithFinishSelector:@selector(validateLogin:)
-    //                                             withFailSelector:@selector(validateLogin:)
-    //                                                     toTarget:self
-    //                                                      withURL:kLOGIN_VIEW_URL
-    //                                                   withString:postString];
-    //[conn connect];
+    Connection *conn = [[Connection alloc] initWithFinishSelector:nil
+                                                 withFailSelector:nil
+                                                         toTarget:self
+                                                          withURL:kSEND_TOKENS_URL
+                                                       withString:postString];
+    [conn connect];
     
 }
 
@@ -199,5 +201,36 @@
         NSLog(@"Switch to end round view");
     });
 }
+
+
+#pragma mark - Polling
+
+-(void)poll:(NSTimer*)timer{
+    
+    Connection *conn = [[Connection alloc] initWithFinishSelector:@selector(dataReceived:)
+                                                 withFailSelector:@selector(connectionFailed)
+                                                         toTarget:self
+                                                          withURL:kWAITING_VIEW_URL
+                                                       withString:@""];
+    [conn connect];
+}
+
+-(void)dataReceived:(NSData*)data{
+    
+    // Data should come back from the server in a JSON string. It should look like:
+    // 
+    
+    NSError *error;
+    NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    
+    //Parse data here
+    [NSTimer scheduledTimerWithTimeInterval:kPUBLIC_GOODS_POLLING_INTERVAL target:self selector:@selector(poll:) userInfo:nil repeats:NO];
+}
+
+//If the connection fails then just keep polling to hopefully reconnect
+-(void)connectionFailed {
+    [NSTimer scheduledTimerWithTimeInterval:kPUBLIC_GOODS_POLLING_INTERVAL target:self selector:@selector(poll:) userInfo:nil repeats:NO];
+}
+
 
 @end

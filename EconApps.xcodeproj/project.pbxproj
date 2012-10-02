@@ -44,9 +44,9 @@
 		BF20D47E1614CB0C00640DB6 /* token-blank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "token-blank.png"; sourceTree = "<group>"; };
 		BF20D487161638AC00640DB6 /* TimerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerView.h; sourceTree = "<group>"; };
 		BF20D488161638AC00640DB6 /* TimerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerView.m; sourceTree = "<group>"; };
-		BF20D49216164FA200640DB6 /* branded_background3_edited.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = branded_background3_edited.png; sourceTree = "<group>"; };
-		BF20D49316164FA200640DB6 /* icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-72.png"; sourceTree = "<group>"; };
-		BF20D49416164FA200640DB6 /* iconRetina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconRetina.png; sourceTree = "<group>"; };
+		BF20D49216164FA200640DB6 /* branded_background3_edited.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = branded_background3_edited.png; path = ../branded_background3_edited.png; sourceTree = "<group>"; };
+		BF20D49316164FA200640DB6 /* icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-72.png"; path = "../icon-72.png"; sourceTree = "<group>"; };
+		BF20D49416164FA200640DB6 /* iconRetina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iconRetina.png; path = ../iconRetina.png; sourceTree = "<group>"; };
 		BF5EA9DF160A720800197E97 /* PG_TokenStack_BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PG_TokenStack_BG.png; sourceTree = "<group>"; };
 		BF9A2DCA160255B000542E60 /* token-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "token-1.png"; sourceTree = "<group>"; };
 		BF9A2DD41602583B00542E60 /* TokenStackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenStackView.h; sourceTree = "<group>"; };
@@ -81,8 +81,6 @@
 		E9B5CCE515F7FC8C00E71B8F /* PublicGoodsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublicGoodsViewController.m; sourceTree = "<group>"; };
 		E9B5CCE815F7FE2000E71B8F /* PublicGoodsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublicGoodsView.h; sourceTree = "<group>"; };
 		E9B5CCE915F7FE2000E71B8F /* PublicGoodsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublicGoodsView.m; sourceTree = "<group>"; };
-		E9B8F8ED1614CC940064E851 /* Socket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Socket.h; sourceTree = "<group>"; };
-		E9B8F8EE1614CC940064E851 /* Socket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Socket.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,9 +184,6 @@
 		BFF8CF8915F6767700F1D2EA = {
 			isa = PBXGroup;
 			children = (
-				BF20D49216164FA200640DB6 /* branded_background3_edited.png */,
-				BF20D49316164FA200640DB6 /* icon-72.png */,
-				BF20D49416164FA200640DB6 /* iconRetina.png */,
 				BFF8CF9E15F6767800F1D2EA /* EconApps */,
 				BFF8CF9715F6767800F1D2EA /* Frameworks */,
 				BFF8CF9515F6767800F1D2EA /* Products */,
@@ -217,13 +212,9 @@
 		BFF8CF9E15F6767800F1D2EA /* EconApps */ = {
 			isa = PBXGroup;
 			children = (
-				BF20D48B161638B000640DB6 /* TimerView */,
-				BFBD619216121DD900868BA8 /* DACircularProgress */,
 				E941DFDC15FA8EF200DE9C75 /* Defs.h */,
 				BFF8CFB815F67A3B00F1D2EA /* Connection.h */,
 				BFF8CFB915F67A3B00F1D2EA /* Connection.m */,
-				E9B8F8ED1614CC940064E851 /* Socket.h */,
-				E9B8F8EE1614CC940064E851 /* Socket.m */,
 				E92BE3AF16163A02002A9EF5 /* UserData.h */,
 				E92BE3B016163A02002A9EF5 /* UserData.m */,
 				BFF8CFA715F6767800F1D2EA /* AppDelegate.h */,
@@ -234,6 +225,9 @@
 				BFF4854D15F80701003DB6C3 /* Public Goods */,
 				BFF8CF9F15F6767800F1D2EA /* Supporting Files */,
 				BF9A2DD31602575800542E60 /* TokenView */,
+				BF20D48B161638B000640DB6 /* TimerView */,
+				BFBD619216121DD900868BA8 /* DACircularProgress */,
+				E92BE3B8161654D2002A9EF5 /* Pictures */,
 			);
 			path = EconApps;
 			sourceTree = "<group>";
@@ -247,6 +241,16 @@
 				BFF8CFA615F6767800F1D2EA /* EconApps-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E92BE3B8161654D2002A9EF5 /* Pictures */ = {
+			isa = PBXGroup;
+			children = (
+				BF20D49216164FA200640DB6 /* branded_background3_edited.png */,
+				BF20D49316164FA200640DB6 /* icon-72.png */,
+				BF20D49416164FA200640DB6 /* iconRetina.png */,
+			);
+			name = Pictures;
 			sourceTree = "<group>";
 		};
 		E9617DBD1607C0B600C793DE /* DataViewController */ = {
