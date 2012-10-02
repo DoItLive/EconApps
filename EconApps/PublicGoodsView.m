@@ -96,6 +96,7 @@
         [self addSubview:potView];
 
         
+        [self poll:nil]; //Start polling the server
     }
     return self;
 }
