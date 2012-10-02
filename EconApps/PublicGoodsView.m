@@ -92,20 +92,39 @@
         [sendButton addTarget:self action:@selector(buttonLeft) forControlEvents:UIControlEventTouchDragExit];
         [self addSubview:sendButton];
         
-        progressView = [[DACircularProgressView alloc] initWithFrame:CGRectMake(sendButton.center.x-50, sendButton.center.y-50, 100, 100)];
+        progressView = [[DACircularProgressView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
         progressView.roundedCorners = NO;
         progressView.progressTintColor = [UIColor whiteColor];
         progressView.trackTintColor = [UIColor colorWithWhite:1.0 alpha:0.3];
         [progressView setThicknessRatio:0.33];
         progressView.hidden = YES;
-        [self addSubview:progressView];
+        [self.sendButton addSubview:progressView];
         
-        TimerView* timerView = [[TimerView alloc] initWithFrame:CGRectMake(30, sendButton.frame.origin.y, 100, 100) andDuration:630];
+        TimerView* timerView = [[TimerView alloc] initWithFrame:CGRectMake(30, sendButton.frame.origin.y, 100, 100) andDuration:9];
+        [timerView setTarget:self];
+        [timerView setSelector:@selector(endRound)];
         [self addSubview:timerView];
         
+        potView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"potOfGold.png"]];
+        potView.frame = CGRectMake(self.frame.size.height, 0, 200, 200);
+        potView.hidden = YES;
+        potViewLabel = [[UILabel alloc] init];
+        potViewLabel.text = [NSString stringWithFormat:@"0+?"];
+        potViewLabel.frame = CGRectMake(0, potView.frame.size.height/1.5,potView.frame.size.width,40);
+        potViewLabel.textColor = [UIColor whiteColor];
+        potViewLabel.textAlignment = UITextAlignmentCenter;
+        potViewLabel.backgroundColor = [UIColor clearColor];
+        potViewLabel.font = [UIFont fontWithName:@"Helvetica" size:40];
+        [potView addSubview:potViewLabel];
+        [self addSubview:potView];
+
+        
+        [self poll:nil]; //Start polling the server
     }
     return self;
 }
+
+#pragma mark - Token Functions
 
 -(void)buttonTouchDown{
     
@@ -137,24 +156,17 @@
 
 -(void)moveTokensToPot{
     
-    NSMutableArray* tokens = [sendStackView sendTokensUp];
+    potView.hidden = NO; //Probably do this first as the check in endRound relies on this begin set
     
-    //Set up potView to animate inwards
-    UIImageView* potView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"potOfGold.png"]];
-    potView.frame = CGRectMake(self.frame.size.height, 0, 200, 200);
-    UILabel* potLabel = [[UILabel alloc] init];
-    potLabel.text = [NSString stringWithFormat:@"0+?"];
-    potLabel.frame = CGRectMake(0, potView.frame.size.height/1.5,potView.frame.size.width,40);
-    potLabel.textColor = [UIColor whiteColor];
-    potLabel.textAlignment = UITextAlignmentCenter;
-    potLabel.backgroundColor = [UIColor clearColor];
-    potLabel.font = [UIFont fontWithName:@"Helvetica" size:40];
-    [potView addSubview:potLabel];
-    [self addSubview:potView];
+    NSMutableArray* tokens = [sendStackView removeAllTokens];
+    
+    [self.sendButton setEnabled:FALSE];
+    [self.localStackView setUserInteractionEnabled:FALSE];
+    [self.sendStackView setUserInteractionEnabled:FALSE];
     [self.sendStackView removeFromSuperview];
     [self.sendButton removeFromSuperview];
     
-    [UIView animateWithDuration:0.4
+    [UIView animateWithDuration: 0.4
                           delay: 0.0
                         options: UIViewAnimationOptionCurveEaseOut
                      animations:^{
@@ -167,7 +179,7 @@
     
     int curToken = 1;
     //Move tokens to public goods view and do a loop animation
-    for(TokenView* t in tokens){
+    for(UIImageView* t in tokens){
         t.center = CGPointMake(t.center.x+sendStackView.frame.origin.x, t.center.y+sendStackView.frame.origin.y);
         [self addSubview:t];
         
@@ -181,7 +193,7 @@
         [t.layer addAnimation:anim forKey:@"moveToPot"];
         //This block of code gets executed after anim.duration seconds
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, anim.duration * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
-            potLabel.text = [NSString stringWithFormat:@"%d+?",curToken];
+            potViewLabel.text = [NSString stringWithFormat:@"%d+?",curToken];
             [t removeFromSuperview];
         });
         
@@ -192,17 +204,57 @@
     
     
     NSString* postString = [[NSString alloc] initWithFormat:@"tokens=%d",[tokens count]];
-    //Connection *conn = [[Connection alloc] initWithFinishSelector:@selector(validateLogin:)
-    //                                             withFailSelector:@selector(validateLogin:)
-    //                                                     toTarget:self
-    //                                                      withURL:kLOGIN_VIEW_URL
-    //                                                   withString:postString];
-    //[conn connect];
-    
-    [self.sendButton setEnabled:FALSE];
-    [self.localStackView setUserInteractionEnabled:FALSE];
-    [self.sendStackView setUserInteractionEnabled:FALSE];
+    Connection *conn = [[Connection alloc] initWithFinishSelector:nil
+                                                 withFailSelector:nil
+                                                         toTarget:self
+                                                          withURL:kSEND_TOKENS_URL
+                                                       withString:postString];
+    [conn connect];
     
 }
+
+-(void)endRound{
+    
+    //TODO - Fix for case when game ends while user is holding a token
+    if(self.potView.hidden == YES){  //User hasn't sent tokens yet
+        [self moveTokensToPot];
+    }
+    
+    //Wait 3 seconds for decision to set in before switching views
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 3.0 * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
+        NSLog(@"Switch to end round view");
+    });
+}
+
+
+#pragma mark - Polling
+
+-(void)poll:(NSTimer*)timer{
+    
+    Connection *conn = [[Connection alloc] initWithFinishSelector:@selector(dataReceived:)
+                                                 withFailSelector:@selector(connectionFailed)
+                                                         toTarget:self
+                                                          withURL:kWAITING_VIEW_URL
+                                                       withString:@""];
+    [conn connect];
+}
+
+-(void)dataReceived:(NSData*)data{
+    
+    // Data should come back from the server in a JSON string. It should look like:
+    // 
+    
+    NSError *error;
+    NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+    
+    //Parse data here
+    [NSTimer scheduledTimerWithTimeInterval:kPUBLIC_GOODS_POLLING_INTERVAL target:self selector:@selector(poll:) userInfo:nil repeats:NO];
+}
+
+//If the connection fails then just keep polling to hopefully reconnect
+-(void)connectionFailed {
+    [NSTimer scheduledTimerWithTimeInterval:kPUBLIC_GOODS_POLLING_INTERVAL target:self selector:@selector(poll:) userInfo:nil repeats:NO];
+}
+
 
 @end

@@ -10,7 +10,7 @@
 
 @implementation TimerView
 
-@synthesize timer, timerCircle, timerLabel, duration, startTime;
+@synthesize timer, timerCircle, timerLabel, duration, startTime, target, selector;
 
 - (id)initWithFrame:(CGRect)frame andDuration:(NSInteger)dur
 {
@@ -61,7 +61,20 @@
 
 -(void)endRound{
     
-    NSLog(@"Round over");
+    if(selector!=nil){
+        
+        if([target respondsToSelector:selector]){
+            
+            //These ignore the compiler warning for performSelector leaks
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+            [target performSelector:selector];
+#pragma clang diagnostic pop
+        }else{
+            NSLog(@"Error --- Target %@ does not respond to selector %@",NSStringFromClass([target class]),NSStringFromSelector(selector));
+        }
+       
+    }
     
 }
 

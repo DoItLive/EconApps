@@ -18,6 +18,9 @@
     NSInteger duration;
     NSDate* startTime;
     
+    id target;
+    SEL selector;
+    
 }
 
 @property(nonatomic) NSTimer* timer;
@@ -25,6 +28,8 @@
 @property(nonatomic) UILabel* timerLabel;
 @property(nonatomic) NSInteger duration;
 @property(nonatomic) NSDate* startTime;
+@property(nonatomic) id target;
+@property(nonatomic) SEL selector;
 
 - (id)initWithFrame:(CGRect)frame andDuration:(NSInteger)dur;
 

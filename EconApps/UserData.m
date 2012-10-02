@@ -13,14 +13,15 @@
 @synthesize firstName,lastName,userName;
 
 + (UserData*)userDataInstance {
-    static UserData *single = nil;
+    static UserData *singleton = nil;
     
+    //Synchronize before accessing to protect against race issue
     @synchronized(self) {
-        if (!single) {
-            single = [[UserData alloc] init];
+        if (!singleton) {
+            singleton = [[UserData alloc] init]; //Alloc if not created yet
         }
     }
-    return single;
+    return singleton; //Pass singleton pointer back to caller
 }
 
 @end

@@ -50,7 +50,7 @@
 //point must be relative to screen
 -(void) addTokenfromPoint:(CGPoint)point withSpeed:(CGFloat)speed{
     
-    TokenView* t = [[TokenView alloc] init];
+    UIImageView* t = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"token-1.png"]];
     [t setFrame:CGRectMake(point.x-t.frame.size.width/2-self.frame.origin.x, point.y-t.frame.size.height/2-self.frame.origin.y, t.frame.size.width, t.frame.size.height)];
     [self.holderView addSubview:t];
     size++;
@@ -73,10 +73,10 @@
     [self addTokenfromPoint:point withSpeed:0.2];
 }
 
--(TokenView *) removeToken{
+-(UIImageView *) removeToken{
     
     if(size > 0){
-        TokenView* t = [self.holderView.subviews lastObject];
+        UIImageView* t = [self.holderView.subviews lastObject];
         [t removeFromSuperview];
         size--;
         [self.sizeLabel setText:[NSString stringWithFormat:@"%d",size]];
@@ -104,7 +104,7 @@
 }
 
 //Iterate through superview's subviews to find where the token(s) were released
-//Thus if 2 tokenstackviews are able to 'trade' then they must have the same superview
+//Thus if 2 tokenstackviews are able to trade then they must have the same superview
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
     for(UIView* view in [self.superview subviews]){
         if([view isKindOfClass:[TokenStackView class]])
@@ -125,10 +125,12 @@
             break;
         }case 2:{
             action=0;
-            CGPoint startPoint = CGPointMake(self.holderView.center.x+self.frame.origin.x, self.holderView.center.y+self.frame.origin.y);
+            CGPoint startPoint = CGPointMake([(UITouch*)[touches anyObject] locationInView:self.superview].x, [(UITouch*)[touches anyObject] locationInView:self.superview].y);
+
+            //CGPoint startPoint = CGPointMake(self.holderView.center.x+self.frame.origin.x, self.holderView.center.y+self.frame.origin.y);
             int numTokens = size;
             self.holderView.frame = CGRectMake(0, 0,self.holderView.frame.size.width,self.holderView.frame.size.height);
-            for(TokenView* t in [self.holderView subviews])
+            for(UIImageView* t in [self.holderView subviews])
                 [self removeToken];
             for(UIView* view in [self.superview subviews]){
                 if([view isKindOfClass:[TokenStackView class]] && CGRectContainsPoint(view.frame, startPoint) && view!=self){
@@ -163,11 +165,11 @@
     
 }
 
--(NSMutableArray*)sendTokensUp{
+-(NSMutableArray*)removeAllTokens{
     
     NSMutableArray* tokens = [[NSMutableArray alloc] initWithCapacity:self.size];
     self.size = 0;
-    for(TokenView* t in [self.holderView subviews]){
+    for(UIImageView* t in [self.holderView subviews]){
         [tokens addObject:t];
         [t removeFromSuperview];
         

@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TokenView.h"
 #import "EconApps/DataViewController.h"
 
 @interface TokenStackView : UIView{
@@ -18,9 +17,9 @@
     
     DataViewController *grid; //Grid associated with stack if there is one, otherwise nil.
     
-    UILabel* sizeLabel;
+    UILabel* sizeLabel;     //Label displaying size variable
     
-    UILabel* nameLabel;
+    UILabel* nameLabel;     //Label displaying name which is passed to initFunc
     
 }
 
@@ -33,7 +32,7 @@
 -(id)initWithSize:(NSInteger)numTokens andFrame:(CGRect)frame andName:(NSString*)name;
 -(void) addTokenfromPoint:(CGPoint)point;
 -(void) addTokenfromPoint:(CGPoint)point withSpeed:(CGFloat)speed;
--(TokenView*) removeToken;
--(NSMutableArray*)sendTokensUp;
+-(UIImageView*) removeToken;
+-(NSMutableArray*)removeAllTokens;
 
 @end

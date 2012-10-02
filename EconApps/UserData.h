@@ -14,10 +14,12 @@
     NSString *userName;
 }
 
+//Make properties strong since it is a singleton
 @property (nonatomic, strong) NSString *firstName;
 @property (nonatomic, strong) NSString *lastName;
 @property (nonatomic, strong) NSString *userName;
 
+//Singleton method to get only one instance of the data object
 + (UserData*)userDataInstance;
 
 @end
