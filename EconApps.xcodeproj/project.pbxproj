@@ -17,7 +17,6 @@
 		BF20D49716164FA200640DB6 /* iconRetina.png in Resources */ = {isa = PBXBuildFile; fileRef = BF20D49416164FA200640DB6 /* iconRetina.png */; };
 		BF5EA9E0160A720800197E97 /* PG_TokenStack_BG.png in Resources */ = {isa = PBXBuildFile; fileRef = BF5EA9DF160A720800197E97 /* PG_TokenStack_BG.png */; };
 		BF9A2DCB160255B000542E60 /* token-1.png in Resources */ = {isa = PBXBuildFile; fileRef = BF9A2DCA160255B000542E60 /* token-1.png */; };
-		BF9A2DD21602563400542E60 /* TokenView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF9A2DD11602563400542E60 /* TokenView.m */; };
 		BF9A2DD61602583B00542E60 /* TokenStackView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF9A2DD51602583B00542E60 /* TokenStackView.m */; };
 		BFBD619516121DD900868BA8 /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = BFBD619416121DD900868BA8 /* DACircularProgressView.m */; };
 		BFBD619716121E2E00868BA8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFBD619616121E2E00868BA8 /* QuartzCore.framework */; };
@@ -50,8 +49,6 @@
 		BF20D49416164FA200640DB6 /* iconRetina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconRetina.png; sourceTree = "<group>"; };
 		BF5EA9DF160A720800197E97 /* PG_TokenStack_BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PG_TokenStack_BG.png; sourceTree = "<group>"; };
 		BF9A2DCA160255B000542E60 /* token-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "token-1.png"; sourceTree = "<group>"; };
-		BF9A2DD01602563400542E60 /* TokenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenView.h; sourceTree = "<group>"; };
-		BF9A2DD11602563400542E60 /* TokenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenView.m; sourceTree = "<group>"; };
 		BF9A2DD41602583B00542E60 /* TokenStackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenStackView.h; sourceTree = "<group>"; };
 		BF9A2DD51602583B00542E60 /* TokenStackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TokenStackView.m; sourceTree = "<group>"; };
 		BFBD619316121DD900868BA8 /* DACircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DACircularProgressView.h; sourceTree = "<group>"; };
@@ -117,8 +114,6 @@
 			isa = PBXGroup;
 			children = (
 				BF5EA9DF160A720800197E97 /* PG_TokenStack_BG.png */,
-				BF9A2DD01602563400542E60 /* TokenView.h */,
-				BF9A2DD11602563400542E60 /* TokenView.m */,
 				BF9A2DD41602583B00542E60 /* TokenStackView.h */,
 				BF9A2DD51602583B00542E60 /* TokenStackView.m */,
 				BF9A2DCA160255B000542E60 /* token-1.png */,
@@ -345,7 +340,6 @@
 				BFF4855115F80897003DB6C3 /* WaitingView.m in Sources */,
 				BFF4855415F808B1003DB6C3 /* WaitingViewController.m in Sources */,
 				0AB143151602BAEB0009F61B /* DataViewController.m in Sources */,
-				BF9A2DD21602563400542E60 /* TokenView.m in Sources */,
 				BF9A2DD61602583B00542E60 /* TokenStackView.m in Sources */,
 				BFBD619516121DD900868BA8 /* DACircularProgressView.m in Sources */,
 				BF20D489161638AC00640DB6 /* TimerView.m in Sources */,

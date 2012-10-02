@@ -11,7 +11,7 @@
 
 @implementation PublicGoodsView
 
-@synthesize theGrid, localStackView, sendStackView, sendButton, progressView;
+@synthesize theGrid, localStackView, sendStackView, sendButton, progressView, potView, potViewLabel;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -22,33 +22,31 @@
         userData = [UserData userDataInstance]; //Get pointer to userData
         
         //Test to fill table with junk
-        NSString* one = [[NSString alloc] initWithFormat:@"I like fishsticks"];
+        NSString* one = [[NSString alloc] initWithFormat:@"1"];
         NSString* two = [[NSString alloc] initWithFormat:@"2"];
-        NSString* three = [[NSString alloc] initWithFormat:@"Thomas doesnt love you"];
+        NSString* three = [[NSString alloc] initWithFormat:@"3"];
         NSString* four = [[NSString alloc] initWithFormat:@"4"];
-        NSString* five = [[NSString alloc] initWithFormat:@"timbuktu"];
+        NSString* five = [[NSString alloc] initWithFormat:@"5"];
         NSString* six = [[NSString alloc] initWithFormat:@"6"];
-        NSString* seven = [[NSString alloc] initWithFormat:@"theres a pie over there"];
+        NSString* seven = [[NSString alloc] initWithFormat:@"7"];
         NSString* eight = [[NSString alloc] initWithFormat:@"8"];
         NSString* nine = [[NSString alloc] initWithFormat:@"9"];
         NSString* ten = [[NSString alloc] initWithFormat:@"10"];
-        NSString* eleven = [[NSString alloc] initWithFormat:@"11"];
 
-        NSMutableArray *array1 = [[NSMutableArray alloc] initWithObjects:seven,two,three,four,five,six,seven,eight,nine,ten,eleven, nil];
-        NSMutableArray *array2 = [[NSMutableArray alloc] initWithObjects:two,two,three,four,five,six,seven,eight,nine,ten,eleven, nil];
-        NSMutableArray *array3 = [[NSMutableArray alloc] initWithObjects:three,two,three,four,five,six,seven,eight,nine,ten,eleven, nil];
-        NSMutableArray *array4 = [[NSMutableArray alloc] initWithObjects:four,two,three,four,five,six,seven,eight,nine,ten,eleven, nil];
-        NSMutableArray *array5 = [[NSMutableArray alloc] initWithObjects:five,two,three,four,five,six,seven,eight,nine,ten,eleven, nil];
-        NSMutableArray *array6 = [[NSMutableArray alloc] initWithObjects:six,two,three,four,five,six,seven,eight,nine,ten,eleven, nil];
-        NSMutableArray *array7 = [[NSMutableArray alloc] initWithObjects:seven,two,three,four,five,six,seven,eight,nine,ten,eleven, nil];
-        NSMutableArray *array8 = [[NSMutableArray alloc] initWithObjects:one,three,three,four,five,six,seven,eight,nine,ten,eleven, nil];
-        NSMutableArray *array9 = [[NSMutableArray alloc] initWithObjects:two,three,three,four,five,six,seven,eight,nine,ten,eleven, nil];
-        NSMutableArray *array10 = [[NSMutableArray alloc] initWithObjects:three,three,three,four,five,six,seven,eight,nine,ten,eleven, nil];
-        NSMutableArray *array11 = [[NSMutableArray alloc] initWithObjects:four,three,three,four,five,six,seven,eight,nine,ten,eleven, nil];
-        NSMutableArray *array12 = [[NSMutableArray alloc] initWithObjects:five,three,three,four,five,six,seven,eight,nine,ten,eleven, nil];
-        NSMutableArray *data = [[NSMutableArray alloc] initWithObjects:array1,array2,array3,array4,array5,array6,array7,array8,array9,array10,array11,array12, nil];
+        NSMutableArray *array0 = [[NSMutableArray alloc] initWithObjects:one,one,two,three,four,five,six,seven,eight,nine,ten, nil];
+        NSMutableArray *array1 = [[NSMutableArray alloc] initWithObjects:one,three,two,three,four,five,six,seven,eight,nine,ten, nil];
+        NSMutableArray *array2 = [[NSMutableArray alloc] initWithObjects:two,three,two,three,four,five,six,seven,eight,nine,ten, nil];
+        NSMutableArray *array3 = [[NSMutableArray alloc] initWithObjects:three,three,two,three,four,five,six,seven,eight,nine,ten, nil];
+        NSMutableArray *array4 = [[NSMutableArray alloc] initWithObjects:four,three,two,three,four,five,six,seven,eight,nine,ten, nil];
+        NSMutableArray *array5 = [[NSMutableArray alloc] initWithObjects:five,three,two,three,four,five,six,seven,eight,nine,ten, nil];
+        NSMutableArray *array6 = [[NSMutableArray alloc] initWithObjects:six,three,two,three,four,five,six,seven,eight,nine,ten, nil];
+        NSMutableArray *array7 = [[NSMutableArray alloc] initWithObjects:seven,three,two,three,four,five,six,seven,eight,nine,ten, nil];
+        NSMutableArray *array8 = [[NSMutableArray alloc] initWithObjects:eight,three,three,three,four,five,six,seven,eight,nine,ten, nil];
+        NSMutableArray *array9 = [[NSMutableArray alloc] initWithObjects:nine,three,three,three,four,five,six,seven,eight,nine,ten, nil];
+        NSMutableArray *array10 = [[NSMutableArray alloc] initWithObjects:ten,three,three,three,four,five,six,seven,eight,nine,ten, nil];
+        NSMutableArray *data = [[NSMutableArray alloc] initWithObjects:array0,array1,array2,array3,array4,array5,array6,array7,array8,array9,array10, nil];
         
-        self.theGrid = [[DataViewController alloc] initWithFrame:CGRectMake(10, 200, self.frame.size.height, 300) andData:data andStyle:kNON_UNIFORM];
+        self.theGrid = [[DataViewController alloc] initWithFrame:CGRectMake(10, 200, self.frame.size.height, 300) andData:data andStyle:kUNIFORM];
         [self addSubview:theGrid.view];
         //[self.theGrid setUpHierarchy];
         
@@ -71,16 +69,32 @@
         [sendButton addTarget:self action:@selector(buttonLeft) forControlEvents:UIControlEventTouchDragExit];
         [self addSubview:sendButton];
         
-        progressView = [[DACircularProgressView alloc] initWithFrame:CGRectMake(sendButton.center.x-50, sendButton.center.y-50, 100, 100)];
+        progressView = [[DACircularProgressView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
         progressView.roundedCorners = NO;
         progressView.progressTintColor = [UIColor whiteColor];
         progressView.trackTintColor = [UIColor colorWithWhite:1.0 alpha:0.3];
         [progressView setThicknessRatio:0.33];
         progressView.hidden = YES;
-        [self addSubview:progressView];
+        [self.sendButton addSubview:progressView];
         
-        TimerView* timerView = [[TimerView alloc] initWithFrame:CGRectMake(30, sendButton.frame.origin.y, 100, 100) andDuration:35];
+        TimerView* timerView = [[TimerView alloc] initWithFrame:CGRectMake(30, sendButton.frame.origin.y, 100, 100) andDuration:9];
+        [timerView setTarget:self];
+        [timerView setSelector:@selector(endRound)];
         [self addSubview:timerView];
+        
+        potView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"potOfGold.png"]];
+        potView.frame = CGRectMake(self.frame.size.height, 0, 200, 200);
+        potView.hidden = YES;
+        potViewLabel = [[UILabel alloc] init];
+        potViewLabel.text = [NSString stringWithFormat:@"0+?"];
+        potViewLabel.frame = CGRectMake(0, potView.frame.size.height/1.5,potView.frame.size.width,40);
+        potViewLabel.textColor = [UIColor whiteColor];
+        potViewLabel.textAlignment = UITextAlignmentCenter;
+        potViewLabel.backgroundColor = [UIColor clearColor];
+        potViewLabel.font = [UIFont fontWithName:@"Helvetica" size:40];
+        [potView addSubview:potViewLabel];
+        [self addSubview:potView];
+
         
     }
     return self;
@@ -116,24 +130,17 @@
 
 -(void)moveTokensToPot{
     
-    NSMutableArray* tokens = [sendStackView sendTokensUp];
+    potView.hidden = NO; //Probably do this first as the check in endRound relies on this begin set
     
-    //Set up potView to animate inwards
-    UIImageView* potView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"potOfGold.png"]];
-    potView.frame = CGRectMake(self.frame.size.height, 0, 200, 200);
-    UILabel* potLabel = [[UILabel alloc] init];
-    potLabel.text = [NSString stringWithFormat:@"0+?"];
-    potLabel.frame = CGRectMake(0, potView.frame.size.height/1.5,potView.frame.size.width,40);
-    potLabel.textColor = [UIColor whiteColor];
-    potLabel.textAlignment = UITextAlignmentCenter;
-    potLabel.backgroundColor = [UIColor clearColor];
-    potLabel.font = [UIFont fontWithName:@"Helvetica" size:40];
-    [potView addSubview:potLabel];
-    [self addSubview:potView];
+    NSMutableArray* tokens = [sendStackView removeAllTokens];
+    
+    [self.sendButton setEnabled:FALSE];
+    [self.localStackView setUserInteractionEnabled:FALSE];
+    [self.sendStackView setUserInteractionEnabled:FALSE];
     [self.sendStackView removeFromSuperview];
     [self.sendButton removeFromSuperview];
     
-    [UIView animateWithDuration:0.4
+    [UIView animateWithDuration: 0.4
                           delay: 0.0
                         options: UIViewAnimationOptionCurveEaseOut
                      animations:^{
@@ -146,7 +153,7 @@
     
     int curToken = 1;
     //Move tokens to public goods view and do a loop animation
-    for(TokenView* t in tokens){
+    for(UIImageView* t in tokens){
         t.center = CGPointMake(t.center.x+sendStackView.frame.origin.x, t.center.y+sendStackView.frame.origin.y);
         [self addSubview:t];
         
@@ -160,7 +167,7 @@
         [t.layer addAnimation:anim forKey:@"moveToPot"];
         //This block of code gets executed after anim.duration seconds
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, anim.duration * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
-            potLabel.text = [NSString stringWithFormat:@"%d+?",curToken];
+            potViewLabel.text = [NSString stringWithFormat:@"%d+?",curToken];
             [t removeFromSuperview];
         });
         
@@ -178,10 +185,19 @@
     //                                                   withString:postString];
     //[conn connect];
     
-    [self.sendButton setEnabled:FALSE];
-    [self.localStackView setUserInteractionEnabled:FALSE];
-    [self.sendStackView setUserInteractionEnabled:FALSE];
+}
+
+-(void)endRound{
     
+    //TODO - Fix for case when game ends while user is holding a token
+    if(self.potView.hidden == YES){  //User hasn't sent tokens yet
+        [self moveTokensToPot];
+    }
+    
+    //Wait 3 seconds for decision to set in before switching views
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 3.0 * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
+        NSLog(@"Switch to end round view");
+    });
 }
 
 @end
